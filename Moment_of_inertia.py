@@ -1,4 +1,4 @@
 #Moment of inertia and torsional stiffness diagrams
 
 # Input parameters
-h_Fs = 6
+h_Fs = 7
