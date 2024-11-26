@@ -2,30 +2,40 @@
 import numpy as np 
 import matplotlib.pyplot as plt
 
+#M for metric units, B for british units
 
 #Constants
 CLAlphaCruise = 6.669               # 1/rad 
 CLAlphaFlaps = 7.8495               # 1/rad 
 CLMax = 1.624                       # -                        
 
-rhoCruise = 1.225                  # kg/m^2 
-uHatCruise = 15.24 #11.499                 # m/s
-uHatHighAlpha = 20.1168# 15.6972             # m/s   
-uHatDive = 7.62 # 5.7912                   # m/s
-g = 9.81                            # m/s^2 
+rhoCruiseM = 0.379597               #kg/m^3 ISA at 350000 ft  
+rhoSeaLevelM = 1.225                #kg/m^3
+uHatCruise = 25                     #ft/s
+uHatHighAlpha = 66                  #ft/s  
+uHatDive = 38                       #ft/s 
+gM = 9.81                           #m/s^2 
 
 #Aircraft paramters 
-weightAirplane = 12640*9.81 # 21869 * 9.81       # N
-VCruise = 228.3                     # m/s
-mac = 2.90                          # m 
-wingArea = 98                       # m^2
-
+weightAirplaneM = 23731*9.81         # N
+VCruiseM = 228.3                     # m/s
+macM = 2.90                          # m 
+wingAreaM = 98.85                    # m^2
 
 #InitialCalculation
-V_b = np.sqrt((weightAirplane*2)/(wingArea*rhoCruise*CLMax))
-VDive = 1.25*VCruise
-wingLoading = weightAirplane/wingArea
-print(f"WingLoading {wingLoading}")
+VmaxAlphaM = np.sqrt((weightAirplaneM*2)/(wingAreaM*rhoCruiseM*CLMax))
+VDiveM = 1.25*VCruiseM
+
+#Convert everything to british units 
+weightAirplaneB = weightAirplaneM * 0.224808943     #pounds
+VCruiseB = VCruiseM * 3.2808                        #ft/s 
+VmaxAlphaB = VmaxAlphaM * 3.2808
+VDiveB = VDiveM * 3.2808
+rhoCruiseB = rhoCruiseM * 0.06242796                #pounds/cubic feet
+wingAreaB = 98.85 * 10.7639104  
+
+#Detmine which rho to u
+
 
 #Calculations for gust diagram 
 
@@ -37,13 +47,13 @@ def calculateDeltaN (rho, V, C_Lalpha, W, u_hat):
     
     u =K*u_hat
     
-    deltaN = (rho*V*C_Lalpha*u)/(2*(W)/(wingArea))
+    deltaN = (rho*V*C_Lalpha*u)/(2*(W)/(wingAreaB))
     
     return deltaN
     
-delta_n_stall = calculateDeltaN(rhoCruise, V_b, CLAlphaCruise, weightAirplane, uHatHighAlpha)
-delta_n_cruise = calculateDeltaN(rhoCruise, VCruise, CLAlphaCruise, weightAirplane, uHatCruise)
-delta_n_dive = calculateDeltaN(rhoCruise, VDive, CLAlphaCruise, weightAirplane, uHatDive)
+delta_n_stall = calculateDeltaN(rhoCruiseB, VmaxAlphaB, CLAlphaCruise, weightAirplaneB, uHatHighAlpha)
+delta_n_cruise = calculateDeltaN(rhoCruiseB, VCruiseB, CLAlphaCruise, weightAirplaneB, uHatCruise)
+delta_n_dive = calculateDeltaN(rhoCruiseB, VDiveB, CLAlphaCruise, weightAirplaneB, uHatDive)
 
 print(delta_n_cruise, delta_n_stall, delta_n_cruise, delta_n_dive)
 
@@ -58,51 +68,7 @@ print(V_b,VDive)
 #Calculations for manoeuvre diagram
 
 
-def ncurve (rho, C_LMAX, ws):
-    q = 0.5 * rho 
-    n = C_LMAX * q / ws
-    return n
-
-Nmax = 2.1 + (24000/(weightAirplane*2.205 + 10000)) #It must be converted to pounds
-print(f"nMax = {Nmax}")
-Nmin = -1
-n = ncurve (rhoCruise, CLMax, wingLoading)
-
-
-V_a = np.sqrt(Nmax/n)
-
-V_vals_1 = np.linspace(0, V_a, 100)  # Velocity values for the positive parabolic portion
-V_vals_2 = np.linspace(V_a, VDive, 100)  # Velocity values for the straight line portion at n_max
-V_vals_neg_1 = np.linspace(0, VCruise, 100)  # Velocity values for the negative parabolic portion
-V_vals_neg_2 = np.linspace(VCruise, VDive, 100)  # Straight line segment from (Vc, -1) to (Vd, 0)
-
-# Positive portion definitions
-n_vals_1 = n * V_vals_1**2  # Positive parabolic portion (n * V^2)
-n_vals_1[n_vals_1 > Nmax] = Nmax  # Clip values exceeding Nmax to n_max
-n_vals_2 = np.full_like(V_vals_2, Nmax)  # Constant line at n_max between Va and Vd
-
-# Negative portion definitions
-n_vals_neg_1 = -n * V_vals_neg_1**2  # Negative parabolic portion (-n * V^2)
-n_vals_neg_1[n_vals_neg_1 < Nmin] = Nmin  # Clip values less than Nmin to n_min
-
-# Linear part from (Vc, -1) to (Vd, 0)
-n_vals_neg_2 = np.linspace(Nmin, 0, len(V_vals_neg_2))
-
-# Vertical lines at Vd
-V_vals_vert = [VDive, VDive]  # Velocity for vertical line
-n_vals_vert_pos = [Nmax, 0]  # Positive vertical line
-
-# Plotting
-plt.plot(x,y, color="red")
-plt.plot(V_vals_1, n_vals_1, color='blue')
-plt.plot(x, z, color = "red")
-plt.plot(V_vals_2, n_vals_2, color='blue')
-plt.plot(V_vals_vert, n_vals_vert_pos, color='blue')  # Vertical line for positive load
-
-plt.plot(V_vals_neg_1, n_vals_neg_1, color='blue')
-plt.plot(V_vals_neg_2, n_vals_neg_2, color='blue')
-
-
+plt.plot(x,y)
 
 
 # Show plot
