@@ -27,7 +27,7 @@ uHatDiveCL = 19                       #ft/s
 gM = 9.81                           #m/s^2 
 
 #Aircraft paramters 
-weightAirplaneM = 23731*9.81         # N
+weightAirplaneM = 21000*9.81         # N
 VCruiseM = 228.3                     # m/s
 macM = 2.90                          # m 
 wingAreaM = 98.85                    # m^2
@@ -122,11 +122,11 @@ n_vals_vert_pos = [Nmax, 0]  # Positive vertical line
 
 # Plotting
 #Plot sea level
-plt.plot(xCL,yCL, color="red")
+#plt.plot(xCL,yCL, color="red")
 
 plt.plot(V_vals_1, n_vals_1, color='blue')
 
-plt.plot(xCL, zCL, color = "red")
+#plt.plot(xCL, zCL, color = "red")
 plt.plot(V_vals_2, n_vals_2, color='blue')
 plt.plot(V_vals_vert, n_vals_vert_pos, color='blue')  # Vertical line for positive load
 
@@ -140,11 +140,11 @@ plt.grid(True)
 plt.legend(["Gust diagram", "Maneuver diagram"], loc="upper left")
 plt.show()
 
-plt.plot(xSL,ySL, color="red")
+#plt.plot(xSL,ySL, color="red")
 
 plt.plot(V_vals_1, n_vals_1, color='blue')
 
-plt.plot(xSL, zSL, color = "red")
+#plt.plot(xSL, zSL, color = "red")
 plt.plot(V_vals_2, n_vals_2, color='blue')
 plt.plot(V_vals_vert, n_vals_vert_pos, color='blue')  # Vertical line for positive load
 
@@ -153,8 +153,8 @@ plt.plot(V_vals_neg_2, n_vals_neg_2, color='blue')
 
 plt.xlabel("Velocity [m/s]")
 plt.ylabel("Load factor")
-plt.title("V,n diagram - Sea altitude")
+plt.title("V,n diagram - Sea level")
 plt.grid(True)  
-plt.legend(["Gust diagram", "Maneuver diagram"], loc="upper left")
+plt.legend(["Maneuver diagram"], loc="upper left")
 plt.show()
 
