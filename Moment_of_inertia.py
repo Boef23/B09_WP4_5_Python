@@ -38,4 +38,10 @@ y_AD_Root = h_Bs_Root + 0.5 * l_Bottom_Root * math.sin(beta_Root) - y_Root
 
 #Moment of inertia about x-axis per side for root 
 I_xx_AB_Root = (t_Wb * h_Fs_Root ** 3)/12 + t_Wb * h_Fs_Root * y_AB_Root ** 2
-I_xx_BC_Root = (l_Top_Root * )
+I_xx_BC_Root = (l_Top_Root * t_Wb ** 3)/12 + t_Wb * l_Top_Root * y_BC_Root ** 2
+I_xx_CD_Root = (t_Wb * h_Bs_Root ** 3)/12 + t_Wb * l_Top_Root * y_CD_Root ** 2
+I_xx_AD_Root = (t_Wb * l_Bottom_Root ** 3 * (math.sin(beta_Root)) ** 2)/12 + t_Wb * l_Bottom_Root * y_AD_Root ** 2
+I_yy_AB_Root = (h_Fs_Root * t_Wb ** 3)/12 + t_Wb * h_Fs_Root * x_AB_Root ** 2
+I_yy_BC_Root = (t_Wb * l_Top_Root ** 3)/12 + t_Wb * l_Top_Root * x_BC_Root ** 2
+I_yy_CD_Root = (h_Bs_Root * t_Wb ** 3)/12 + t_Wb * h_Bs_Root * x_CD_Root ** 2
+I_yy_AD_Root = (t_Wb * l_Bottom_Root ** 3 * (math.cos(beta_Root)) ** 2)/12 + t_Wb * l_Bottom_Root * x_AD_Root ** 2
