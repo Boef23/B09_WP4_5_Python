@@ -14,4 +14,10 @@ l_Bottom_Root = math.sqrt(l_Top_Root**2 + (h_Fs_Root-h_Bs_Root)**2)
 beta_Root = math.atan((h_Bs_Root-h_Fs_Root)/l_Top_Root)
 
 #Centroid location at the root
-x_Root = (h_Fs_Root * t_Wb * l_Top_Root + l_Top_Root)
+x_Root = (h_Fs_Root * t_Wb * l_Top_Root + l_Top_Root * t_Wb * 0.5 * l_Top_Root + l_Bottom_Root * t_Wb * 0.5 * l_Bottom_Root * math.cos(beta_Root))/(h_Fs_Root * t_Wb + l_Top_Root * t_Wb + h_Bs_Root * t_Wb + l_Bottom_Root * t_Wb)
+y_Root = (h_Fs_Root * t_Wb * 0.5 * h_Fs_Root + h_Bs_Root * t_Wb * 0.5 * h_Bs_Root + l_Bottom_Root * t_Wb * (0.5 * l_Bottom_Root * math.sin(beta_Root) + h_Bs_Root))/(h_Fs_Root * t_Wb + l_Top_Root * t_Wb + h_Bs_Root * t_Wb + l_Bottom_Root * t_Wb)
+
+#Centroid location at spanwise position
+
+#Moment of inertia about x-axis per side for 
+I_xx_AB = (t_Wb * h)
