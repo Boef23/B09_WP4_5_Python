@@ -7,6 +7,7 @@ from Parameters import c_Root #Root chord
 from Parameters import lambda_LE #Sweep
 from Parameters import taper_Ratio #Taper ratio
 from Parameters import t_Wb #Wing box skin thickness
+#Definitions of lengths
 h_Fs_Root = 0.1092 * c_Root
 h_Bs_Root = 0.0732 * c_Root
 l_Top_Root = 0.5 * c_Root
@@ -17,7 +18,16 @@ beta_Root = math.atan((h_Bs_Root-h_Fs_Root)/l_Top_Root)
 x_Root = (h_Fs_Root * t_Wb * l_Top_Root + l_Top_Root * t_Wb * 0.5 * l_Top_Root + l_Bottom_Root * t_Wb * 0.5 * l_Bottom_Root * math.cos(beta_Root))/(h_Fs_Root * t_Wb + l_Top_Root * t_Wb + h_Bs_Root * t_Wb + l_Bottom_Root * t_Wb)
 y_Root = (h_Fs_Root * t_Wb * 0.5 * h_Fs_Root + h_Bs_Root * t_Wb * 0.5 * h_Bs_Root + l_Bottom_Root * t_Wb * (0.5 * l_Bottom_Root * math.sin(beta_Root) + h_Bs_Root))/(h_Fs_Root * t_Wb + l_Top_Root * t_Wb + h_Bs_Root * t_Wb + l_Bottom_Root * t_Wb)
 
-#Centroid location at spanwise position
+#Centroid 
+#Definitions of positions root
+x_AB_Root = l_Top_Root - x_Root
+y_AB_Root = 0.5 * h_Fs_Root - y_Root
+x_BC_Root = 0.5 * l_Top_Root - x_Root
+y_BC_Root= -y_Root
+x_CD_Root = - x_Root
+y_CD_Root = 0.5 * h_Bs_Root - y_Root
+x_AD_Root = 0.5 * l_Bottom_Root * math.cos(beta_Root) - x_Root
+y_AD_Root = h_Bs_Root + 0.5 * l_Bottom_Root * math.sin(beta_Root) - y_Root
 
 #Moment of inertia about x-axis per side for 
-I_xx_AB = (t_Wb * h)
+I_xx_AB = (t_Wb * h_Fs_Root ** 3)/12 + t_Wb * h_Fs_Root
