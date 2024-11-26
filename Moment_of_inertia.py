@@ -7,6 +7,8 @@ from Parameters import c_Root #Root chord
 from Parameters import lambda_LE #Sweep
 from Parameters import taper_Ratio #Taper ratio
 from Parameters import t_Wb #Wing box skin thickness
+from Parameters import b #Wing span
+from Parameters import lambda_Dihedral #dihedral angle
 #Definitions of lengths
 h_Fs_Root = 0.1092 * c_Root
 h_Bs_Root = 0.0732 * c_Root
@@ -18,7 +20,11 @@ beta_Root = math.atan((h_Bs_Root-h_Fs_Root)/l_Top_Root)
 x_Root = (h_Fs_Root * t_Wb * l_Top_Root + l_Top_Root * t_Wb * 0.5 * l_Top_Root + l_Bottom_Root * t_Wb * 0.5 * l_Bottom_Root * math.cos(beta_Root))/(h_Fs_Root * t_Wb + l_Top_Root * t_Wb + h_Bs_Root * t_Wb + l_Bottom_Root * t_Wb)
 y_Root = (h_Fs_Root * t_Wb * 0.5 * h_Fs_Root + h_Bs_Root * t_Wb * 0.5 * h_Bs_Root + l_Bottom_Root * t_Wb * (0.5 * l_Bottom_Root * math.sin(beta_Root) + h_Bs_Root))/(h_Fs_Root * t_Wb + l_Top_Root * t_Wb + h_Bs_Root * t_Wb + l_Bottom_Root * t_Wb)
 
-#Centroid 
+#Centroid location at spanwise position (function of z)
+#z between 0 and b/2, then symmetric for other half wing
+x_Local = x_Root - z * (math.tan(lambda_LE) - (1 - 0.3 * c_Root - x_Root) * ((2 * c_Root) / b) * (1 - taper_Ratio))
+y_Local = y_Root - (z / (0.5 * b)) * math.tan(lambda_Dihedral)
+
 #Definitions of positions root
 x_AB_Root = l_Top_Root - x_Root
 y_AB_Root = 0.5 * h_Fs_Root - y_Root
