@@ -15,13 +15,14 @@ h_Bs_Root = 0.0732 * c_Root
 l_Top_Root = 0.5 * c_Root
 l_Bottom_Root = math.sqrt(l_Top_Root**2 + (h_Fs_Root-h_Bs_Root)**2)
 beta_Root = math.atan((h_Bs_Root-h_Fs_Root)/l_Top_Root)
-
+z = 0
 #Centroid location at the root
 x_Root = (h_Fs_Root * t_Wb * l_Top_Root + l_Top_Root * t_Wb * 0.5 * l_Top_Root + l_Bottom_Root * t_Wb * 0.5 * l_Bottom_Root * math.cos(beta_Root))/(h_Fs_Root * t_Wb + l_Top_Root * t_Wb + h_Bs_Root * t_Wb + l_Bottom_Root * t_Wb)
 y_Root = (h_Fs_Root * t_Wb * 0.5 * h_Fs_Root + h_Bs_Root * t_Wb * 0.5 * h_Bs_Root + l_Bottom_Root * t_Wb * (0.5 * l_Bottom_Root * math.sin(beta_Root) + h_Bs_Root))/(h_Fs_Root * t_Wb + l_Top_Root * t_Wb + h_Bs_Root * t_Wb + l_Bottom_Root * t_Wb)
 
 #Centroid location at spanwise position (function of z)
 #z between 0 and b/2, then symmetric for other half wing
+#Put into loop to evaluate for every spanwise position.
 x_Local = x_Root - z * (math.tan(lambda_LE) - (1 - 0.3 * c_Root - x_Root) * ((2 * c_Root) / b) * (1 - taper_Ratio))
 y_Local = y_Root - (z / (0.5 * b)) * math.tan(lambda_Dihedral)
 
@@ -35,5 +36,6 @@ y_CD_Root = 0.5 * h_Bs_Root - y_Root
 x_AD_Root = 0.5 * l_Bottom_Root * math.cos(beta_Root) - x_Root
 y_AD_Root = h_Bs_Root + 0.5 * l_Bottom_Root * math.sin(beta_Root) - y_Root
 
-#Moment of inertia about x-axis per side for 
-I_xx_AB = (t_Wb * h_Fs_Root ** 3)/12 + t_Wb * h_Fs_Root
+#Moment of inertia about x-axis per side for root 
+I_xx_AB_Root = (t_Wb * h_Fs_Root ** 3)/12 + t_Wb * h_Fs_Root * y_AB_Root ** 2
+I_xx_BC_Root = (l_Top_Root * )
