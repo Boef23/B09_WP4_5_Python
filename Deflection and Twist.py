@@ -46,7 +46,7 @@ t_4 = 0.001
 wingboxLength = b/2 #metres
 thickness = 2 * 10**(-3) #metres
 z = symbols('z')
-secondMomentOfInertia = total_Inertia_XX
+secondMomentOfInertia = total_Inertia_XX(z)
 
 def wingWeightDistribution(e,f,z):#gives the Mccauley of the wingweight
     return (e*z + f)*z**3
