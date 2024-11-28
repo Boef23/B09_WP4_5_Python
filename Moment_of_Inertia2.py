@@ -2,6 +2,10 @@
 from Parameters import c_Root, taper_Ratio, t_Fs, t_Bs, t_Top, t_Bottom, b
 import numpy as np
 
+#Design parameters
+#Thickness per segment
+#Number of stringers
+#Spacing of stringers
 
 #Chord length as function of spanwise position
 def geometry(c_Root, taper_Ratio, b, z):
