@@ -3,6 +3,7 @@ import numpy as np
 import sympy
 from scipy.integrate import quad
 from sympy import symbols, integrate, lambdify
+from LiftDistribution import LiftCurve
 
 #import constants from file
 a = 1
