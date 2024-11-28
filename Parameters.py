@@ -10,4 +10,5 @@ cruise_Velocity = 228   #Cruise velocity (m/s), M=0.77 at 35000ft alt
 cruise_Density = 0.3796 #Cruise density (kg/m^3) at 35000ft alt
 
 mlg_Pos = 4.35  #Lateral position of MLG on wing (m)
-
+z_Engine_Frac = 0.35 #Fractional lateral position w.r.t. half span of engine on wing (m)
+engine_Mass = 1111.3    #Mass of engine (kg)
