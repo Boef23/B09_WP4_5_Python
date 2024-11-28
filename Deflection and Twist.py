@@ -5,14 +5,15 @@ import sympy
 from scipy.integrate import quad,  dblquad
 from sympy import symbols, integrate, lambdify
 from LiftDistribution import LiftCurve
+from Parameters import b
 #from ShearDiagram import totalTorqueDist
 #from Moment_of_inertia2 import Ixx
 
 #import constants from file
-a = 1
-b = 1
-c = 1
-d = 1
+
+
+
+
 e = 16.3
 f = -365.47
 g = 1
@@ -32,12 +33,9 @@ l_1 = 10
 dl_1 = 3
 l_2 = 20
 dl_2 = 4
-wingboxLength = 15.325 #metres
+wingboxLength = b/2 #metres
 thickness = 2 * 10**(-3) #metres
 z = symbols('z')
-
-def liftDistribution(a,b,c,d,z): #gives the Mccauley of the lift
-    return (a*z**3+b*z**2+c*z+d)*z**5
 
 def wingWeightDistribution(e,f,z):#gives the Mccauley of the wingweight
     return (e*z + f)*z**3
@@ -62,18 +60,6 @@ Ixx = Ixxchanger(I_xxAtRoot, I_xxAtTip, wingboxLength, z)
 
 #The following fuctions serve the single purpose of integrating. No constants are added as the boundary conditions state that the integration constants are zero
 #The integrations are done sepereatley and are added later
-def vLift(liftDistribution): #deflection for the lift
-    # Perform symbolic integration
-    vprime_symbolic = integrate(liftDistribution(a, b, c, d, z), z)
-
-    # Convert to a numerical function
-    vprime_numeric = lambdify(z, vprime_symbolic, 'numpy')
-
-    # Perform numerical integration over [0, 3]
-    v, error = quad(vprime_numeric, 0, 3)
-
-    return v, vprime_symbolic, vprime_numeric
-v, vprime_symbolic, vprime_numeric = vLift(liftDistribution)
 
 
 def integral_1(z):
@@ -228,8 +214,7 @@ print(areaCalculator(l_1, l_2, dl_1, dl_2, wingboxLength, z))
 
 
 
-print(v) #print for the lift
-print("Symbolic Integral (vprime_symbolic):", vprime_symbolic)
+
 print(vWing) #prints for the wing weight
 print("Symbolic Integral (vprime_symbolic):", vprimeWing_symbolic)
 print(vLG) #print for the landing gear
