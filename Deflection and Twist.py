@@ -5,6 +5,8 @@ import sympy
 from scipy.integrate import quad,  dblquad
 from sympy import symbols, integrate, lambdify
 from LiftDistribution import LiftCurve
+#from ShearDiagram import totalTorqueDist
+#from Moment_of_inertia2 import Ixx
 
 #import constants from file
 a = 1
@@ -19,7 +21,7 @@ landingGearLength = 2.3461
 Ry = 1
 elasticModulus = 72.4 * 10**9 # Pa
 shearModulus = 28 * 10**9 #Pa
-I_xx = 1
+I_xx = 1 * 10 ** -5 #mm^4
 I_xxAtRoot = 10
 I_xxAtTip = 5
 J_z = 1
@@ -30,7 +32,7 @@ l_1 = 10
 dl_1 = 3
 l_2 = 20
 dl_2 = 4
-wingboxLength = 20 #metres
+wingboxLength = 15.325 #metres
 thickness = 2 * 10**(-3) #metres
 z = symbols('z')
 
@@ -158,12 +160,13 @@ def momentOfInertia(Ixx): #deflection for the reactionforce
     vIxx, error = quad(vprimeIxx_numeric, 0, 3)
 
     return vR, vprimeR_symbolic, vprimeR_numeric
+
 vIxx, vprimeIxx_symbolic, vprimeIxx_numeric = momentOfInertia(Ixx)
 
 
 #final calculation to determine the deflection, mind sign convention
-def deflectionResult(vLift, vWingWeight, landingGear, landingGear2, engine):
-    return ((-elasticModulus*vIxx)**-1)*(v - vWing - vLG + vLG2 -vE + vR)
+def deflectionResult(integral_2, vWingWeight, landingGear, landingGear2, engine):
+    return ((-elasticModulus*I_xx)**-1)*(integral_2 - vWing - vLG + vLG2 -vE + vR)
 
 #Twist equations
 #Now the twist is calculated, this is a fucntion of z, maximum twist is most important
@@ -238,4 +241,4 @@ print("Symbolic Integral (vprime_symbolic):", vprimeE_symbolic)
 print(vR) #prints for the reaction force
 print("Symbolic Integral (vprime_symbolic):", vprimeR_symbolic)
 
-print(deflectionResult(vLift, vWing, landingGear, landingGear2, engine)) #prints the final result
+print(deflectionResult(integral_2(wingboxLength), vWing, landingGear, landingGear2, engine)) #prints the final result
