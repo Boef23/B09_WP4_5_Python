@@ -45,7 +45,7 @@ def engineWeight(massEngine, gravity): #gives the Mccauley of the Engine
 def reactionY(Ry,z): #gives the Mccauley of the reaction force in the y-direction, calculated from summing all the forces
     return Ry*z
 
-def Ixx(Ixx_0, L, z): #determines Ixx as a position of z, decreases to the power 4
+
     
 
 
