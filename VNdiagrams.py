@@ -34,9 +34,10 @@ VDiveB = VDiveM * 3.2808
 rhoCruiseB = rhoCruiseM * 0.06242796                #pounds/cubic feet
 wingAreaB = 98.85 * 10.7639104  
 macB = 2.90  * 3.2808399   
-gB = 32.2                      
+gB = 32.2
 
-#Detmine which rho to u
+
+#Determine which rho to u
 
 
 #Calculations for gust diagram 
@@ -53,9 +54,9 @@ def calculateDeltaN (rho, V, C_Lalpha, W, u_hat):
     
     return deltaN
     
-delta_n_stall = calculateDeltaN(rhoSeaLevelM , VmaxAlphaB, CLAlphaCruise, weightAirplaneB, uHatHighAlpha)
-delta_n_cruise = calculateDeltaN(rhoSeaLevelM , VCruiseB, CLAlphaCruise, weightAirplaneB, uHatCruise)
-delta_n_dive = calculateDeltaN(rhoSeaLevelM , VDiveB, CLAlphaCruise, weightAirplaneB, uHatDive)
+delta_n_stall = calculateDeltaN(rhoCruiseB , VmaxAlphaB, CLAlphaCruise, weightAirplaneB, uHatHighAlpha)
+delta_n_cruise = calculateDeltaN(rhoCruiseB , VCruiseB, CLAlphaCruise, weightAirplaneB, uHatCruise)
+delta_n_dive = calculateDeltaN(rhoCruiseB , VDiveB, CLAlphaCruise, weightAirplaneB, uHatDive)
 
 print(delta_n_cruise, delta_n_stall, delta_n_cruise, delta_n_dive)
 
