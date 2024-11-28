@@ -1,5 +1,5 @@
 #Moment of inertia and torsional stiffness diagrams
-from Parameters import c_Root, taper_Ratio, t_Fs, t_Bs, t_Top, t_Bottom, b
+from Parameters import c_Root, taper_Ratio, t_Fs, t_Bs, t_Top, t_Bottom, b, t_Stringer, l_Stringer
 import numpy as np
 
 
@@ -15,31 +15,34 @@ def geometry(c_Root, taper_Ratio, b, z):
 
 #Calculates the area of individual segments and the total area
 def areas_segments(h_Fs, h_Bs, l_Top, l_Bottom, t_Fs, t_Bs, t_Top, t_Bottom):
-    area_Fs = h_Fs * t_Fs
-    area_Bs = h_Bs * t_Bs
-    area_Top = l_Top * t_Top
-    area_Bottom = l_Bottom * t_Bottom
-    area_Total = area_Fs + area_Bs + area_Top + area_Bottom
+    area_Fs = h_Fs * t_Fs #Area front spar
+    area_Bs = h_Bs * t_Bs #Area back spar
+    area_Top = l_Top * t_Top #Area top plate
+    area_Bottom = l_Bottom * t_Bottom #Area bottom plate
+    area_Total = area_Fs + area_Bs + area_Top + area_Bottom #Total area
     return area_Fs, area_Bs, area_Top, area_Bottom, area_Total
 
-def area_stringer():
+#Calculates the area of a stringer
+def area_stringer(l_stringer, t_Stringer):
+    area_Stringer = l_stringer * t_Stringer #Area stringer
+    return area_Stringer
 
 #Calculates the location of the centroid w.r.t. datum at the top of the back spar
 def centroid(area_Fs, area_Bs, area_Top, area_Bottom, area_Total, h_Fs, h_Bs, l_Top, l_Bottom, beta):
-    X_Centroid = (area_Fs * l_Top + area_Top * 0.5 * l_Top + area_Bottom * 0.5 * l_Bottom *np.cos(beta))/area_Total
-    Y_Centroid = (area_Fs * 0.5 * h_Fs + area_Bs * 0.5 * h_Bs + area_Bottom * (0.5 * l_Bottom * np.sin(beta) + h_Bs))/area_Total
+    X_Centroid = (area_Fs * l_Top + area_Top * 0.5 * l_Top + area_Bottom * 0.5 * l_Bottom *np.cos(beta))/area_Total #X-position of the centroid
+    Y_Centroid = (area_Fs * 0.5 * h_Fs + area_Bs * 0.5 * h_Bs + area_Bottom * (0.5 * l_Bottom * np.sin(beta) + h_Bs))/area_Total #Y-position of the centroid
     return X_Centroid, Y_Centroid
 
-#Calculates the location of the centroids of infividual segments w.r.t the centroid of the total wing box calculated in function centroid
+#Calculates the location of the centroids of individual segments w.r.t the centroid of the total wing box calculated in function centroid
 def local_Centroids(h_Fs, h_Bs, l_Top, l_Bottom, X_Centroid, Y_Centroid, beta):
-    X_Centroid_Fs = l_Top - X_Centroid
-    Y_Centroid_Fs = 0.5 * h_Fs - Y_Centroid
-    X_Centroid_Top = 0.5 * l_Top - X_Centroid
-    Y_Centroid_Top = -Y_Centroid
-    X_Centroid_Bs = -X_Centroid
-    Y_Centroid_Bs = 0.5 * h_Bs - Y_Centroid
-    X_Centroid_Bottom = 0.5 * l_Bottom * np.cos(beta) - X_Centroid
-    Y_Centroid_Bottom = h_Bs + 0.5 * l_Bottom *np.sin(beta) - Y_Centroid
+    X_Centroid_Fs = l_Top - X_Centroid #X-position of the centroid of the front spar
+    Y_Centroid_Fs = 0.5 * h_Fs - Y_Centroid #Y-position of the centroid of the front spar
+    X_Centroid_Top = 0.5 * l_Top - X_Centroid #X-position of the centroid of the top plate
+    Y_Centroid_Top = -Y_Centroid #Y-position of the centroid of the top plate
+    X_Centroid_Bs = -X_Centroid #X-position of the centroid of the back spar
+    Y_Centroid_Bs = 0.5 * h_Bs - Y_Centroid #Y-position of the centroid of the back spar
+    X_Centroid_Bottom = 0.5 * l_Bottom * np.cos(beta) - X_Centroid #X-position of the centroid of the bottom plate
+    Y_Centroid_Bottom = h_Bs + 0.5 * l_Bottom *np.sin(beta) - Y_Centroid #Y-position of the centroid of the bottom plate
     return X_Centroid_Fs, Y_Centroid_Fs , X_Centroid_Top, Y_Centroid_Top, X_Centroid_Bs, Y_Centroid_Bs, X_Centroid_Bottom, Y_Centroid_Bottom
 
 def plate_Inertia_X():
