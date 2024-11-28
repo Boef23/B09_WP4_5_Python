@@ -2,11 +2,12 @@ import numpy as np
 import scipy as sp
 from matplotlib import pyplot as plt
 from LiftDistribution import chord, LiftCurve
+from Parameters import mlg_Pos, b
 
 # General variables
-lgEndPos = 4.35     # End of MLG wrt half span
+lgEndPos = mlg_Pos     # End of MLG wrt half span
 dz = 0.0001           # plot increment
-halfSpan = 15.325       # m, half the full wing span
+halfSpan = b/2       # m, half the full wing span
 zEngineFrac = 0.35      # fraction of position of engine wrt. half-span
 zEngine = zEngineFrac * halfSpan    # position of engine on half-span
 

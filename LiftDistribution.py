@@ -2,16 +2,15 @@ import numpy as np
 from scipy import interpolate
 import scipy as sp
 import matplotlib.pyplot as plt
+from Parameters import c_Root, S, taper_Ratio, b, cruise_Velocity, cruise_Density
 
 
 # Parameters
-S = 98.75               # Wing area, m^2
-rhoCruise = 0.3796         # Cruise density, kg/m^3
-velocityCruise = 228    # Cruise velocity, m/s
-Cr = 4.9
-taper = 0.316
-span = 30.65
-zAxis = np.arange(0, 15.325, 0.001)
+rhoCruise = cruise_Density         # Cruise density, kg/m^3
+velocityCruise = cruise_Velocity    # Cruise velocity, m/s
+Cr = c_Root     #Wing root chord
+taper = taper_Ratio #Wing taper ratio
+span = b    #Wing span
 loadFactor = 1
 
 
@@ -36,5 +35,8 @@ def LiftCurve(z):
 
 print(4 * sp.integrate.quad(LiftCurve, 0, span/2)[0] / (S * rhoCruise * velocityCruise**2))
 # print(2 * sp.integrate.quad(LiftCurve, 0, span/2)[0])
+
+#plot lift distribution
+zAxis = np.arange(0, 15.325, 0.001)
 plt.plot(zAxis, LiftCurve(zAxis))
 plt.show()
