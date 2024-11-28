@@ -16,8 +16,6 @@ from ShearDiagram import reactionMoment, reactionShear, totalTorqueDist, zAxis, 
 
 e = 16.3
 f = -365.47
-g = 1
-h = 1
 landingGearLength = 2.3461 #m
 Ry = reactionShear #N
 elasticModulus = 72.4 * 10**9 # Pa
