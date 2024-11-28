@@ -18,6 +18,8 @@ Ry = 1
 elasticModulus = 72.4 * 10**9 # Pa
 shearModulus = 28 * 10**9 #Pa
 I_xx = 1
+I_xxAtRoot = 10
+I_xxAtTip = 5
 J_z = 1
 massLandingGear = 302.67
 massEngine = 1111.3
@@ -44,7 +46,10 @@ def engineWeight(massEngine, gravity): #gives the Mccauley of the Engine
 
 def reactionY(Ry,z): #gives the Mccauley of the reaction force in the y-direction, calculated from summing all the forces
     return Ry*z
-
+def Ixxchanger(I_xxAtRoot, I_xxAtTip, wingboxLength, z):
+    Ixx = I_xxAtRoot - (I_xxAtRoot - I_xxAtTip)*z/wingboxLength
+    return Ixx
+Ixx = Ixxchanger(I_xxAtRoot, I_xxAtTip, wingboxLength, z)
 
     
 
@@ -132,10 +137,23 @@ def verticalReaction(reactionY): #deflection for the reactionforce
 vR, vprimeR_symbolic, vprimeR_numeric = verticalReaction(reactionY)
 
 
+def momentOfInertia(Ixx): #deflection for the reactionforce
+    # Perform symbolic integration
+    vprimeIxx_symbolic = integrate(Ixx,z)
+
+    # Convert to a numerical function
+    vprimeIxx_numeric = lambdify(z, vprimeIxx_symbolic, 'numpy')
+
+    # Perform numerical integration over [0, 3]
+    vIxx, error = quad(vprimeIxx_numeric, 0, 3)
+
+    return vR, vprimeR_symbolic, vprimeR_numeric
+vIxx, vprimeIxx_symbolic, vprimeIxx_numeric = momentOfInertia(Ixx)
+
 
 #final calculation to determine the deflection, mind sign convention
 def deflectionResult(vLift, vWingWeight, landingGear, landingGear2, engine):
-    return ((-elasticModulus*I_xx)**-1)*(v - vWing - vLG + vLG2 -vE + vR)
+    return ((-elasticModulus*vIxx)**-1)*(v - vWing - vLG + vLG2 -vE + vR)
 
 #Twist equations
 #Now the twist is calculated, this is a fucntion of z, maximum twist is most important
