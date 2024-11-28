@@ -46,7 +46,8 @@ rhoSeaLevelB = 1.225 * 0.00194
 wingAreaB = 98.85 * 10.7639104  
 macB = 2.90  * 3.2808399   
 gB = 32.2                      
-        
+
+#Detmine which rho to u
 
 
 def calculateDeltaN (W, S, rho, uhat, V):
@@ -58,29 +59,20 @@ def calculateDeltaN (W, S, rho, uhat, V):
     
     deltaN = (rho*V*CLAlphaCruise*u)/(2*(W/S))
     
-    return deltaN 
+    return deltaN
+    
+delta_n_stall = calculateDeltaN(rhoSeaLevelM , VmaxAlphaB, CLAlphaCruise, weightAirplaneB, uHatHighAlpha)
+delta_n_cruise = calculateDeltaN(rhoSeaLevelM , VCruiseB, CLAlphaCruise, weightAirplaneB, uHatCruise)
+delta_n_dive = calculateDeltaN(rhoSeaLevelM , VDiveB, CLAlphaCruise, weightAirplaneB, uHatDive)
 
-#Calculate values for current weight settings and cruise conditions
-deltaNStallCL = calculateDeltaN(weightAirplaneB , wingAreaB , rhoCruiseB , uHatHighAlphaCL  , VstallB) 
-deltaNCruiseCL =  calculateDeltaN(weightAirplaneB , wingAreaB , rhoCruiseB , uHatCruiseCL , VCruiseB)
-deltaNDiveCL = calculateDeltaN(weightAirplaneB , wingAreaB , rhoCruiseB , uHatDiveCL , VDiveB)
-
-#Calculate values for current weight settings and cruise conditions
-deltaNStallSL = calculateDeltaN(weightAirplaneB , wingAreaB , rhoSeaLevelB , uHatHighAlphaSL  , VstallB) 
-deltaNCruiseSL =  calculateDeltaN(weightAirplaneB , wingAreaB , rhoSeaLevelB , uHatCruiseSL , VCruiseB)
-deltaNDiveSL = calculateDeltaN(weightAirplaneB , wingAreaB , rhoSeaLevelB , uHatDiveSL , VDiveB)
+print(delta_n_cruise, delta_n_stall, delta_n_cruise, delta_n_dive)
 
 
-print(deltaNStallCL , deltaNCruiseCL, deltaNStallCL)
-print(deltaNStallSL , deltaNCruiseSL, deltaNStallSL)
+x = [0, VmaxAlphaM, VCruiseM, VDiveM]
+y = [1, 1+delta_n_stall, 1+delta_n_cruise, 1+delta_n_dive]
+z = [1, 1-delta_n_stall, 1-delta_n_cruise, 1-delta_n_dive]
 
-xCL = [0, VstallM , VCruiseM , VDiveM]
-yCL = [1, 1+ deltaNStallCL, 1+ deltaNCruiseCL, 1+ deltaNDiveCL]
-zCL = [1, 1- deltaNStallCL, 1- deltaNCruiseCL, 1- deltaNDiveCL]
-
-xSL = [0, VstallM , VCruiseM , VDiveM]
-ySL = [1, 1+ deltaNStallSL, 1+ deltaNCruiseSL, 1+ deltaNDiveSL]
-zSL = [1, 1- deltaNStallSL, 1- deltaNCruiseSL, 1- deltaNDiveSL]
+print(VmaxAlphaM,VDiveM)
 
 
 #Calculations for manoeuvre diagram
