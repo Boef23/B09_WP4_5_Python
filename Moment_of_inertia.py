@@ -45,3 +45,5 @@ I_yy_AB_Root = (h_Fs_Root * t_Wb ** 3)/12 + t_Wb * h_Fs_Root * x_AB_Root ** 2
 I_yy_BC_Root = (t_Wb * l_Top_Root ** 3)/12 + t_Wb * l_Top_Root * x_BC_Root ** 2
 I_yy_CD_Root = (h_Bs_Root * t_Wb ** 3)/12 + t_Wb * h_Bs_Root * x_CD_Root ** 2
 I_yy_AD_Root = (t_Wb * l_Bottom_Root ** 3 * (math.cos(beta_Root)) ** 2)/12 + t_Wb * l_Bottom_Root * x_AD_Root ** 2
+
+print(0.7 - x_Root/c_Root - 0.25)
