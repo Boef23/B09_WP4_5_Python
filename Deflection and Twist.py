@@ -22,7 +22,7 @@ landingGearLength = 2.3461
 Ry = 1
 elasticModulus = 72.4 * 10**9 # Pa
 shearModulus = 28 * 10**9 #Pa
-I_xx = 1 * 10 ** -5 #mm^4
+I_xx = 10 * 10 ** -5 #mm^4
 I_xxAtRoot = 10
 I_xxAtTip = 5
 J_z = 1
@@ -76,8 +76,8 @@ def vWingWeight(wingWeightDistribution): #deflection for the wingweight
     # Convert to a numerical function
     vprimeWing_numeric = lambdify(z, vprimeWing_symbolic, 'numpy')
 
-    # Perform numerical integration over [0, 3]
-    vWing, error = quad(vprimeWing_numeric, 0, 3)
+    # Perform numerical integration over [0, halfwingspan]
+    vWing, error = quad(vprimeWing_numeric, 0, wingboxLength)
 
     return vWing, vprimeWing_symbolic, vprimeWing_numeric
 vWing, vprimeWing_symbolic, vprimeWing_numeric = vWingWeight(wingWeightDistribution)
@@ -89,8 +89,8 @@ def landingGear(landingGearWeightDistribution): #deflection for the landing gear
     # Convert to a numerical function
     vprimeLG_numeric = lambdify(z, vprimeLG_symbolic, 'numpy')
 
-    # Perform numerical integration over [0, 3]
-    vLG, error = quad(vprimeLG_numeric, 0, 3)
+    # Perform numerical integration over [0, halfwingspan - landinggearposition]
+    vLG, error = quad(vprimeLG_numeric, 0, wingboxLength-landingGearLength)
 
     return vLG, vprimeLG_symbolic, vprimeLG_numeric
 vLG, vprimeLG_symbolic, vprimeLG_numeric = landingGear(landingGearWeightDistribution)
@@ -102,7 +102,7 @@ def landingGear2(landingGearWeightDistribution): #"turns off" the landing gear l
     # Convert to a numerical function
     vprimeLG2_numeric = lambdify(z, vprimeLG2_symbolic, 'numpy')
 
-    # Perform numerical integration over [0, 2]
+    # Perform numerical integration over [landinggearlocation, halfwingspan]
     vLG2, error = quad(vprimeLG_numeric, 0, 2)
 
     return vLG2, vprimeLG2_symbolic, vprimeLG2_numeric
@@ -152,7 +152,7 @@ vIxx, vprimeIxx_symbolic, vprimeIxx_numeric = momentOfInertia(Ixx)
 
 #final calculation to determine the deflection, mind sign convention
 def deflectionResult(integral_2, vWingWeight, landingGear, landingGear2, engine):
-    return ((-elasticModulus*I_xx)**-1)*(integral_2 - vWing - vLG + vLG2 -vE + vR)
+    return ((-elasticModulus*I_xx)**-1)*(integral_2 + vWing + vLG - vLG2 -vE + vR)
 
 #Twist equations
 #Now the twist is calculated, this is a fucntion of z, maximum twist is most important
