@@ -67,10 +67,15 @@ def stringers_Inertia_X():
 def stringers_Inertia_Y():
     return stringers_Inertia_Y
 
-def total_Inertia_XX(I_XX_Total_Plates, I_XX_Stringers_Fs, I_XX_Stringers_Bs, I_XX_Stringers_Top, I_XX_Stringers_Bottom)
+def total_Inertia_XX(I_XX_Total_Plates, I_XX_Stringers_Fs, I_XX_Stringers_Bs, I_XX_Stringers_Top, I_XX_Stringers_Bottom):
     I_XX_Total = I_XX_Total_Plates + I_XX_Stringers_Fs + I_XX_Stringers_Bs + I_XX_Stringers_Top + I_XX_Stringers_Bottom
     return I_XX_Total
 
-def total_Inertia_YY(I_YY_Total_Plates, I_YY_Stringers_Fs, I_YY_Stringers_Bs, I_YY_Stringers_Top, I_YY_Stringers_Bottom)
+def total_Inertia_YY(I_YY_Total_Plates, I_YY_Stringers_Fs, I_YY_Stringers_Bs, I_YY_Stringers_Top, I_YY_Stringers_Bottom):
     I_YY_Total = I_YY_Total_Plates + I_YY_Stringers_Fs + I_YY_Stringers_Bs + I_YY_Stringers_Top + I_YY_Stringers_Bottom
     return I_YY_Total
+
+def total_Inertia_J(I_XX_Total, I_YY_Total):
+    J_Total = I_XX_Total + I_YY_Total
+    return J_Total
+
