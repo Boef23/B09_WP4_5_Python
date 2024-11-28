@@ -1,7 +1,8 @@
 import scipy
 import numpy as np
+import scipy.integrate
 import sympy
-from scipy.integrate import quad
+from scipy.integrate import quad,  dblquad
 from sympy import symbols, integrate, lambdify
 from LiftDistribution import LiftCurve
 
@@ -71,6 +72,14 @@ def vLift(liftDistribution): #deflection for the lift
 
     return v, vprime_symbolic, vprime_numeric
 v, vprime_symbolic, vprime_numeric = vLift(liftDistribution)
+
+
+def integral_1(z):
+    return scipy.integrate.quad(LiftCurve,0,z)[0]
+def integral_2(z):
+    return scipy.integrate.quad(integral_1,0,z)[0]
+
+print(integral_2(wingboxLength),"bonjour")
 
 def vWingWeight(wingWeightDistribution): #deflection for the wingweight
     # Perform symbolic integration
