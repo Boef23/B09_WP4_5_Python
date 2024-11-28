@@ -22,7 +22,7 @@ def areas_segments(h_Fs, h_Bs, l_Top, l_Bottom):
     return area_Fs, area_Bs, area_Top, area_Bottom, area_Total
 
 #Calculates the area of a stringer
-def area_stringer():
+def calcarea_stringer():
     area_Stringer = l_Stringer * t_Stringer #Area stringer
     return area_Stringer
 
