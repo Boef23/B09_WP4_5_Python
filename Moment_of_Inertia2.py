@@ -1,6 +1,5 @@
 #Moment of inertia and torsional stiffness diagrams
 from Parameters import c_Root, taper_Ratio, t_Fs, t_Bs, t_Top, t_Bottom, b, t_Stringer, l_Stringer
-import numpy as np
 import scipy as sp
 
 
@@ -11,7 +10,7 @@ def geometry(z):
     h_Bs = 0.0732 * chord #height of back spar
     l_Top = 0.5 * chord #length op top flange
     l_Bottom = 0.5013 * chord #length of bottom flange
-    beta = np.atan((h_Fs-h_Bs)/l_Top) #angle of bottom flange
+    beta = sp.atan((h_Fs-h_Bs)/l_Top) #angle of bottom flange
     return h_Fs, h_Bs, l_Top, l_Bottom, beta
 
 #Calculates the area of individual segments and the total area
