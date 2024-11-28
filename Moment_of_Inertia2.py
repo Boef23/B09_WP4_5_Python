@@ -61,11 +61,59 @@ def plate_Inertia_YY(h_Fs, h_Bs, l_Top, l_Bottom, beta, X_Centroid_Fs, X_Centroi
     I_YY_Total_Plates = I_YY_Fs + I_YY_Top + I_YY_Bs + I_YY_Bottom
     return I_YY_Total_Plates
 
-def stringers_Inertia_X():
-    return stringers_Inertia_X
+def Calc_string_space(h_Fs, h_Bs, l_Top, l_Bottom):
+    Spacing_Fs = h_Fs/n_str_Fs
+    Spacing_Bs = h_Bs/n_str_Bs
+    Spacing_Top = l_Top/n_str_Top
+    Spacing_Bottom = l_Bottom/n_str_Bottom
+    return Spacing_Fs, Spacing_Bs, Spacing_Top, Spacing_Bottom
 
-def stringers_Inertia_Y():
-    return stringers_Inertia_Y
+def stringers_Inertia_X(Y_Centroid, area_Stringer, Spacing_Fs, Spacing_Bs, Spacing_Bottom, Y_Centroid_Top, h_Fs, beta):
+    
+    I_XX_Fs_tot = 0
+    I_XX_Bs_tot = 0
+    I_XX_Top_tot = 0
+    I_XX_Bottom_tot = 0
+
+    for i in range(n_str_Fs):
+        Y_n_stringer_Fs = np.abs(Y_Centroid - (i - 0.5)*Spacing_Fs)
+        I_XX_n_Fs = Y_n_stringer_Fs**2 * area_Stringer
+        I_XX_Fs_tot += I_XX_n_Fs
+    
+    for j in range(n_str_Bs):
+        Y_n_stringer_Bs = np.abs(Y_Centroid - (j - 0.5)*Spacing_Bs)
+        I_XX_n_Bs = Y_n_stringer_Bs**2 * area_Stringer
+        I_XX_Bs_tot += I_XX_n_Bs
+                            
+    I_XX_Top_tot = n_str_Top*area_Stringer*Y_Centroid_Top**2
+
+    for k in range(n_str_Bottom):
+        Y_n_stringer_Top = np.abs(Y_Centroid-h_Fs-(k-0.5)*Spacing_Bottom*np.tan(beta))
+        I_XX_n_Top = Y_n_stringer_Top**2 * area_Stringer
+        I_XX_Bottom_tot += I_XX_n_Top
+    return I_XX_Fs_tot, I_XX_Bs_tot, I_XX_Top_tot, I_XX_Bottom_tot
+
+def stringers_Inertia_X(X_Centroid, area_Stringer, Spacing_Top, Spacing_Bottom, X_centroid_Fs, X_centroid_Bs):
+    
+    I_YY_Fs_tot = 0
+    I_YY_Bs_tot = 0
+    I_YY_Top_tot = 0
+    I_YY_Bottom_tot = 0
+
+    I_YY_Fs_tot = n_str_Fs*area_Stringer*X_centroid_Fs**2
+    I_YY_Bs_tot = n_str_Bs*area_Stringer*X_centroid_Bs**2
+
+    for i in range(n_str_Top):
+        X_n_stringer_Top = np.abs(X_Centroid-(i-0.5)*Spacing_Top)
+        I_YY_n_Top = X_n_stringer_Top**2 * area_Stringer
+        I_YY_Top_tot += I_YY_n_Top
+
+    for k in range(n_str_Bottom):
+        X_n_stringer_Bottom = np.abs(X_Centroid-(((k-0.5)*Spacing_Bottom)/np.tan(beta)))
+        I_YY_n_Bottom = X_n_stringer_Bottom**2 * area_Stringer
+        I_YY_Bottom_tot += I_YY_n_Bottom
+    
+    return I_YY_Fs_tot, I_YY_Bs_tot, I_YY_Top_tot, I_YY_Bottom_tot
 
 def total_Inertia_XX(I_XX_Total_Plates, I_XX_Stringers_Fs, I_XX_Stringers_Bs, I_XX_Stringers_Top, I_XX_Stringers_Bottom):
     I_XX_Total = I_XX_Total_Plates + I_XX_Stringers_Fs + I_XX_Stringers_Bs + I_XX_Stringers_Top + I_XX_Stringers_Bottom
