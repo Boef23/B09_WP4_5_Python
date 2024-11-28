@@ -92,7 +92,7 @@ def stringers_Inertia_X(Y_Centroid, area_Stringer, Spacing_Fs, Spacing_Bs, Spaci
         I_XX_Bottom_tot += I_XX_n_Top
     return I_XX_Fs_tot, I_XX_Bs_tot, I_XX_Top_tot, I_XX_Bottom_tot
 
-def stringers_Inertia_X(X_Centroid, area_Stringer, Spacing_Top, Spacing_Bottom, X_centroid_Fs, X_centroid_Bs, beta):
+def stringers_Inertia_Y(X_Centroid, area_Stringer, Spacing_Top, Spacing_Bottom, X_centroid_Fs, X_centroid_Bs, beta):
     
     I_YY_Fs_tot = 0
     I_YY_Bs_tot = 0

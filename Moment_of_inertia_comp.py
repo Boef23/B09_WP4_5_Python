@@ -1,5 +1,5 @@
 from Moment_of_Inertia2 import *
-
+import matplotlib as plt
 #create final function as a function of (z)]
 def geometryproperties(z):
     h_Fs, h_Bs, l_Top, l_Bottom, beta = geometry(z)
@@ -11,7 +11,7 @@ def geometryproperties(z):
     I_YY_Total_Plates = plate_Inertia_YY(h_Fs, h_Bs, l_Top, l_Bottom, beta, X_Centroid_Fs, X_Centroid_Top, X_Centroid_Bs, X_Centroid_Bottom)
     Spacing_Fs, Spacing_Bs, Spacing_Top, Spacing_Bottom = Calc_string_space(h_Fs, h_Bs, l_Top, l_Bottom)
     I_XX_Stringers_Fs, I_XX_Stringers_Bs, I_XX_Stringers_Top, I_XX_Stringers_Bottom = stringers_Inertia_X(Y_Centroid, area_Stringer, Spacing_Fs, Spacing_Bs, Spacing_Bottom, Y_Centroid_Top, h_Fs, beta)
-    I_YY_Stringers_Fs, I_YY_Stringers_Bs, I_YY_Stringers_Top, I_YY_Stringers_Bottom = stringers_Inertia_X(X_Centroid, area_Stringer, Spacing_Top, Spacing_Bottom, X_Centroid_Fs, X_Centroid_Bs, beta)
+    I_YY_Stringers_Fs, I_YY_Stringers_Bs, I_YY_Stringers_Top, I_YY_Stringers_Bottom = stringers_Inertia_Y(X_Centroid, area_Stringer, Spacing_Top, Spacing_Bottom, X_Centroid_Fs, X_Centroid_Bs, beta)
     I_XX_Total = total_Inertia_XX(I_XX_Total_Plates, I_XX_Stringers_Fs, I_XX_Stringers_Bs, I_XX_Stringers_Top, I_XX_Stringers_Bottom)
     I_YY_Total = total_Inertia_YY(I_YY_Total_Plates, I_YY_Stringers_Fs, I_YY_Stringers_Bs, I_YY_Stringers_Top, I_YY_Stringers_Bottom)
     J_Total = total_Inertia_J(I_XX_Total, I_YY_Total)
@@ -22,11 +22,33 @@ I_XX_Zlist = []
 I_YY_Zlist = []
 J_Zlist = []
 zlist = np.arange(0.01, 1.01, 0.01)
-for z in range(0.01, 1, 0.01):
-    I_XX_Z, I_YY_Z, J_Z = geometryproperties(z)
-    I_XX_Zlist.append(I_XX_Z)
-    I_YY_Zlist.append(I_YY_Z)
-    J_Zlist.append(J_Z)
+I_XX_Zlist, I_YY_Zlist, J_Zlist = geometryproperties(zlist)
+
+plt.plot(zlist, I_XX_Zlist)
+plt.show()
+
+# plt.subplot(2,2,2)
+# plt.plot(tipoverlist,mlg_zlist)
+# plt.title('MLG Strut Length From Fuselage')
+# plt.xlabel('Tip over angle')
+# plt.ylabel('MLG Strut Length From Fuselage')
+# plt.grid(True)
+
+# plt.subplot(2,2,3)
+# plt.plot(tipoverlist,l_mlist)
+# plt.title('MLG Position from CG')
+# plt.xlabel('Tip over angle')
+# plt.ylabel('MLG Position from CG')
+# plt.grid(True)
+
+# plt.subplot(2,2,4)
+# plt.plot(tipoverlist,l_nlist)
+# plt.title('NLG Position from CG')
+# plt.xlabel('Tip over angle')
+# plt.ylabel('NLG Position from CG')
+# plt.grid(True)
+
+# plt.show()
 
 
 
