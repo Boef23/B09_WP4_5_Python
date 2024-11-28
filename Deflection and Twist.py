@@ -5,6 +5,7 @@ import sympy
 from scipy.integrate import quad,  dblquad
 from sympy import symbols, integrate, lambdify
 from LiftDistribution import LiftCurve
+#from Moment_of_inertia2 import Ixx
 
 #import constants from file
 a = 1
@@ -158,6 +159,7 @@ def momentOfInertia(Ixx): #deflection for the reactionforce
     vIxx, error = quad(vprimeIxx_numeric, 0, 3)
 
     return vR, vprimeR_symbolic, vprimeR_numeric
+
 vIxx, vprimeIxx_symbolic, vprimeIxx_numeric = momentOfInertia(Ixx)
 
 
