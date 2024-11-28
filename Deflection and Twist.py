@@ -73,7 +73,7 @@ def vLift(liftDistribution): #deflection for the lift
 v, vprime_symbolic, vprime_numeric = vLift(liftDistribution)
 
 
-def vLift2(LiftCurve, wingBoxLength, z): #deflection for the lift
+def vLift2(LiftCurve, wingboxLength, z): #deflection for the lift
     # Perform symbolic integration
     vprime_symbolic2 = integrate(LiftCurve, (z, 0, z))
 
@@ -84,7 +84,7 @@ def vLift2(LiftCurve, wingBoxLength, z): #deflection for the lift
     v2, error = quad(vprime_numeric2, 0, wingboxLength)
 
     return v2, vprime_symbolic2, vprime_numeric2
-v2, vprime_symbolic2, vprime_numeric2 = vLift2(LiftCurve, wingBoxLength, z)
+v2, vprime_symbolic2, vprime_numeric2 = vLift2(LiftCurve, wingboxLength, z)
 
 print(v2, "helloooo")
 
