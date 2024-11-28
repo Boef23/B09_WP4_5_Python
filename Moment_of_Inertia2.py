@@ -38,14 +38,14 @@ def local_Centroids(h_Fs, h_Bs, l_Top, l_Bottom, X_Centroid, Y_Centroid, beta):
     X_Centroid_Fs = l_Top - X_Centroid #X-position of the centroid of the front spar
     Y_Centroid_Fs = 0.5 * h_Fs - Y_Centroid #Y-position of the centroid of the front spar
     X_Centroid_Top = 0.5 * l_Top - X_Centroid #X-position of the centroid of the top plate
-    Y_Centroid_Top = -Y_Centroid #Y-position of the centroid of the top plate
-    X_Centroid_Bs = -X_Centroid #X-position of the centroid of the back spar
+    Y_Centroid_Top = -1 * Y_Centroid #Y-position of the centroid of the top plate
+    X_Centroid_Bs = -1 * X_Centroid #X-position of the centroid of the back spar
     Y_Centroid_Bs = 0.5 * h_Bs - Y_Centroid #Y-position of the centroid of the back spar
     X_Centroid_Bottom = 0.5 * l_Bottom * np.cos(beta) - X_Centroid #X-position of the centroid of the bottom plate
     Y_Centroid_Bottom = h_Bs + 0.5 * l_Bottom *np.sin(beta) - Y_Centroid #Y-position of the centroid of the bottom plate
     return X_Centroid_Fs, Y_Centroid_Fs , X_Centroid_Top, Y_Centroid_Top, X_Centroid_Bs, Y_Centroid_Bs, X_Centroid_Bottom, Y_Centroid_Bottom
 
-def plate_Inertia_X(h_Fs, h_Bs, l_Top, l_Bottom, beta, Y_Centroid_Fs, Y_Centroid_Top, Y_Centroid_Bs, Y_Centroid_Bottom):
+def plate_Inertia_XX(h_Fs, h_Bs, l_Top, l_Bottom, beta, Y_Centroid_Fs, Y_Centroid_Top, Y_Centroid_Bs, Y_Centroid_Bottom):
     I_XX_Fs = (t_Fs * h_Fs ** 3)/12 + t_Fs * h_Fs * Y_Centroid_Fs ** 2
     I_XX_Top = (l_Top * t_Top ** 3)/12 + t_Top * l_Top * Y_Centroid_Top ** 2 
     I_XX_Bs = (t_Bs * h_Bs **2)/12 + t_Bs * h_Bs * Y_Centroid_Bs ** 2
@@ -53,7 +53,7 @@ def plate_Inertia_X(h_Fs, h_Bs, l_Top, l_Bottom, beta, Y_Centroid_Fs, Y_Centroid
     I_XX_Total_Plates = I_XX_Fs + I_XX_Top + I_XX_Bs + I_XX_Bottom
     return I_XX_Total_Plates
 
-def plate_Inertia_Y(h_Fs, h_Bs, l_Top, l_Bottom, beta, X_Centroid_Fs, X_Centroid_Top, X_Centroid_Bs, X_Centroid_Bottom):
+def plate_Inertia_YY(h_Fs, h_Bs, l_Top, l_Bottom, beta, X_Centroid_Fs, X_Centroid_Top, X_Centroid_Bs, X_Centroid_Bottom):
     I_YY_Fs = (h_Fs * t_Fs ** 3)/12 + t_Fs * h_Fs * X_Centroid_Fs ** 2
     I_YY_Top = (t_Top * l_Top ** 3)/12 + t_Top * l_Top * X_Centroid_Top ** 2
     I_YY_Bs = (h_Bs * t_Bs ** 3)/12 + t_Bs * h_Bs * X_Centroid_Bs ** 2
@@ -67,6 +67,15 @@ def stringers_Inertia_X():
 def stringers_Inertia_Y():
     return stringers_Inertia_Y
 
-print(geometry(z=0.1))
-print(areas_segments)
-print(centroid)
+def total_Inertia_XX(I_XX_Total_Plates, I_XX_Stringers_Fs, I_XX_Stringers_Bs, I_XX_Stringers_Top, I_XX_Stringers_Bottom):
+    I_XX_Total = I_XX_Total_Plates + I_XX_Stringers_Fs + I_XX_Stringers_Bs + I_XX_Stringers_Top + I_XX_Stringers_Bottom
+    return I_XX_Total
+
+def total_Inertia_YY(I_YY_Total_Plates, I_YY_Stringers_Fs, I_YY_Stringers_Bs, I_YY_Stringers_Top, I_YY_Stringers_Bottom):
+    I_YY_Total = I_YY_Total_Plates + I_YY_Stringers_Fs + I_YY_Stringers_Bs + I_YY_Stringers_Top + I_YY_Stringers_Bottom
+    return I_YY_Total
+
+def total_Inertia_J(I_XX_Total, I_YY_Total):
+    J_Total = I_XX_Total + I_YY_Total
+    return J_Total
+
