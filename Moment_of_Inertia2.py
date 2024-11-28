@@ -24,7 +24,7 @@ def areas_segments(h_Fs, h_Bs, l_Top, l_Bottom):
 
 #Calculates the area of a stringer
 def area_stringer():
-    area_Stringer = l_stringer * t_Stringer #Area stringer
+    area_Stringer = l_Stringer * t_Stringer #Area stringer
     return area_Stringer
 
 #Calculates the location of the centroid w.r.t. datum at the top of the back spar
@@ -45,16 +45,21 @@ def local_Centroids(h_Fs, h_Bs, l_Top, l_Bottom, X_Centroid, Y_Centroid, beta):
     Y_Centroid_Bottom = h_Bs + 0.5 * l_Bottom *np.sin(beta) - Y_Centroid #Y-position of the centroid of the bottom plate
     return X_Centroid_Fs, Y_Centroid_Fs , X_Centroid_Top, Y_Centroid_Top, X_Centroid_Bs, Y_Centroid_Bs, X_Centroid_Bottom, Y_Centroid_Bottom
 
-def plate_Inertia_X(h_Fs, ):
+def plate_Inertia_X(h_Fs, h_Bs, l_Top, l_Bottom, beta, Y_Centroid_Fs, Y_Centroid_Top, Y_Centroid_Bs, Y_Centroid_Bottom):
     I_XX_Fs = (t_Fs * h_Fs ** 3)/12 + t_Fs * h_Fs * Y_Centroid_Fs ** 2
-    I_XX_Top =
-    I_XX_Bs =
-    I_XX_Bottom = 
+    I_XX_Top = (l_Top * t_Top ** 3)/12 + t_Top * l_Top * Y_Centroid_Top ** 2 
+    I_XX_Bs = (t_Bs * h_Bs **2)/12 + t_Bs * h_Bs * Y_Centroid_Bs ** 2
+    I_XX_Bottom = (t_Bottom * l_Bottom ** 3 * (np.sin(beta)) ** 2)/12 + t_Bottom * l_Bottom * Y_Centroid_Bottom ** 2
     I_XX_Total_Plates = I_XX_Fs + I_XX_Top + I_XX_Bs + I_XX_Bottom
     return I_XX_Total_Plates
 
-def plate_Inertia_Y():
-    return plate_Inertia_Y
+def plate_Inertia_Y(h_Fs, h_Bs, l_Top, l_Bottom, beta, X_Centroid_Fs, X_Centroid_Top, X_Centroid_Bs, X_Centroid_Bottom):
+    I_YY_Fs = (h_Fs * t_Fs ** 3)/12 + t_Fs * h_Fs * X_Centroid_Fs ** 2
+    I_YY_Top = (t_Top * l_Top ** 3)/12 + t_Top * l_Top * X_Centroid_Top ** 2
+    I_YY_Bs = (h_Bs * t_Bs ** 3)/12 + t_Bs * h_Bs * X_Centroid_Bs ** 2
+    I_YY_Bottom = (t_Bottom * l_Bottom ** 3 * (np.cos(beta)) ** 2)/12 + t_Bottom * l_Bottom * X_Centroid_Bottom ** 2
+    I_YY_Total_Plates = I_YY_Fs + I_YY_Top + I_YY_Bs + I_YY_Bottom
+    return I_YY_Total_Plates
 
 def stringers_Inertia_X():
     return stringers_Inertia_X
