@@ -46,7 +46,7 @@ def reactionY(Ry,z): #gives the Mccauley of the reaction force in the y-directio
     return Ry*z
 
 def Ixx(Ixx_0, L, z): #determines Ixx as a position of z, decreases to the power 4
-    Ixx = 
+    
 
 
 
