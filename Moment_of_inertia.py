@@ -20,11 +20,25 @@ z = 0
 x_Root = (h_Fs_Root * t_Wb * l_Top_Root + l_Top_Root * t_Wb * 0.5 * l_Top_Root + l_Bottom_Root * t_Wb * 0.5 * l_Bottom_Root * math.cos(beta_Root))/(h_Fs_Root * t_Wb + l_Top_Root * t_Wb + h_Bs_Root * t_Wb + l_Bottom_Root * t_Wb)
 y_Root = (h_Fs_Root * t_Wb * 0.5 * h_Fs_Root + h_Bs_Root * t_Wb * 0.5 * h_Bs_Root + l_Bottom_Root * t_Wb * (0.5 * l_Bottom_Root * math.sin(beta_Root) + h_Bs_Root))/(h_Fs_Root * t_Wb + l_Top_Root * t_Wb + h_Bs_Root * t_Wb + l_Bottom_Root * t_Wb)
 
+<<<<<<< HEAD
+# Input parameters
+h_Fs = 7
+
+
+
+
+#defining Functions
+
+def 
+
+
+=======
 #Centroid location at spanwise position (function of z)
 #z between 0 and b/2, then symmetric for other half wing
 #Put into loop to evaluate for every spanwise position.
 x_Local = x_Root - z * (math.tan(lambda_LE) - (1 - 0.3 * c_Root - x_Root) * ((2 * c_Root) / b) * (1 - taper_Ratio))
 y_Local = y_Root - (z / (0.5 * b)) * math.tan(lambda_Dihedral)
+>>>>>>> 6ee7fd7f0e592e82b3d186ef8effd96f26e070a2
 
 #Definitions of positions root
 x_AB_Root = l_Top_Root - x_Root
