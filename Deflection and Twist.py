@@ -1,3 +1,6 @@
+"""Still needed: Ixx as a function of z, and the dimensions of the wingbox at root and tip"""
+
+
 import scipy
 import numpy as np
 import scipy.integrate
@@ -7,7 +10,8 @@ from sympy import symbols, integrate, lambdify
 from LiftDistribution import LiftCurve
 from Parameters import b
 from ShearDiagram import reactionMoment, reactionShear, totalTorqueDist, zAxis, dz
-#from Moment_of_inertia2 import Ixx
+from Moment_of_Inertia2 import total_Inertia_XX
+print(total_Inertia_XX)
 
 #import constants from file
 
@@ -42,6 +46,7 @@ t_4 = 0.001
 wingboxLength = b/2 #metres
 thickness = 2 * 10**(-3) #metres
 z = symbols('z')
+secondMomentOfInertia = total_Inertia_XX
 
 def wingWeightDistribution(e,f,z):#gives the Mccauley of the wingweight
     return (e*z + f)*z**3
@@ -69,7 +74,7 @@ Ixx = Ixxchanger(I_xxAtRoot, I_xxAtTip, wingboxLength, z)
 
 
 def integral_1(z):
-    return scipy.integrate.quad(LiftCurve,0,z)[0]
+    return scipy.integrate.quad(LiftCurve / secondMomentOfInertia,0,z)[0]
 def integral_2(z):
     return scipy.integrate.quad(integral_1,0,z)[0]
 
@@ -77,7 +82,7 @@ print(integral_2(wingboxLength),"bonjour")
 
 def vWingWeight(wingWeightDistribution): #deflection for the wingweight
     # Perform symbolic integration
-    vprimeWing_symbolic = integrate(wingWeightDistribution(e, f, z), z)
+    vprimeWing_symbolic = integrate(wingWeightDistribution(e, f, z) / secondMomentOfInertia, z)
 
     # Convert to a numerical function
     vprimeWing_numeric = lambdify(z, vprimeWing_symbolic, 'numpy')
@@ -90,7 +95,7 @@ vWing, vprimeWing_symbolic, vprimeWing_numeric = vWingWeight(wingWeightDistribut
 
 def landingGear(landingGearWeightDistribution): #deflection for the landing gear
     # Perform symbolic integration
-    vprimeLG_symbolic = integrate(landingGearWeightDistribution(massLandingGear,gravity,landingGearLength,z),z)
+    vprimeLG_symbolic = integrate(landingGearWeightDistribution(massLandingGear,gravity,landingGearLength,z) / secondMomentOfInertia,z)
 
     # Convert to a numerical function
     vprimeLG_numeric = lambdify(z, vprimeLG_symbolic, 'numpy')
@@ -154,6 +159,8 @@ def momentOfInertia(Ixx): #deflection for the reactionforce
     return vR, vprimeR_symbolic, vprimeR_numeric
 
 vIxx, vprimeIxx_symbolic, vprimeIxx_numeric = momentOfInertia(Ixx)
+
+
 
 
 #final calculation to determine the deflection, mind sign convention
