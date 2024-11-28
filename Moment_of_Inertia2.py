@@ -4,7 +4,7 @@ import numpy as np
 
 
 #Chord length as function of spanwise position
-def geometry(c_Root, taper_Ratio, b, z):
+def geometry(z):
     chord = c_Root - c_Root*(1-taper_Ratio) * (z/(0.5 * b))
     h_Fs = 0.1092 * chord #height of front spar
     h_Bs = 0.0732 * chord #height of back spar
@@ -14,7 +14,7 @@ def geometry(c_Root, taper_Ratio, b, z):
     return h_Fs, h_Bs, l_Top, l_Bottom, beta
 
 #Calculates the area of individual segments and the total area
-def areas_segments(h_Fs, h_Bs, l_Top, l_Bottom, t_Fs, t_Bs, t_Top, t_Bottom):
+def areas_segments(h_Fs, h_Bs, l_Top, l_Bottom):
     area_Fs = h_Fs * t_Fs #Area front spar
     area_Bs = h_Bs * t_Bs #Area back spar
     area_Top = l_Top * t_Top #Area top plate
@@ -23,7 +23,7 @@ def areas_segments(h_Fs, h_Bs, l_Top, l_Bottom, t_Fs, t_Bs, t_Top, t_Bottom):
     return area_Fs, area_Bs, area_Top, area_Bottom, area_Total
 
 #Calculates the area of a stringer
-def area_stringer(l_stringer, t_Stringer):
+def area_stringer():
     area_Stringer = l_stringer * t_Stringer #Area stringer
     return area_Stringer
 
@@ -45,8 +45,13 @@ def local_Centroids(h_Fs, h_Bs, l_Top, l_Bottom, X_Centroid, Y_Centroid, beta):
     Y_Centroid_Bottom = h_Bs + 0.5 * l_Bottom *np.sin(beta) - Y_Centroid #Y-position of the centroid of the bottom plate
     return X_Centroid_Fs, Y_Centroid_Fs , X_Centroid_Top, Y_Centroid_Top, X_Centroid_Bs, Y_Centroid_Bs, X_Centroid_Bottom, Y_Centroid_Bottom
 
-def plate_Inertia_X():
-    return plate_Inertia_X
+def plate_Inertia_X(h_Fs, ):
+    I_XX_Fs = (t_Fs * h_Fs ** 3)/12 + t_Fs * h_Fs * Y_Centroid_Fs ** 2
+    I_XX_Top =
+    I_XX_Bs =
+    I_XX_Bottom = 
+    I_XX_Total_Plates = I_XX_Fs + I_XX_Top + I_XX_Bs + I_XX_Bottom
+    return I_XX_Total_Plates
 
 def plate_Inertia_Y():
     return plate_Inertia_Y

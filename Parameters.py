@@ -7,6 +7,8 @@ lambda_Dihedral = 0.0349 #dihedral angle (rad) placeholder value
 #Airfoil
 c_Root = 4.9 #Root chord (m)
 #Stringers
+t_Stringer = 0.020 #Stringer thickness (m) placeholder value
+l_Stringer = 1 #Stringer length when unfolded to single rectangular plate (m) placeholder value
 
 #Spars
 t_Fs = 0.020 #thickness front spar (m) placeholder value
