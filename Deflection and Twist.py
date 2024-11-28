@@ -6,7 +6,7 @@ from scipy.integrate import quad,  dblquad
 from sympy import symbols, integrate, lambdify
 from LiftDistribution import LiftCurve
 from Parameters import b
-#from ShearDiagram import totalTorqueDist
+from ShearDiagram import reactionMoment, reactionShear, totalTorqueDist, zAxis, dz
 #from Moment_of_inertia2 import Ixx
 
 #import constants from file
@@ -18,8 +18,8 @@ e = 16.3
 f = -365.47
 g = 1
 h = 1
-landingGearLength = 2.3461
-Ry = 1
+landingGearLength = 2.3461 #m
+Ry = reactionShear #N
 elasticModulus = 72.4 * 10**9 # Pa
 shearModulus = 28 * 10**9 #Pa
 I_xx = 10 * 10 ** -5 #mm^4
@@ -152,12 +152,12 @@ vIxx, vprimeIxx_symbolic, vprimeIxx_numeric = momentOfInertia(Ixx)
 
 #final calculation to determine the deflection, mind sign convention
 def deflectionResult(integral_2, vWingWeight, landingGear, landingGear2, engine):
-    return ((-elasticModulus*I_xx)**-1)*(integral_2 + vWing + vLG - vLG2 -vE + vR)
+    return ((-elasticModulus*I_xx)**-1)*(integral_2 + vWing + vLG - vLG2 +vE + vR)
 
 #Twist equations
 #Now the twist is calculated, this is a fucntion of z, maximum twist is most important
-def torquegiver(): #defines the torque as a function of z
-    Torque = 1
+def torqueIntegrator(totalTorqueDist): #defines the torque as a function of z
+    scipy.integrate.quad(integral_1,0,z)[0]
     return Torque
 
 def lineIntegralCalculator(l_1, l_2, dl_1, dl_2, wingboxLength, thickness, z):
@@ -169,7 +169,19 @@ def areaCalculator(l_1, l_2, dl_1, dl_2, wingboxLength, z):
     enclosedArea = l_1 * l_2 - (l_1 * dl_2 + l_2 * dl_1 - dl_1 * dl_2) * z /wingboxLength
     return enclosedArea
 print(areaCalculator(l_1, l_2, dl_1, dl_2, wingboxLength, z))
-#twist = 0.25 * lineIntegralCalculator(l_1, l_2, dl_1, dl_2, wingboxLength, thickness, z) *torquegiver() / (shearModulus * areaCalculator(l_1, l_2, dl_1, dl_2, wingboxLength, z) **2 )
+
+def dividerIntegral(areaCalculator, z):
+    area = areaCalculator(l_1, l_2, dl_1, dl_2, wingboxLength, z)
+    #leDIV = totalTorqueDist / area**2
+    #return scipy.integrate.quad(leDIV,0, wingboxLength)[0]
+    return area
+#print(dividerIntegral(areaCalculator(l_1, l_2, dl_1, dl_2, wingboxLength, z), totalTorqueDist, wingboxLength))
+
+leDIV = totalTorqueDist / areaCalculator(l_1, l_2, dl_1, dl_2, wingboxLength, zAxis)**2
+sumTorque = np.sum(leDIV * dz)
+print(f'Torque sum: {sumTorque}')
+
+#twist = 0.25 * lineIntegralCalculator(l_1, l_2, dl_1, dl_2, wingboxLength, thickness, z) *torqueIntegrator / (shearModulus * areaCalculator(l_1, l_2, dl_1, dl_2, wingboxLength, z) **2 )
 
 
 
