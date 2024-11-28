@@ -2,12 +2,13 @@ import numpy as np
 import scipy as sp
 from matplotlib import pyplot as plt
 from LiftDistribution import chord, LiftCurve
+from Parameters import mlg_Pos, b, z_Engine_Frac, engine_Mass
 
 # General variables
-lgEndPos = 4.35     # End of MLG wrt half span
+lgEndPos = mlg_Pos     # End of MLG wrt half span
 dz = 0.0001           # plot increment
-halfSpan = 15.325       # m, half the full wing span
-zEngineFrac = 0.35      # fraction of position of engine wrt. half-span
+halfSpan = b/2       # m, half the full wing span
+zEngineFrac = z_Engine_Frac      # fraction of position of engine wrt. half-span
 zEngine = zEngineFrac * halfSpan    # position of engine on half-span
 
 # General z axis
@@ -55,7 +56,7 @@ TotDist = LiftDistribution - WingWeightDist - MLGWeightDist     # Sum of all dis
 
 
 # Reaction force/moment/torque magnitudes
-engineWeight = 1111.3 * 9.81
+engineWeight = engine_Mass * 9.81
 reactionShear = sp.integrate.quad(WingWeight, 0, halfSpan)[0] + sp.integrate.quad(MLGWeight, 0, halfSpan)[0] + engineWeight - sp.integrate.quad(LiftCurve, 0, halfSpan)[0]    # N
 
 reactionMoment = sp.integrate.quad(LiftMoment, 0, halfSpan)[0] - sp.integrate.quad(WingWeightMoment, 0, halfSpan)[0] - sp.integrate.quad(MLGWeightMoment, 0, halfSpan)[0] - engineWeight * zEngine             # Nm
