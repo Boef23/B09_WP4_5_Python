@@ -31,8 +31,16 @@ massEngine = 1111.3
 gravity = 9.80665
 l_1 = 10
 dl_1 = 3
+t_1 = 0.001
 l_2 = 20
 dl_2 = 4
+t_2 = 0.001
+l_3 = 3
+dl_3 = 1
+t_3 = 0.001
+l_4 = 1
+dl_4 = 0
+t_4 = 0.001
 wingboxLength = b/2 #metres
 thickness = 2 * 10**(-3) #metres
 z = symbols('z')
@@ -160,10 +168,10 @@ def torqueIntegrator(totalTorqueDist): #defines the torque as a function of z
     scipy.integrate.quad(integral_1,0,z)[0]
     return Torque
 
-def lineIntegralCalculator(l_1, l_2, dl_1, dl_2, wingboxLength, thickness, z):
-    lineIntegral = (2*(l_1 - z * (l_1 - dl_1)/wingboxLength) + 2*(l_2 - z * (l_2 - dl_2)/wingboxLength))/thickness
+def lineIntegralCalculator(l_1, l_2, dl_1, dl_2,l_3, l_4, dl_3, dl_4, wingboxLength, t_1, t_2 ,t_3 ,t_4, z):
+    lineIntegral = ((l_1 - z * (l_1 - dl_1)/wingboxLength)/t_1 + (l_2 - z * (l_2 - dl_2)/wingboxLength)/t_2 + (l_3 - z * (l_3 - dl_3)/wingboxLength)/t_3 + (l_4 - z * (l_4 - dl_4)/wingboxLength)/t_4 )
     return lineIntegral
-print(lineIntegralCalculator(l_1, l_2, dl_1, dl_2, wingboxLength, thickness, z))
+print(lineIntegralCalculator(l_1, l_2, dl_1, dl_2,l_3, l_4, dl_3, dl_4, wingboxLength, t_1, t_2 ,t_3 ,t_4, z))
 
 def areaCalculator(l_1, l_2, dl_1, dl_2, wingboxLength, z):
     enclosedArea = l_1 * l_2 - (l_1 * dl_2 + l_2 * dl_1 - dl_1 * dl_2) * z /wingboxLength
@@ -177,8 +185,8 @@ def dividerIntegral(areaCalculator, z):
     return area
 #print(dividerIntegral(areaCalculator(l_1, l_2, dl_1, dl_2, wingboxLength, z), totalTorqueDist, wingboxLength))
 
-leDIV = totalTorqueDist / areaCalculator(l_1, l_2, dl_1, dl_2, wingboxLength, zAxis)**2
-sumTorque = np.sum(leDIV * dz)
+leDIV = totalTorqueDist / areaCalculator(l_1, l_2, dl_1, dl_2, wingboxLength, zAxis)**2 * lineIntegralCalculator(l_1, l_2, dl_1, dl_2,l_3, l_4, dl_3, dl_4, wingboxLength, t_1, t_2 ,t_3 ,t_4, zAxis)#makes a Riemann sum for the array
+sumTorque = np.sum(leDIV * dz) / ( 4 * shearModulus)
 print(f'Torque sum: {sumTorque}')
 
 #twist = 0.25 * lineIntegralCalculator(l_1, l_2, dl_1, dl_2, wingboxLength, thickness, z) *torqueIntegrator / (shearModulus * areaCalculator(l_1, l_2, dl_1, dl_2, wingboxLength, z) **2 )
