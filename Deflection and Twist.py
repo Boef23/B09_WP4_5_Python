@@ -72,6 +72,23 @@ def vLift(liftDistribution): #deflection for the lift
     return v, vprime_symbolic, vprime_numeric
 v, vprime_symbolic, vprime_numeric = vLift(liftDistribution)
 
+
+def vLift2(LiftCurve, wingBoxLength, z): #deflection for the lift
+    # Perform symbolic integration
+    vprime_symbolic2 = integrate(LiftCurve, (z, 0, z))
+
+    # Convert to a numerical function
+    vprime_numeric2 = lambdify(z, vprime_symbolic, 'numpy')
+
+    # Perform numerical integration over [0, 3]
+    v2, error = quad(vprime_numeric2, 0, wingboxLength)
+
+    return v2, vprime_symbolic2, vprime_numeric2
+v2, vprime_symbolic2, vprime_numeric2 = vLift2(LiftCurve, wingBoxLength, z)
+
+print(v2, "helloooo")
+
+
 def vWingWeight(wingWeightDistribution): #deflection for the wingweight
     # Perform symbolic integration
     vprimeWing_symbolic = integrate(wingWeightDistribution(e, f, z), z)
