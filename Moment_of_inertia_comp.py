@@ -17,4 +17,16 @@ def geometryproperties(z):
     J_Total = total_Inertia_J(I_XX_Total, I_YY_Total)
     return I_XX_Total, I_YY_Total, J_Total
 
+# Run it
+I_XX_Zlist = []
+I_YY_Zlist = []
+J_Zlist = []
+zlist = np.array(0.01, 1, 0.01)
+for z in range(0.01, 1, 0.01):
+    I_XX_Z, I_YY_Z, J_Z = geometryproperties(z)
+    I_XX_Zlist.append(I_XX_Z)
+    I_YY_Zlist.append(I_YY_Z)
+    J_Zlist.append(J_Z)
+
+
 
