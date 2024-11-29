@@ -1,5 +1,5 @@
 from Moment_of_Inertia2 import *
-import matplotlib as plt
+import matplotlib.pyplot as plt
 #create final function as a function of (z)]
 def geometryproperties(z):
     h_Fs, h_Bs, l_Top, l_Bottom, beta = geometry(z)
@@ -24,31 +24,29 @@ J_Zlist = []
 zlist = np.arange(0.01, 1.01, 0.01)
 I_XX_Zlist, I_YY_Zlist, J_Zlist = geometryproperties(zlist)
 
-plt.plot(zlist, I_XX_Zlist)
+
+plt.subplot(3,1,1)
+plt.plot(zlist,I_XX_Zlist)
+plt.title('I_XX')
+plt.xlabel('Z postion')
+plt.ylabel('I_XX')
+plt.grid(True)
+
+plt.subplot(3,1,2)
+plt.plot(zlist,I_YY_Zlist)
+plt.title('I_YY')
+plt.xlabel('Z postion')
+plt.ylabel('I_YY')
+plt.grid(True)
+
+plt.subplot(3,1,3)
+plt.plot(zlist,J_Zlist)
+plt.title('J')
+plt.xlabel('Z postion')
+plt.ylabel('J')
+plt.grid(True)
+
 plt.show()
-
-# plt.subplot(2,2,2)
-# plt.plot(tipoverlist,mlg_zlist)
-# plt.title('MLG Strut Length From Fuselage')
-# plt.xlabel('Tip over angle')
-# plt.ylabel('MLG Strut Length From Fuselage')
-# plt.grid(True)
-
-# plt.subplot(2,2,3)
-# plt.plot(tipoverlist,l_mlist)
-# plt.title('MLG Position from CG')
-# plt.xlabel('Tip over angle')
-# plt.ylabel('MLG Position from CG')
-# plt.grid(True)
-
-# plt.subplot(2,2,4)
-# plt.plot(tipoverlist,l_nlist)
-# plt.title('NLG Position from CG')
-# plt.xlabel('Tip over angle')
-# plt.ylabel('NLG Position from CG')
-# plt.grid(True)
-
-# plt.show()
 
 
 
