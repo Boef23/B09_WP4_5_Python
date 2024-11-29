@@ -1,6 +1,7 @@
 from Moment_of_Inertia2 import *
 import matplotlib.pyplot as plt
-#create final function as a function of (z)]
+#create final function as a function of (z)
+
 def geometryproperties(z):
     h_Fs, h_Bs, l_Top, l_Bottom, beta = geometry(z)
     area_Fs, area_Bs, area_Top, area_Bottom, area_Total = areas_segments(h_Fs, h_Bs, l_Top, l_Bottom)
