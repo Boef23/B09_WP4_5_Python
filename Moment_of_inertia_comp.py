@@ -1,5 +1,6 @@
 from Moment_of_Inertia2 import *
 import matplotlib.pyplot as plt
+from Parameters import *
 #create final function as a function of (z)
 
 def geometryproperties(z):
@@ -22,7 +23,7 @@ def geometryproperties(z):
 I_XX_Zlist = []
 I_YY_Zlist = []
 J_Zlist = []
-zlist = np.arange(0, 1.01, 0.01)
+zlist = np.arange(0, (b/2)+0.001, 0.001)
 I_XX_Zlist, I_YY_Zlist, J_Zlist = geometryproperties(zlist)
 
 
