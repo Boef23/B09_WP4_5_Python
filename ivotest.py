@@ -1,1 +1,1 @@
-x = 3
+from Moment_of_Inertia2 import *
