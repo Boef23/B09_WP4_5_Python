@@ -37,6 +37,6 @@ print(4 * sp.integrate.quad(LiftCurve, 0, span/2)[0] / (S * rhoCruise * velocity
 # print(2 * sp.integrate.quad(LiftCurve, 0, span/2)[0])
 
 #plot lift distribution
-zAxis = np.arange(0, 15.325, 0.01)
+zAxis = np.arange(0, 15.325, 0.001)
 plt.plot(zAxis, LiftCurve(zAxis))
 plt.show()
