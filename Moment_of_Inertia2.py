@@ -78,4 +78,3 @@ def total_Inertia_YY(I_YY_Total_Plates, I_YY_Stringers_Fs, I_YY_Stringers_Bs, I_
 def total_Inertia_J(I_XX_Total, I_YY_Total):
     J_Total = I_XX_Total + I_YY_Total
     return J_Total
-

@@ -11,7 +11,6 @@ from LiftDistribution import LiftCurve
 from Parameters import b
 from ShearDiagram import reactionMoment, reactionShear, totalTorqueDist, zAxis, dz
 from Moment_of_Inertia2 import total_Inertia_XX
-print(total_Inertia_XX)
 
 #import constants from file
 
@@ -46,7 +45,8 @@ t_4 = 0.001
 wingboxLength = b/2 #metres
 thickness = 2 * 10**(-3) #metres
 z = symbols('z')
-secondMomentOfInertia = total_Inertia_XX(z)
+print(geometry(z))
+secondMomentOfInertia = total_Inertia_XX**-1
 
 def wingWeightDistribution(e,f,z):#gives the Mccauley of the wingweight
     return (e*z + f)*z**3
