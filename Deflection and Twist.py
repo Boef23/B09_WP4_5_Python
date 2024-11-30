@@ -47,6 +47,8 @@ momentOfInertia_X, momentOfInertia_Y, momentOfInertia_J = geometryproperties(zli
 def liftDistribution(z):
     divison =  scipy.interpolate.interp1d(zAxis, LiftCurve(zAxis)/momentOfInertia_X, kind= "cubic", fill_value= "extrapolate")
     return divison(z)
+print(liftDistribution)
+
 
 def wingWeightDistribution(e,f,z):#gives the Mccauley of the wingweight
     return (e*z + f)*z**3
@@ -67,7 +69,7 @@ def reactionY(Ry,z): #gives the Mccauley of the reaction force in the y-directio
 
 def integral_1(z):
 
-    return scipy.integrate.quad(LiftCurve,0,z)[0]
+    return scipy.integrate.quad(liftDistribution,0,z)[0]
 def integral_2(z):
     return scipy.integrate.quad(integral_1,0,z)[0]
 
@@ -75,7 +77,7 @@ print(integral_2(wingboxLength),"bonjour")
 
 def vWingWeight(wingWeightDistribution): #deflection for the wingweight
     # Perform symbolic integration
-    vprimeWing_symbolic = integrate(wingWeightDistribution(e, f, z) / momentOfInertia_X, z)
+    vprimeWing_symbolic = integrate(wingWeightDistribution(e, f, z), z)
 
     # Convert to a numerical function
     vprimeWing_numeric = lambdify(z, vprimeWing_symbolic, 'numpy')
@@ -138,21 +140,6 @@ def verticalReaction(reactionY): #deflection for the reactionforce
 
     return vR, vprimeR_symbolic, vprimeR_numeric
 vR, vprimeR_symbolic, vprimeR_numeric = verticalReaction(reactionY)
-
-
-def momentOfInertia(Ixx): #deflection for the reactionforce
-    # Perform symbolic integration
-    vprimeIxx_symbolic = integrate(Ixx,z)
-
-    # Convert to a numerical function
-    vprimeIxx_numeric = lambdify(z, vprimeIxx_symbolic, 'numpy')
-
-    # Perform numerical integration over [0, 3]
-    vIxx, error = quad(vprimeIxx_numeric, 0, 3)
-
-    return vR, vprimeR_symbolic, vprimeR_numeric
-
-vIxx, vprimeIxx_symbolic, vprimeIxx_numeric = momentOfInertia
 
 
 

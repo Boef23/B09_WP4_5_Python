@@ -11,4 +11,18 @@ from ShearDiagram import reactionMoment, reactionShear, totalTorqueDist, zAxis, 
 from Moment_of_Inertia2 import *
 from Moment_of_inertia_comp import zlist, geometryproperties
 
-print(len(zlist), len(zAxis))
+
+momentOfInertia_X, momentOfInertia_Y, momentOfInertia_J = geometryproperties(zlist)
+
+def liftDistribution(z):
+    divison =  scipy.interpolate.interp1d(zAxis, LiftCurve(zAxis)/momentOfInertia_X, kind= "linear", fill_value= "extrapolate")
+    return divison(z)
+print(liftDistribution)
+
+def integral_1(z):
+
+    return scipy.integrate.quad(liftDistribution,0,z)[0]
+def integral_2():
+    return scipy.integrate.quad(integral_1,13, 15)[0]
+
+print(integral_2())
