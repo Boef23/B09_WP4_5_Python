@@ -23,7 +23,7 @@ def geometryproperties(z):
 I_XX_Zlist = []
 I_YY_Zlist = []
 J_Zlist = []
-zlist = np.arange(0, (b/2)+0.001, 0.001)
+zAxis = np.arange(0, 15.325, 0.001)
 I_XX_Zlist, I_YY_Zlist, J_Zlist = geometryproperties(zlist)
 
 
