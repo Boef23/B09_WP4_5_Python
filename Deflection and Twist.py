@@ -4,13 +4,15 @@
 import scipy
 import numpy as np
 import scipy.integrate
+import scipy.interpolate
 import sympy
 from scipy.integrate import quad,  dblquad
 from sympy import symbols, integrate, lambdify
 from LiftDistribution import LiftCurve
 from Parameters import b
 from ShearDiagram import reactionMoment, reactionShear, totalTorqueDist, zAxis, dz
-from Moment_of_Inertia2 import total_Inertia_XX
+from Moment_of_Inertia2 import *
+from Moment_of_inertia_comp import zlist, geometryproperties
 
 #import constants from file
 
@@ -24,9 +26,6 @@ Ry = reactionShear #N
 elasticModulus = 72.4 * 10**9 # Pa
 shearModulus = 28 * 10**9 #Pa
 I_xx = 10 * 10 ** -5 #mm^4
-I_xxAtRoot = 10
-I_xxAtTip = 5
-J_z = 1
 massLandingGear = 302.67
 massEngine = 1111.3
 gravity = 9.80665
@@ -45,8 +44,13 @@ t_4 = 0.001
 wingboxLength = b/2 #metres
 thickness = 2 * 10**(-3) #metres
 z = symbols('z')
-print(geometry(z))
-secondMomentOfInertia = total_Inertia_XX**-1
+momentOfInertia_X, momentOfInertia_Y, momentOfInertia_J = geometryproperties(zlist)
+I_XX_Int = scipy.interpolate.interp1d(zlist, momentOfInertia_X, kind="cubic", fill_value="extrapolate")
+print(I_xx)
+
+def I_xx_Curve(z):
+    global I_XX_Int
+    return I_XX_Int(z)
 
 def wingWeightDistribution(e,f,z):#gives the Mccauley of the wingweight
     return (e*z + f)*z**3
@@ -59,10 +63,6 @@ def engineWeight(massEngine, gravity): #gives the Mccauley of the Engine
 
 def reactionY(Ry,z): #gives the Mccauley of the reaction force in the y-direction, calculated from summing all the forces
     return Ry*z
-def Ixxchanger(I_xxAtRoot, I_xxAtTip, wingboxLength, z):
-    Ixx = I_xxAtRoot - (I_xxAtRoot - I_xxAtTip)*z/wingboxLength
-    return Ixx
-Ixx = Ixxchanger(I_xxAtRoot, I_xxAtTip, wingboxLength, z)
 
     
 
@@ -74,7 +74,7 @@ Ixx = Ixxchanger(I_xxAtRoot, I_xxAtTip, wingboxLength, z)
 
 
 def integral_1(z):
-    return scipy.integrate.quad(LiftCurve / secondMomentOfInertia,0,z)[0]
+    return scipy.integrate.quad(LiftCurve / I_xx_Curve,0,z)[0]
 def integral_2(z):
     return scipy.integrate.quad(integral_1,0,z)[0]
 
@@ -82,7 +82,7 @@ print(integral_2(wingboxLength),"bonjour")
 
 def vWingWeight(wingWeightDistribution): #deflection for the wingweight
     # Perform symbolic integration
-    vprimeWing_symbolic = integrate(wingWeightDistribution(e, f, z) / secondMomentOfInertia, z)
+    vprimeWing_symbolic = integrate(wingWeightDistribution(e, f, z) / momentOfInertia_X, z)
 
     # Convert to a numerical function
     vprimeWing_numeric = lambdify(z, vprimeWing_symbolic, 'numpy')
