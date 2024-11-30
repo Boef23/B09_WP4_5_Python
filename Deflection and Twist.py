@@ -17,8 +17,6 @@ from Moment_of_inertia_comp import zlist, geometryproperties
 #import constants from file
 
 
-
-
 e = 16.3
 f = -365.47
 landingGearLength = 2.3461 #m
@@ -45,12 +43,10 @@ wingboxLength = b/2 #metres
 thickness = 2 * 10**(-3) #metres
 z = symbols('z')
 momentOfInertia_X, momentOfInertia_Y, momentOfInertia_J = geometryproperties(zlist)
-I_XX_Int = scipy.interpolate.interp1d(zlist, momentOfInertia_X, kind="cubic", fill_value="extrapolate")
-print(I_xx)
 
-def I_xx_Curve(z):
-    global I_XX_Int
-    return I_XX_Int(z)
+def liftDistribution(z):
+    divison =  scipy.interpolate.interp1d(zAxis, LiftCurve(zAxis)/momentOfInertia_X, kind= "cubic", fill_value= "extrapolate")
+    return divison(z)
 
 def wingWeightDistribution(e,f,z):#gives the Mccauley of the wingweight
     return (e*z + f)*z**3
@@ -64,17 +60,14 @@ def engineWeight(massEngine, gravity): #gives the Mccauley of the Engine
 def reactionY(Ry,z): #gives the Mccauley of the reaction force in the y-direction, calculated from summing all the forces
     return Ry*z
 
-    
-
-
-
 
 #The following fuctions serve the single purpose of integrating. No constants are added as the boundary conditions state that the integration constants are zero
 #The integrations are done sepereatley and are added later
 
 
 def integral_1(z):
-    return scipy.integrate.quad(LiftCurve / I_xx_Curve,0,z)[0]
+
+    return scipy.integrate.quad(LiftCurve,0,z)[0]
 def integral_2(z):
     return scipy.integrate.quad(integral_1,0,z)[0]
 
@@ -93,9 +86,10 @@ def vWingWeight(wingWeightDistribution): #deflection for the wingweight
     return vWing, vprimeWing_symbolic, vprimeWing_numeric
 vWing, vprimeWing_symbolic, vprimeWing_numeric = vWingWeight(wingWeightDistribution)
 
+
 def landingGear(landingGearWeightDistribution): #deflection for the landing gear
     # Perform symbolic integration
-    vprimeLG_symbolic = integrate(landingGearWeightDistribution(massLandingGear,gravity,landingGearLength,z) / secondMomentOfInertia,z)
+    vprimeLG_symbolic = integrate(landingGearWeightDistribution(massLandingGear,gravity,landingGearLength,z) / 1 ,z)
 
     # Convert to a numerical function
     vprimeLG_numeric = lambdify(z, vprimeLG_symbolic, 'numpy')
@@ -158,7 +152,7 @@ def momentOfInertia(Ixx): #deflection for the reactionforce
 
     return vR, vprimeR_symbolic, vprimeR_numeric
 
-vIxx, vprimeIxx_symbolic, vprimeIxx_numeric = momentOfInertia(Ixx)
+vIxx, vprimeIxx_symbolic, vprimeIxx_numeric = momentOfInertia
 
 
 
@@ -170,7 +164,7 @@ def deflectionResult(integral_2, vWingWeight, landingGear, landingGear2, engine)
 #Twist equations
 #Now the twist is calculated, this is a fucntion of z, maximum twist is most important
 def torqueIntegrator(totalTorqueDist): #defines the torque as a function of z
-    scipy.integrate.quad(integral_1,0,z)[0]
+    Torque = scipy.integrate.quad(integral_1,0,z)[0]
     return Torque
 
 def lineIntegralCalculator(l_1, l_2, dl_1, dl_2,l_3, l_4, dl_3, dl_4, wingboxLength, t_1, t_2 ,t_3 ,t_4, z):
