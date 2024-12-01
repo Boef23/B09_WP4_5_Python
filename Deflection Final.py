@@ -2,12 +2,10 @@ import scipy
 import numpy as np
 import scipy.integrate
 import scipy.interpolate
-import sympy
 from scipy.integrate import quad,  dblquad
-from sympy import symbols, integrate, lambdify
 from LiftDistribution import LiftCurve
 from Parameters import b, engine_Mass, mlg_Pos
-from ShearDiagram import reactionMoment, reactionShear, totalTorqueDist, zAxis, dz, totalMomentDist
+from ShearDiagram import  reactionShear, zAxis, dz, totalMomentDist
 from Moment_of_Inertia2 import *
 from Moment_of_inertia_comp import zlist, geometryproperties
 
@@ -36,7 +34,7 @@ def int_4():
 def int_5():
     return scipy.integrate.quad(int_1,13, b/2)[0]
 
-print(f'Total Deflection at tip is: {int_5()+int_4()+int_2()+int_3()}') #prints the deflection, takes a lot of time to compute
+print(f'Total Deflection at tip is: {int_5()+int_4()+int_2()+int_3()} [m]' ) #prints the deflection, takes a lot of time to compute
 
 
 
