@@ -7,20 +7,20 @@ lambda_Dihedral = 0.0349 #dihedral angle (rad) placeholder value
 #Airfoil
 c_Root = 4.9 #Root chord (m)
 #Stringers
-t_Stringer = 0.020 #Stringer thickness (m) placeholder value
-l_Stringer = 0.5 #Stringer length when unfolded to single rectangular plate (m) placeholder value
-n_str_Fs = 5
-n_str_Bs = 5
-n_str_Top = 5
-n_str_Bottom = 5
+t_Stringer = 0.01 #Stringer thickness (m) placeholder value
+l_Stringer = 0.3 #Stringer length when unfolded to single rectangular plate (m) placeholder value
+n_str_Fs = 3
+n_str_Bs = 3
+n_str_Top = 3
+n_str_Bottom = 3
 
 #Spars
-t_Fs = 0.005#thickness front spar (m) placeholder value
-t_Bs = 0.005 #thickness back spar (m) placeholder value
+t_Fs = 0.002 #thickness front spar (m) placeholder value
+t_Bs = 0.002 #thickness back spar (m) placeholder value
 
 #Plates
-t_Top = 0.020 #thickness top plate (m) placeholder value
-t_Bottom = 0.020 #thickness bottom plate (m) placeholder value
+t_Top = 0.025 #thickness top plate (m) placeholder value
+t_Bottom = 0.025 #thickness bottom plate (m) placeholder value
 
 #Cruise
 cruise_Velocity = 228   #Cruise velocity (m/s), M=0.77 at 35000ft alt
