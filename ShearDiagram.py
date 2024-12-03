@@ -6,7 +6,7 @@ from Parameters import mlg_Pos, b, z_Engine_Frac, engine_Mass
 
 # General variables
 lgEndPos = mlg_Pos     # End of MLG wrt half span
-dz = 0.0001           # plot increment
+dz = 0.01           # plot increment
 halfSpan = b/2       # m, half the full wing span
 zEngineFrac = z_Engine_Frac      # fraction of position of engine wrt. half-span
 zEngine = zEngineFrac * halfSpan    # position of engine on half-span
