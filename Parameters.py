@@ -9,10 +9,10 @@ c_Root = 4.9 #Root chord (m)
 #Stringers
 t_Stringer = 0.002 #Stringer thickness (m) placeholder value
 l_Stringer = 0.3 #Stringer length when unfolded to single rectangular plate (m) placeholder value
-n_str_Fs = 5
-n_str_Bs = 5
-n_str_Top = 5
-n_str_Bottom = 5
+n_str_Fs = 4
+n_str_Bs = 4
+n_str_Top = 4
+n_str_Bottom = 4
 
 #Spars
 t_Fs = 0.001 #thickness front spar (m) placeholder value
