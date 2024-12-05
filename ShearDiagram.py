@@ -2,21 +2,32 @@ import numpy as np
 import scipy as sp
 from matplotlib import pyplot as plt
 from LiftDistribution import chord, LiftCurve
-from Parameters import mlg_Pos, b, z_Engine_Frac, engine_Mass
+from Parameters import mlg_Pos, b, z_Engine_Frac, engine_Mass, c_Root, taper_Ratio
 
 # General variables
 lgEndPos = mlg_Pos     # End of MLG wrt half span
 dz = 0.01           # plot increment
+span = b        # Full wing span
 halfSpan = b/2       # m, half the full wing span
 zEngineFrac = z_Engine_Frac      # fraction of position of engine wrt. half-span
 zEngine = zEngineFrac * halfSpan    # position of engine on half-span
+
+Cr = c_Root     #m, root chord
+taper = taper_Ratio     #Wing taper ratio
+
+MTOM = 23731    # kg, max take off mass
+fuelFrac = 0.164    # -, fuel fraction of MTOM
+wingMass = 3780     # kg, wing structural mass
+
+fuelWeight = fuelFrac * MTOM
+wingWeight = wingMass * 9.81
 
 # General z axis
 zAxis = np.arange(0, halfSpan, dz)
 
 # Distribution functions
 def WingWeight(z):
-    return (365.47 - 16.3 * z) * 9.81
+    return chord(z) / Cr * 4 * (fuelWeight + wingWeight) / (3 * span * taper + 2 * span)
 
 
 def MLGWeight(z):
