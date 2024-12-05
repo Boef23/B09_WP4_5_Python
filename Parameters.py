@@ -8,15 +8,15 @@ lambda_Dihedral = 0.0349 #dihedral angle (rad) placeholder value
 c_Root = 4.9 #Root chord (m)
 #Stringers
 t_Stringer = 0.002 #Stringer thickness (m) placeholder value
-l_Stringer = 0.3 #Stringer length when unfolded to single rectangular plate (m) placeholder value
-n_str_Fs = 2
-n_str_Bs = 2
-n_str_Top = 2
-n_str_Bottom = 2
+l_Stringer = 0.4 #Stringer length when unfolded to single rectangular plate (m) placeholder value
+n_str_Fs = 5
+n_str_Bs = 5
+n_str_Top = 5
+n_str_Bottom = 5
 
 #Spars
-t_Fs = 0.006 #thickness front spar (m) placeholder value
-t_Bs = 0.006 #thickness back spar (m) placeholder value
+t_Fs = 0.0015 #thickness front spar (m) placeholder value
+t_Bs = 0.0015 #thickness back spar (m) placeholder value
 
 #Plates
 t_Top = 0.0015 #thickness top plate (m) placeholder value
