@@ -19,8 +19,8 @@ t_Fs = 0.001 #thickness front spar (m) placeholder value
 t_Bs = 0.001 #thickness back spar (m) placeholder value
 
 #Plates
-t_Top = 0.005 #thickness top plate (m) placeholder value
-t_Bottom = 0.005 #thickness bottom plate (m) placeholder value
+t_Top = 0.003 #thickness top plate (m) placeholder value
+t_Bottom = 0.003 #thickness bottom plate (m) placeholder value
 
 #Cruise
 cruise_Velocity = 228   #Cruise velocity (m/s), M=0.77 at 35000ft alt
