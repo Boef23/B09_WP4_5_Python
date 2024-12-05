@@ -36,7 +36,7 @@ def int_2converter(z):
     return deflection(z)
 
 def int_2list(z):
-    return de
+    return dz
 
 #plot lift distribution
 plt.plot(zAxis, int_2list(zAxis))
