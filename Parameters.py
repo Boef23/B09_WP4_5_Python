@@ -15,7 +15,7 @@ n_str_Top = 2
 n_str_Bottom = 2
 
 #Spars
-t_Fs = 0.06 #thickness front spar (m) placeholder value
+t_Fs = 0.006 #thickness front spar (m) placeholder value
 t_Bs = 0.006 #thickness back spar (m) placeholder value
 
 #Plates
