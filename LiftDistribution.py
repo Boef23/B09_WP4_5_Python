@@ -12,6 +12,7 @@ Cr = c_Root     #Wing root chord
 taper = taper_Ratio #Wing taper ratio
 span = b    #Wing span
 loadFactor = 2.75*1.5
+alpha = 1.8
 
 
 # Chord variation function
@@ -20,11 +21,14 @@ def chord(z):
 
 
 # Generate CL values and z values from XFLR5
-CLCurve = np.genfromtxt('MainWing_a=1.80_v=10.00ms.txt', skip_header=40, skip_footer=1030, usecols=(0,3))
+CLCurve1 = np.genfromtxt('MainWing_a=10.00_v=10.00ms.txt', skip_header=40, skip_footer=1030, usecols=(0,3))
+CLCurve2 = np.genfromtxt('MainWing_a=0.00_v=10.00ms.txt', skip_header=40, skip_footer=1030, usecols=(0,3))
 
-ztab = CLCurve[:, 0]
+CLCurve = CLCurve2[:, 1] + (CLCurve1[:, 1] - CLCurve2[:, 1]) / 10 * alpha
+
+ztab = CLCurve1[:, 0]
 chordTab = chord(ztab)
-liftTab = 0.5 * rhoCruise * velocityCruise**2 * chordTab * CLCurve[:, 1]
+liftTab = 0.5 * rhoCruise * velocityCruise**2 * chordTab * CLCurve
 
 # Interpolate CL function with scipy
 LiftCurveInt = interpolate.interp1d(ztab, liftTab, kind='cubic', fill_value='extrapolate')
@@ -33,13 +37,6 @@ def LiftCurve(z):
     global LiftCurveInt, loadFactor
     return loadFactor * LiftCurveInt(z)
 
-print(4 * sp.integrate.quad(LiftCurve, 0, span/2)[0] / (S * rhoCruise * velocityCruise**2))
-# print(2 * sp.integrate.quad(LiftCurve, 0, span/2)[0])
-
-#plot lift distribution
-zAxis = np.arange(0, 15.325, 0.01)
-plt.plot(zAxis, LiftCurve(zAxis))
-plt.title('List Distribution')
-plt.xlabel('Z postion [M]')
-plt.ylabel('Force [N]')
-plt.show()
+if __name__ == '__main__':
+    print(f'CL: {4 * sp.integrate.quad(LiftCurve, 0, span/2)[0] / (S * rhoCruise * velocityCruise**2)}')
+    print(f'Lift - Weight: {2 * sp.integrate.quad(LiftCurve, 0, span/2)[0] - 23731*9.81}')
