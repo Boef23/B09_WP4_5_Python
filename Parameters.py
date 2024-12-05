@@ -8,7 +8,7 @@ lambda_Dihedral = 0.0349 #dihedral angle (rad) placeholder value
 c_Root = 4.9 #Root chord (m)
 #Stringers
 t_Stringer = 0.002 #Stringer thickness (m) placeholder value
-l_Stringer = 0.4 #Stringer length when unfolded to single rectangular plate (m) placeholder value
+l_Stringer = 0.3 #Stringer length when unfolded to single rectangular plate (m) placeholder value
 n_str_Fs = 5
 n_str_Bs = 5
 n_str_Top = 5
