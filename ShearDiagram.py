@@ -19,7 +19,7 @@ MTOM = 23731    # kg, max take off mass
 fuelFrac = 0.164    # -, fuel fraction of MTOM
 wingMass = 3780     # kg, wing structural mass
 
-fuelWeight = fuelFrac * MTOM
+fuelWeight = fuelFrac * MTOM * 9.81
 wingWeight = wingMass * 9.81
 
 # General z axis
@@ -118,7 +118,7 @@ totalTorqueDist = reactionTorqueDist - engineTorqueDist - incrementalTorque     
 # Internal Loading Plots
 if __name__ == '__main__':
     # Plot shear diagram
-    plt.subplot(2, 2, 1)
+    plt.subplot(1, 3, 1)
     plt.plot(zAxis, totalShearDist / 1000, label='Shear')
     plt.axhline(0, color='black', linestyle='-')
     plt.ylabel('kN')
@@ -126,7 +126,7 @@ if __name__ == '__main__':
     plt.title('Shear vs. Semi-Span Position')
 
     # Plot moment diagram
-    plt.subplot(2, 2, 2)
+    plt.subplot(1, 3, 2)
     plt.plot(zAxis, totalMomentDist / 1000, label='Moment')
     plt.axhline(0, color='black', linestyle='-')
     plt.ylabel('kNm')
@@ -134,12 +134,14 @@ if __name__ == '__main__':
     plt.title('Moment vs. Semi-Span Position')
 
     # Plot torque diagram
-    plt.subplot(2, 2, 3)
+    plt.subplot(1, 3, 3)
     plt.plot(zAxis, totalTorqueDist / 1000, label='Torque')
     plt.axhline(0, color='black', linestyle='-')
     plt.ylabel('kNm')
     plt.xlabel('z')
     plt.title('Torque vs. Semi-Span Position')
+
+    plt.tight_layout()
 
     plt.show()
 
