@@ -12,4 +12,8 @@ for i in range(z.size):
     value[i] = int_2(z[i])
 
 plt.plot(z, value)
+plt.ylabel('Deflection [m]')
+plt.xlabel('z [m]')
+plt.axhline(0, color='black', linestyle='-')
+plt.title('Deflection vs. Semi-Span Position')
 plt.show()

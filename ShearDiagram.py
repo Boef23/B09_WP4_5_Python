@@ -121,24 +121,24 @@ if __name__ == '__main__':
     plt.subplot(1, 3, 1)
     plt.plot(zAxis, totalShearDist / 1000, label='Shear')
     plt.axhline(0, color='black', linestyle='-')
-    plt.ylabel('kN')
-    plt.xlabel('z')
+    plt.ylabel('V [kN]')
+    plt.xlabel('z [m]')
     plt.title('Shear vs. Semi-Span Position')
 
     # Plot moment diagram
     plt.subplot(1, 3, 2)
     plt.plot(zAxis, totalMomentDist / 1000, label='Moment')
     plt.axhline(0, color='black', linestyle='-')
-    plt.ylabel('kNm')
-    plt.xlabel('z')
+    plt.ylabel('M [kNm]')
+    plt.xlabel('z [m]')
     plt.title('Moment vs. Semi-Span Position')
 
     # Plot torque diagram
     plt.subplot(1, 3, 3)
     plt.plot(zAxis, totalTorqueDist / 1000, label='Torque')
     plt.axhline(0, color='black', linestyle='-')
-    plt.ylabel('kNm')
-    plt.xlabel('z')
+    plt.ylabel('T [kNm')
+    plt.xlabel('z [m]')
     plt.title('Torque vs. Semi-Span Position')
 
     plt.tight_layout()
