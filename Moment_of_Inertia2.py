@@ -8,7 +8,7 @@ def geometry(z):
     h_Fs = 0.1092 * chord #height of front spar
     h_Bs = 0.0732 * chord #height of back spar
     l_Top = 0.5 * chord #length op top flange
-    l_Bottom = 0.5013 * chord #length of bottom flange
+    l_Bottom = 0.5 * chord #length of bottom flange
     beta = np.arctan((h_Fs-h_Bs)/l_Top) #angle of bottom flange
     return h_Fs, h_Bs, l_Top, l_Bottom, beta
 
