@@ -51,7 +51,7 @@ plt.show()
 
 
 def stringerArea():
-    return t_Stringer * l_Stringer
+    return t_Stringer * l_Stringer + (l_Stringer - t_Stringer) * t_Stringer
 
 def columnBuckling():
     sigmaCritical = K * np.pi**2 * elasticModulus * Ixx / (distanceArray()**2 * stringerArea())
