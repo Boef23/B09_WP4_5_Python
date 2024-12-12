@@ -9,6 +9,8 @@ c_Root = 4.9 #Root chord (m)
 #Stringers
 t_Stringer = 0.002 #Stringer thickness (m) placeholder value
 l_Stringer = 0.3 #Stringer length when unfolded to single rectangular plate (m) placeholder value
+w_Stringer = 0.15 #Stringer width in plane of the skin it is attached to (m) placeholder value
+h_Stringer = 0.15 #Stringer height out of plane of the skin it is attached to (m) placeholder value
 n_str_Fs = 2
 n_str_Bs = 2
 n_str_Top = 2

@@ -1,5 +1,5 @@
 #Moment of inertia and torsional stiffness diagrams
-from Parameters import c_Root, taper_Ratio, t_Fs, t_Bs, t_Top, t_Bottom, b, t_Stringer, l_Stringer, n_str_Fs, n_str_Bs, n_str_Top, n_str_Bottom
+from Parameters import c_Root, taper_Ratio, t_Fs, t_Bs, t_Top, t_Bottom, b, t_Stringer, l_Stringer, n_str_Fs, n_str_Bs, n_str_Top, n_str_Bottom, w_Stringer, h_Stringer
 import numpy as np
 
 #Chord length as function of spanwise position
@@ -59,6 +59,10 @@ def plate_Inertia_YY(h_Fs, h_Bs, l_Top, l_Bottom, beta, X_Centroid_Fs, X_Centroi
     I_YY_Bottom = (t_Bottom * l_Bottom ** 3 * (np.cos(beta)) ** 2)/12 + t_Bottom * l_Bottom * X_Centroid_Bottom ** 2
     I_YY_Total_Plates = I_YY_Fs + I_YY_Top + I_YY_Bs + I_YY_Bottom
     return I_YY_Total_Plates
+
+def stringer_Inertia(t_Stringer, w_Stringer, h_Stringer):
+    I_Stringer = (w_Stringer * t_Stringer ** 3)/12 + (t_Stringer * h_Stringer ** 3)/12 + t_Stringer * h_Stringer * (h_Stringer/2) ** 2
+    return I_Stringer
 
 def Calc_string_space(h_Fs, h_Bs, l_Top, l_Bottom):
     Spacing_Fs = h_Fs/n_str_Fs
@@ -125,3 +129,5 @@ def total_Inertia_YY(I_YY_Total_Plates, I_YY_Stringers_Fs, I_YY_Stringers_Bs, I_
 def total_Inertia_J(I_XX_Total, I_YY_Total):
     J_Total = I_XX_Total + I_YY_Total
     return J_Total
+
+print(f"x = {X_Centroid} ")
