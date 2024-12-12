@@ -37,5 +37,5 @@ engine_Mass = 1111.3    #Mass of engine (kg)
 
 #AL2024-T81
 
-E = 7.24*10^9 # Modulus of elasticity [Pa]
+E = 7.24*10**9 # Modulus of elasticity [Pa]
 poisson_ratio = 1/3 # Unitless
