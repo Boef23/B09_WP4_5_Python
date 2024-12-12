@@ -5,7 +5,7 @@
 import numpy as np
 import scipy as sp
 import matplotlib.pyplot as plt
-from Parameters import l_Stringer, t_Stringer
+from Parameters import l_Stringer, t_Stringer, b
 from Moment_of_inertia_comp import  zlist
 
 
@@ -52,10 +52,10 @@ plt.show()
 
 
 def stringerArea():
-    return t_Stringer * (l_Stringer/2) + ((l_Stringer/2) - t_Stringer) * t_Stringer
+    return t_Stringer * l_Stringer
 
 def columnBuckling():
-    sigmaCritical = K * np.pi**2 * elasticModulus * Ixx / (distanceArray()**2 * stringerArea())
+    sigmaCritical = K * np.pi**2 * elasticModulus * Ixx / (distanceArray()**2) * stringerArea())
     return sigmaCritical
 
 print(f'The critical stress is {columnBuckling()} Pa' )
