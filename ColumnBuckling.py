@@ -6,11 +6,10 @@ import numpy as np
 import scipy as sp
 import matplotlib.pyplot as plt
 from Parameters import l_Stringer, t_Stringer
-from Moment_of_inertia_comp import I_XX_Zlist, zlist
+from Moment_of_inertia_comp import  zlist
 
 elasticModulus = 72.4 * 10**9 # Pa
 K = 4 #due to ribs, two sides are clamped
-L = 1 #this is thus a fill in value, it has not been decided where the ribs go, so the stringer length is unkown. 
 Ixx = 5/24 * t_Stringer * l_Stringer**3
 
 def distanceArray():
