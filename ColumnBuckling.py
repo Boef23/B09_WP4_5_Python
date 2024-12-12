@@ -11,7 +11,7 @@ from Moment_of_inertia_comp import  zlist
 
 elasticModulus = 72.4 * 10**9 # Pa
 K = 4 #due to ribs, two sides are clamped
-Ixx = 5/24 * t_Stringer * l_Stringer**3
+Ixx = 5/24 * t_Stringer * (l_Stringer/2)**3
 
 def distanceArray():
     # Original array influencing step lengths
@@ -52,7 +52,7 @@ plt.show()
 
 
 def stringerArea():
-    return t_Stringer * l_Stringer + (l_Stringer - t_Stringer) * t_Stringer
+    return t_Stringer * (l_Stringer/2) + ((l_Stringer/2) - t_Stringer) * t_Stringer
 
 def columnBuckling():
     sigmaCritical = K * np.pi**2 * elasticModulus * Ixx / (distanceArray()**2 * stringerArea())
