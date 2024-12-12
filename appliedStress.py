@@ -21,5 +21,4 @@ Ixx = geometryproperties(zAxis)[0]
 y = -0.06 * chord(zAxis)
 normalStress = totalMomentDist * y / Ixx
 
-print(normalStress)
 
