@@ -10,6 +10,14 @@ from Moment_of_inertia_comp import I_XX_Zlist, zlist
 elasticModulus = 72.4 * 10**9 # Pa
 K = 4 #due to ribs, two sides are clamped
 L = 1 #this is thus a fill in value, it has not been decided where the ribs go, so the stringer length is unkown. 
+distanceList = []
+
+def distanceArray():
+    distance = 0
+    for i in zlist:
+        distanceList.append(distanceList)
+        
+
 
 def stringerArea():
     return t_Stringer * l_Stringer
