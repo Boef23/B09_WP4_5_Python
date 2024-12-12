@@ -16,7 +16,11 @@ def distanceArray():
     distance = 0
     for i in zlist:
         distanceList.append(distanceList)
-        
+
+print(len(zlist))
+values = np.array([0.00, 0.60, 1.23, 1.88, 2.56, 3.28, 4.04, 
+                   4.84, 5.71, 6.65, 7.68, 8.86, 10.24, 12.02, 15.30])
+
 
 
 def stringerArea():
