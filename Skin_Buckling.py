@@ -12,5 +12,4 @@ def enclosedarea(z):
 
 def Ymaxfinder(z, Y_cen):
     chord = c_Root - c_Root*(1-taper_Ratio) * (z/(0.5 * b))
-    y_ref = Y_cen
     t_max_airfoil = 0.12*chord
