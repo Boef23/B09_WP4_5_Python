@@ -11,7 +11,7 @@ from Moment_of_inertia_comp import I_XX_Zlist, zlist
 elasticModulus = 72.4 * 10**9 # Pa
 K = 4 #due to ribs, two sides are clamped
 L = 1 #this is thus a fill in value, it has not been decided where the ribs go, so the stringer length is unkown. 
-distanceList = []
+Ixx = 5/24 * t_Stringer * l_Stringer**3
 
 def distanceArray():
     # Original array influencing step lengths
@@ -55,7 +55,7 @@ def stringerArea():
     return t_Stringer * l_Stringer
 
 def columnBuckling():
-    sigmaCritical = K * np.pi**2 * elasticModulus * I_XX_Zlist / (L**2 * stringerArea())
+    sigmaCritical = K * np.pi**2 * elasticModulus * Ixx / (distanceArray()**2 * stringerArea())
     return sigmaCritical
 
 print(f'The critical stress is {columnBuckling()} Pa' )
