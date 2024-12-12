@@ -34,3 +34,8 @@ mlg_Pos = 4.35  #Lateral position of MLG on wing (m)
 #Engine
 z_Engine_Frac = 0.35 #Fractional lateral position w.r.t. half span of engine on wing (m)
 engine_Mass = 1111.3    #Mass of engine (kg)
+
+#AL2024-T81
+
+E = 7.24*10^9 # Modulus of elasticity [Pa]
+poisson_ratio = 1/3 # Unitless
