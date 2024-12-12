@@ -11,7 +11,7 @@ velocityCruise = cruise_Velocity    # Cruise velocity, m/s
 Cr = c_Root     #Wing root chord
 taper = taper_Ratio #Wing taper ratio
 span = b    #Wing span
-loadFactor = -1*1.5
+loadFactor = 2.5*1.5
 alpha = 1.8
 
 
