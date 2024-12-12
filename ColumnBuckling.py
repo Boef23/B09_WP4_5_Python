@@ -6,7 +6,6 @@ import numpy as np
 import scipy as sp
 import matplotlib.pyplot as plt
 from Parameters import l_Stringer, t_Stringer
-from Moment_of_Inertia2 import centroid
 from Moment_of_inertia_comp import  zlist
 
 
