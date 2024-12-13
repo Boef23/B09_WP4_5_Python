@@ -22,6 +22,6 @@ def Ymaxfinder(z, Y_cen):
     else:
         return ymaxbottom
 
-def maxskinstres(ymax, Ixx, Moment):
+def appliedskinstres(ymax, Ixx, Moment):
     skinstress = (Moment*ymax)/Ixx
     return skinstress
