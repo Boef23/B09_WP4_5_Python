@@ -8,7 +8,7 @@ from Parameters import t_Fs
 from Moment_of_inertia_3 import *
 
 #Coefficients
-kv = 1.8
+kv = 1.5
 
 #Spar geometry
 geo = geometry(zAxis)
@@ -33,3 +33,4 @@ Ixx = geometryproperties(zAxis)[0]
 y_max_top = Ymaxfinder(zAxis, calculate_Centroid(zAxis)[1])[1]
 normalStress = totalMomentDist * y_max_top / Ixx
 
+print(tau_max)
