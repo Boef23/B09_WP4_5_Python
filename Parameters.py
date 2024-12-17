@@ -7,6 +7,7 @@ lambda_Dihedral = 0.0349 #dihedral angle (rad) placeholder value
 
 #Airfoil
 c_Root = 4.9 #Root chord (m)
+c_Tip = c_Root - c_Root*(1-taper_Ratio)
 
 #Stringers
 t_str_a = 0.002 #Thickness long side (m) placeholder value
@@ -56,7 +57,8 @@ n_str_Bottom_13incr = 1
 n_str_Bottom_14incr = n_str_Bottom_ztip
 
 #Spacings
-delta_Top = (l_top_ztip)/()
+delta_Top = (c_Tip)/(n_str_Top_ztip + 1)
+delta_Bottom = (c_Tip)/(n_str_Bottom_ztip + 1)
 
 #Spars
 t_Fs = 0.006 #thickness front spar (m) placeholder value
