@@ -38,7 +38,7 @@ def calculate_Centroid(z, b=b , t_wb=t_wb, t_s = t_Stringer, a = w_Stringer, m =
      
      return x_centroid, y_centroid 
 
-def calculate_Centroid_Stringer(a_Stringer, t_Stringer_a, b_Stringer, t_Stringer-b):
-     
-
-
+def calculate_Centroid_Stringer(a_Stringer, t_Stringer_a, b_Stringer, t_Stringer_b):
+     x_Centroid_Stringer = (0.5 * t_Stringer_b * b_Stringer ** 2)/(a_Stringer * t_Stringer_a + b_Stringer * t_Stringer_b)
+     y_Centroid_Stringer = (0.5 * t_Stringer_a * a_Stringer ** 2)/(a_Stringer * t_Stringer_a + b_Stringer * t_Stringer_b)
+     return x_Centroid_Stringer, y_Centroid_Stringer
