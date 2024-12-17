@@ -15,7 +15,7 @@ def Ymaxfinder(z, Y_cen):
     t_max_airfoil = 0.12*chord
     h_Fs = 0.1092 * chord #height of front spar
     yskin_fs_atTmax = (t_max_airfoil - h_Fs)/2
-    ymaxtop = Y_cen + yskin_fs_atTmax
+    ymaxtop = -(Y_cen + yskin_fs_atTmax)
     ymaxbottom = abs(h_Fs - Y_cen + yskin_fs_atTmax)
     if ymaxtop >= ymaxbottom:
         return ymaxtop
