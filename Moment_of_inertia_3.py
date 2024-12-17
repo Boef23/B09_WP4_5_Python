@@ -42,3 +42,8 @@ def calculate_Centroid_Stringer(a_Stringer, t_Stringer_a, b_Stringer, t_Stringer
      x_Centroid_Stringer = (0.5 * t_Stringer_b * b_Stringer ** 2)/(a_Stringer * t_Stringer_a + b_Stringer * t_Stringer_b)
      y_Centroid_Stringer = (0.5 * t_Stringer_a * a_Stringer ** 2)/(a_Stringer * t_Stringer_a + b_Stringer * t_Stringer_b)
      return x_Centroid_Stringer, y_Centroid_Stringer
+
+def calculate_Inertia_Local_Stringer(a_Stringer, t_Stringer_a, b_Stringer, t_Stringer_b, x_Centroid_Stringer, y_Centroid_Stringer):
+     Ixx_Local_Stringer = (b_Stringer * t_Stringer_b ** 3)/12 + b_Stringer * t_Stringer_b * y_Centroid_Stringer ** 2 + (t_Stringer_a * a_Stringer ** 3)/12 + a_Stringer * t_Stringer_a * (0.5 * a_Stringer - y_Centroid_Stringer) ** 2
+     Iyy_Local_Stringer = (t_Stringer_b * b_Stringer ** 3)/12 + b_Stringer * t_Stringer_b * (0.5 * b_Stringer - x_Centroid_Stringer) ** 2 + (a_Stringer * t_Stringer_a ** 3)/12 + a_Stringer * t_Stringer_a * x_Centroid_Stringer ** 2
+     return Ixx_Local_Stringer, Iyy_Local_Stringer
