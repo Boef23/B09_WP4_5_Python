@@ -38,7 +38,7 @@ n_str_Top_10incr = 1
 n_str_Top_11incr = 1
 n_str_Top_12incr = 1
 n_str_Top_13incr = 1
-n_str_Top_14incr = n_str_Top_ztip
+n_str_Top_14incr = 0
 
 #Increment Stringers Per Bay Top Plate
 n_str_Bottom_1incr = 1
@@ -54,7 +54,7 @@ n_str_Bottom_10incr = 1
 n_str_Bottom_11incr = 1
 n_str_Bottom_12incr = 1
 n_str_Bottom_13incr = 1
-n_str_Bottom_14incr = n_str_Bottom_ztip
+n_str_Bottom_14incr = 0
 
 #Spacings
 delta_Top = (c_Tip)/(n_str_Top_ztip + 1)
