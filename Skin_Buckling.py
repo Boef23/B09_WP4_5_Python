@@ -1,5 +1,5 @@
 from Parameters import *
-def enclosedarea(z):
+def enclosedarea(z, c_Root = c_Root, taper_Ratio = taper_Ratio, b=b):
     chord = c_Root - c_Root*(1-taper_Ratio) * (z/(0.5 * b))
     h_Fs = 0.1092 * chord #height of front spar
     h_Bs = 0.0732 * chord #height of back spar
@@ -10,7 +10,7 @@ def enclosedarea(z):
 
 
 
-def Ymaxfinder(z, Y_Centroid):
+def Ymaxfinder(z, Y_Centroid, c_Root = c_Root, taper_Ratio = taper_Ratio, b=b):
     chord = c_Root - c_Root*(1-taper_Ratio) * (z/(0.5 * b))
     t_max_airfoil = 0.12*chord
     h_Fs = 0.1092 * chord #height of front spar
