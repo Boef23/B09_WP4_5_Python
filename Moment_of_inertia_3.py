@@ -7,7 +7,7 @@ from Parameters import *
 # c = 4.9 #This must be changed to a function 
 # L_wb = 0.5*c #Length rectangularsised wing box
 # H_wb = 0.0732*c #HeightRectangularsied wing box 
-# t_wb = 0.001 #[m] thickness of the wingbox 
+t_wb = 0.001 #[m] thickness of the wingbox 
 # m = 16
 # n = 16
 # j = 11

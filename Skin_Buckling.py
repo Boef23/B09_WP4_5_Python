@@ -17,10 +17,7 @@ def Ymaxfinder(z, Y_Centroid, c_Root = c_Root, taper_Ratio = taper_Ratio, b=b):
     yskin_fs_atTmax = (t_max_airfoil - h_Fs)/2
     ymaxtop = -(Y_Centroid + yskin_fs_atTmax)
     ymaxbottom = abs(h_Fs - Y_Centroid + yskin_fs_atTmax)
-    if ymaxtop >= ymaxbottom:
-        return ymaxtop
-    else:
-        return ymaxbottom
+    return ymaxtop, ymaxbottom
 
 def appliedskinstres(ymax, Ixx, Moment):
     skinstress = (Moment*ymax)/Ixx

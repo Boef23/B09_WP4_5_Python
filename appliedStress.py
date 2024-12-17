@@ -5,6 +5,7 @@ import numpy as np
 from Moment_of_inertia_comp import geometryproperties
 from Skin_Buckling import enclosedarea, Ymaxfinder
 from Parameters import t_Fs
+from Moment_of_inertia_3 import *
 
 #Coefficients
 kv = 1.8
@@ -29,7 +30,6 @@ tau_max = tau_max_force + tau_torque
 
 #Normal stress
 Ixx = geometryproperties(zAxis)[0]
-y = -0.06 * chord(zAxis)
-normalStress = totalMomentDist * y / Ixx
+y_max_top = Ymaxfinder(zAxis, calculate_Centroid(zAxis)[1])[1]
+normalStress = totalMomentDist * y_max_top / Ixx
 
-print(tau_max_force)
