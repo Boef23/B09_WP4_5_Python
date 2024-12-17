@@ -49,13 +49,10 @@ plt.grid(True, linestyle="--", alpha=0.7)
 plt.legend(fontsize=12)
 plt.show()
 
-
-
-def stringerArea():
-    return t_Stringer * l_Stringer
+stringerArea = t_Stringer * l_Stringer
 
 def columnBuckling():
-    sigmaCritical = K * np.pi**2 * elasticModulus * Ixx / (distanceArray()**2 * stringerArea())
+    sigmaCritical = K * np.pi**2 * elasticModulus * Ixx / (distanceArray()**2 * stringerArea)
     return sigmaCritical
 
 print(f'The critical stress is {columnBuckling()} Pa' )
