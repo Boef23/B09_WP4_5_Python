@@ -1,4 +1,5 @@
-# Import libraries 
+# Import libraries
+from Parameters import*
 import matplotlib.pyplot as plt
 import numpy as np
 import math
@@ -20,7 +21,6 @@ rib_distances = [0.60, 0.63, 0.65, 0.68, 0.72, 0.76, 0.81, 0.86, 0.94, 1.04, 1.1
 z_positions = [0]  
 for distance in rib_distances:
     z_positions.append(z_positions[-1] + distance)  
-
 # Chord function  
 def chord(z):
     return Cr - 2 * (1 - taper) * Cr / span * z
