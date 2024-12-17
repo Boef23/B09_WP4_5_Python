@@ -2,8 +2,8 @@
 from Parameters import * 
 
 #Temporary parameters 
-a = 0.01  #[m] width of the stringers 
-t_s = 0.001  #[m] thickness of the stringers
+a = w_Stringer  #[m] width of the stringers 
+t_s = t_Stringer  #[m] thickness of the stringers
 c = 4.9 #This must be changed to a function 
 L_wb = 0.5*c #Length rectangularsised wing box
 H_wb = 0.0732*c #HeightRectangularsied wing box 
@@ -14,7 +14,13 @@ j = 11
 k = 10
 
 #Centroid determination 
-def calculate_Centroid(c, L_wb, H_wb, t_wb, t_s, a, m, n, j, k):
+def calculate_Centroid(z, b=b , t_wb=t_wb, t_s = t_Stringer, a = w_Stringer, m = n_str_Top, n = n_str_Bottom, j = n_str_Bs, k = n_str_Fs):
+     #Calculate Coord along Z
+     chord = c_Root - c_Root*(1-taper_Ratio) * (z/(0.5 * b))
+     c = chord
+     #Define some variables
+     L_wb = 0.5*c #Length rectangularsised wing box
+     H_wb = 0.0732*c #HeightRectangularsied wing box 
      #Determine area of the wing box
      A = (L_wb*2 + H_wb*2) * t_wb  
 
