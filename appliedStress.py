@@ -3,11 +3,11 @@ from ShearDiagram import zAxis, totalMomentDist, totalShearDist, totalTorqueDist
 from LiftDistribution import chord
 import numpy as np
 from Moment_of_inertia_comp import geometryproperties
-from Skin_Buckling import enclosedarea
+from Skin_Buckling import enclosedarea, Ymaxfinder
 from Parameters import t_Fs
 
 #Coefficients
-kv = 1.5
+kv = 1.8
 
 #Spar geometry
 geo = geometry(zAxis)
@@ -32,4 +32,4 @@ Ixx = geometryproperties(zAxis)[0]
 y = -0.06 * chord(zAxis)
 normalStress = totalMomentDist * y / Ixx
 
-print(normalStress)
+print(tau_max_force)

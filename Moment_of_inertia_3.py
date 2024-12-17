@@ -2,16 +2,16 @@
 from Parameters import * 
 
 #Temporary parameters 
-a = w_Stringer  #[m] width of the stringers 
-t_s = t_Stringer  #[m] thickness of the stringers
-c = 4.9 #This must be changed to a function 
-L_wb = 0.5*c #Length rectangularsised wing box
-H_wb = 0.0732*c #HeightRectangularsied wing box 
-t_wb = 0.001 #[m] thickness of the wingbox 
-m = 16
-n = 16
-j = 11
-k = 10
+# a = w_Stringer  #[m] width of the stringers 
+# t_s = t_Stringer  #[m] thickness of the stringers
+# c = 4.9 #This must be changed to a function 
+# L_wb = 0.5*c #Length rectangularsised wing box
+# H_wb = 0.0732*c #HeightRectangularsied wing box 
+# t_wb = 0.001 #[m] thickness of the wingbox 
+# m = 16
+# n = 16
+# j = 11
+# k = 10
 
 #Centroid determination 
 def calculate_Centroid(z, b=b , t_wb=t_wb, t_s = t_Stringer, a = w_Stringer, m = n_str_Top, n = n_str_Bottom, j = n_str_Bs, k = n_str_Fs):
