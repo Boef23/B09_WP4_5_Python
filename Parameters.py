@@ -9,10 +9,10 @@ lambda_Dihedral = 0.0349 #dihedral angle (rad) placeholder value
 c_Root = 4.9 #Root chord (m)
 
 #Stringers
-t_Stringer = 0.002 #Stringer thickness (m) placeholder value
-l_Stringer = 0.3 #Stringer length when unfolded to single rectangular plate (m) placeholder value
-w_Stringer = 0.15 #Stringer width in plane of the skin it is attached to (m) placeholder value
-h_Stringer = 0.15 #Stringer height out of plane of the skin it is attached to (m) placeholder value
+t_str_a = 0.002 #Thickness long side (m) placeholder value
+t_str_b = 0.002 #Thickness short side
+a_str = 0.20 #Stringer width in plane of the skin it is attached to (m) placeholder value
+b_str = 0.15 #Stringer height out of plane of the skin it is attached to (m) placeholder value
 
 #Number of stringer spars
 wb_Frac = 0.5
@@ -54,6 +54,9 @@ n_str_Bottom_11incr = 1
 n_str_Bottom_12incr = 1
 n_str_Bottom_13incr = 1
 n_str_Bottom_14incr = n_str_Bottom_ztip
+
+#Spacings
+delta_Top = (l_top_ztip)/()
 
 #Spars
 t_Fs = 0.006 #thickness front spar (m) placeholder value
