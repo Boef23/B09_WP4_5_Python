@@ -40,5 +40,4 @@ def calculate_Centroid(z, b=b , t_wb=t_wb, t_s = t_Stringer, a = w_Stringer, m =
 
 
 
-print(calculate_Centroid(c, L_wb, H_wb, t_wb, t_s, a, m, n, j, k))
 
