@@ -10,7 +10,7 @@ t_wb = 0.001 #[m] thickness of the wingbox
 m = 16
 n = 16
 j = 11
-k = 11
+k = 10
 
 #Centroid determination 
 
@@ -23,9 +23,9 @@ def calculate_Centroid(c, L_wb, H_wb, t_wb, t_s, a, m, n, j, k):
           y_centroid = ((A+2*(2*m+j+k)*t_s*a) * H_wb/2 + (n-m)*2*t_s*a*(H_wb - 0.25*a))/(A+(n+m+k+j)*2*t_s*a)
      
      if k >= j: 
-          x_centroid = ((A+2*(2*j+m+n)*t_s*a) * H_wb/2 + (k-j)*2*t_s*a*0.25*a)/(A+(n+m+k+j)*2*t_s*a)
+          x_centroid = ((A+2*(2*j+m+n)*t_s*a) * L_wb/2 + (k-j)*2*t_s*a*0.25*a)/(A+(n+m+k+j)*2*t_s*a)
      if j > k: 
-          x_centroid = ((A+2*(2*k+m+n)*t_s*a) * H_wb/2 + (j-k)*2*t_s*a*(0.5*c - 0.25*a))/(A+(n+m+k+j)*2*t_s*a)
+          x_centroid = ((A+2*(2*k+m+n)*t_s*a) * L_wb/2 + (j-k)*2*t_s*a*(0.5*c - 0.25*a))/(A+(n+m+k+j)*2*t_s*a)
      
      return x_centroid, y_centroid 
 
