@@ -4,17 +4,56 @@ taper_Ratio = 0.316 #Taper ratio (-)
 b = 30.65 #wing span (m)
 S = 98.75   #Wing area (m^2)
 lambda_Dihedral = 0.0349 #dihedral angle (rad) placeholder value
+
 #Airfoil
 c_Root = 4.9 #Root chord (m)
+
 #Stringers
 t_Stringer = 0.002 #Stringer thickness (m) placeholder value
 l_Stringer = 0.3 #Stringer length when unfolded to single rectangular plate (m) placeholder value
 w_Stringer = 0.15 #Stringer width in plane of the skin it is attached to (m) placeholder value
 h_Stringer = 0.15 #Stringer height out of plane of the skin it is attached to (m) placeholder value
-n_str_Fs = 2
-n_str_Bs = 2
-n_str_Top = 2
-n_str_Bottom = 2
+
+#Number of stringer spars
+wb_Frac = 0.5
+n_str_Fs = 0
+n_str_Bs = 0
+
+#Number of stringers plates
+n_str_Top_ztip = 2
+n_str_Bottom_ztip = 2
+
+#Increment Stringers Per Bay Top Plate
+n_str_Top_1incr = 1
+n_str_Top_2incr = 1
+n_str_Top_3incr = 1
+n_str_Top_4incr = 1
+n_str_Top_5incr = 1
+n_str_Top_6incr = 1
+n_str_Top_7incr = 1
+n_str_Top_8incr = 1
+n_str_Top_9incr = 1
+n_str_Top_10incr = 1
+n_str_Top_11incr = 1
+n_str_Top_12incr = 1
+n_str_Top_13incr = 1
+n_str_Top_14incr = n_str_Top_ztip
+
+#Increment Stringers Per Bay Top Plate
+n_str_Bottom_1incr = 1
+n_str_Bottom_2incr = 1
+n_str_Bottom_3incr = 1
+n_str_Bottom_4incr = 1
+n_str_Bottom_5incr = 1
+n_str_Bottom_6incr = 1
+n_str_Bottom_7incr = 1
+n_str_Bottom_8incr = 1
+n_str_Bottom_9incr = 1
+n_str_Bottom_10incr = 1
+n_str_Bottom_11incr = 1
+n_str_Bottom_12incr = 1
+n_str_Bottom_13incr = 1
+n_str_Bottom_14incr = n_str_Bottom_ztip
 
 #Spars
 t_Fs = 0.006 #thickness front spar (m) placeholder value
