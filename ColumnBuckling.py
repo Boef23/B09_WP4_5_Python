@@ -51,15 +51,15 @@ plt.show()
 
 stringerArea = t_Stringer * l_Stringer
 
-def columnBuckling():
+def columnBuckling(K , elasticModulus, Ixx, stringerArea  ):
     sigmaCritical = K * np.pi**2 * elasticModulus * Ixx / (distanceArray()**2 * stringerArea)
     return sigmaCritical
 
-print(f'The critical stress is {columnBuckling()} Pa' )
+print(f'The critical stress is {columnBuckling(K , elasticModulus, Ixx, stringerArea)} Pa' )
 
 #Prints the plots for the critical stress
 
-plt.plot(zlist, columnBuckling()/(10**6))
+plt.plot(zlist, columnBuckling(K , elasticModulus, Ixx, stringerArea)/(10**6))
 plt.xlabel("Half Spanwise position (in meters)", fontsize=12)
 plt.ylabel("Critical Stress[MPa]", fontsize=12)
 plt.show()
