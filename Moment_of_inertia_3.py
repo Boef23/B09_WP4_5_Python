@@ -21,11 +21,10 @@ def calculate_Centroid(L_wb, H_wb, t_wb, t_s, a, m, n, j, k):
     if m >= n:
         y_centroid = ((A+2*(2*n+j+k)*t_s*a) * H_wb/2 + (m-n)*2*t_s*a*0.25*a)/(A+(n+m+k+j)*2*t_s*a)
     if n>m:
-         y_centroid = ((A+2*(2*m+j+k)*t_s*a) * H_wb/2 + (m-n)*2*t_s*a*0.25*a)/(A+(n+m+k+j)*2*t_s*a)
+         y_centroid = ((A+2*(2*m+j+k)*t_s*a) * H_wb/2 + (n-m)*2*t_s*a*(H_wb - 0.25*a))/(A+(n+m+k+j)*2*t_s*a)
     
     #X centroid  formulas are not updated 
     if k >= j: 
          x_centroid = ((A+2*(2*n+m+k)*t_s*a) * H_wb/2 + (m-n)*2*t_s*a*0.25*a)/(A+(n+m+k+j)*2*t_s*a)
     if j < k: 
          x_centroid = ((A+2*(2*n+m+k)*t_s*a) * H_wb/2 + (m-n)*2*t_s*a*0.25*a)/(A+(n+m+k+j)*2*t_s*a)
-         
