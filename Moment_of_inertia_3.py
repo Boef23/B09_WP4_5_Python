@@ -84,6 +84,6 @@ def calculate_paramters_per_Bay(nbay, n_Str_Top_Bay, n_Str_Bottom_Bay):
      
      
 #Defined, as bay = 0 is the tip
-for bay in range(14):
-    n_Str_Top_Bayi = n_Str_Top_ztip
-    calculate_paramters_per_Bay(bay, )
+for nbay in range(14):
+    n_Str_Top_Bayi = sum(n_Str_Top_incr[0:(nbay+1)])
+    calculate_paramters_per_Bay(nbay, )
