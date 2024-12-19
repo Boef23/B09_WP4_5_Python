@@ -44,10 +44,12 @@ def calculate_Centroid_wingbox(z, b=b, t_Fs = t_Fs, t_Bs = t_Bs, t_Bottom = t_Bo
      #Calculate centroid with respect to the middle of the wing bock
      y_centroid = ((t_Bottom - t_Top) * (h_Bs*l_top/2) + (m-n)*(h_Bs/2 - y_centroid_str)*A_str)/(A_str+A_wb)
 
-     print(y_centroid)
+     #Assumption --> x_centroid is always in the middle
+     x_centroid  = 0 
 
      #Redefine the reference point to top left 
-     
-     return y_centroid 
+     y_centroid = h_Bs/2 - y_centroid 
+     x_centroid = l_top/2 + x_centroid
+     return x_centroid, y_centroid 
 
 calculate_Centroid_wingbox(0)
