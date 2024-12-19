@@ -10,53 +10,27 @@ c_Root = 4.9 #Root chord (m)
 c_Tip = c_Root - c_Root*(1-taper_Ratio)
 
 #Stringers
-t_str_a = 0.002 #Thickness long side (m) placeholder value
-t_str_b = 0.002 #Thickness short side
-a_str = 0.20 #Stringer width in plane of the skin it is attached to (m) placeholder value
-b_str = 0.15 #Stringer height out of plane of the skin it is attached to (m) placeholder value
+t_Str_a = 0.002 #Thickness long side (m) placeholder value
+t_Str_b = 0.002 #Thickness short side
+a_Str = 0.20 #Stringer width in plane of the skin it is attached to (m) placeholder value
+b_Str = 0.15 #Stringer height out of plane of the skin it is attached to (m) placeholder value
 
 #Number of stringer spars
 wb_Frac = 0.5
-n_str_Fs = 0
-n_str_Bs = 0
+n_Str_Fs = 0
+n_Str_Bs = 0
 
 #Number of stringers plates
-n_str_Top_ztip = 10
-n_str_Bottom_ztip = 2
+n_Str_Top_ztip = 10
+n_Str_Bottom_ztip = 2
 
 #Increment Stringers Per Bay Top Plate 
 # #Should be even amount
-n_str_Top_1incr = 0
-n_str_Top_2incr = 2
-n_str_Top_3incr = 2
-n_str_Top_4incr = 2
-n_str_Top_5incr = 2
-n_str_Top_6incr = 2
-n_str_Top_7incr = 2
-n_str_Top_8incr = 2
-n_str_Top_9incr = 2
-n_str_Top_10incr = 2
-n_str_Top_11incr = 2
-n_str_Top_12incr = 2
-n_str_Top_13incr = 2
-n_str_Top_14incr = 2
+n_Str_Top_incr = [0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
 
 #Increment Stringers Per Bay Top Plate
 #Should be even amount
-n_str_Bottom_1incr = 0
-n_str_Bottom_2incr = 2
-n_str_Bottom_3incr = 2
-n_str_Bottom_4incr = 2
-n_str_Bottom_5incr = 2
-n_str_Bottom_6incr = 2
-n_str_Bottom_7incr = 2
-n_str_Bottom_8incr = 2
-n_str_Bottom_9incr = 2
-n_str_Bottom_10incr = 2
-n_str_Bottom_11incr = 2
-n_str_Bottom_12incr = 2
-n_str_Bottom_13incr = 2
-n_str_Bottom_14incr = 2
+n_Str_Bottom_incr = [0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
 
 #Spacings
 delta_Top = (c_Tip)/(n_str_Top_ztip + 1)
@@ -80,7 +54,8 @@ def geometry(z):
     l_Bottom = 0.5 * chord #length of bottom flange
     return h_Fs, h_Bs, l_Top, l_Bottom
 
-
+#Ribs
+rib_Distances = [0.60, 0.63, 0.65, 0.68, 0.72, 0.76, 0.81, 0.86, 0.94, 1.04, 1.17, 1.38, 1.78, 3.28]
 
 #Cruise
 cruise_Velocity = 228   #Cruise velocity (m/s), M=0.77 at 35000ft alt
