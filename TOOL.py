@@ -7,6 +7,8 @@ from TwistFinal import *
 def marginofsafety(failuresigma, appliedsigma):
     marginofsafety = (failuresigma)/(appliedsigma)
     return marginofsafety
+
+LC4list = np.ones_like(zAxis)*450*10**6
 #################################################################################################################################
 #Tool
 #zAxis
@@ -51,7 +53,7 @@ margin_LC2 = marginofsafety(,normalStress)
 #LC3
 margin_LC3 = marginofsafety(,normalStress)
 #LC4
-margin_LC4 = marginofsafety(,normalStress)
+margin_LC4 = marginofsafety(LC4list,normalStress)
 
 #Deflection
 if maxdeflectiontip <= 4.5:
@@ -64,3 +66,40 @@ if maxtwisttip <= 10:
     print('Twist correct')
 else:
     print('Twist incorrect')
+
+#PLOTS
+
+if __name__ == '__main__':
+    if Plots == True:
+        plt.subplot(2,2,1)
+        plt.plot(zAxis,margin_LC1)
+        plt.title('Margin of Stress LC1')
+        plt.xlabel('Z postion [m]')
+        plt.ylabel('Margin of Stress [-]')
+        plt.grid(True)
+
+
+        plt.subplot(2,2,2)
+        plt.plot(zAxis,margin_LC2)
+        plt.title('Margin of Stress LC2')
+        plt.xlabel('Z postion [m]')
+        plt.ylabel('Margin of Stress [-]')
+        plt.grid(True)
+
+        plt.subplot(2,2,3)
+        plt.plot(zAxis,margin_LC3)
+        plt.title('Margin of Stress LC3')
+        plt.xlabel('Z postion [m]')
+        plt.ylabel('Margin of Stress [-]')
+        plt.grid(True)
+
+
+        plt.subplot(2,2,4)
+        plt.plot(zAxis,margin_LC4)
+        plt.title('Margin of Stress LC4')
+        plt.xlabel('Z postion [m]')
+        plt.ylabel('Margin of Stress [-]')
+        plt.grid(True)
+
+
+        plt.show()
