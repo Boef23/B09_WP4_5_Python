@@ -4,6 +4,7 @@ from appliedStress import *
 from DeflectionFinal import *
 from TwistFinal import *
 from ColumnBuckling import *
+from Moment_of_inertia_3 import *
 
 def marginofsafety(failuresigma, appliedsigma):
     marginofsafety = (failuresigma)/(appliedsigma)
@@ -18,7 +19,9 @@ def areastringer(t_Str_a = t_Str_a, a_Str = a_Str, t_Str_b = t_Str_b, b_Str = b_
     areastringer = t_Str_a * a_Str + t_Str_b + b_Str
     return areastringer
 
-I_XX_Zlist, I_YY_Zlist, J_Zlist = #Need From Martijn and Björn
+I_XX_Zlist = Ixx_list
+I_YY_Zlist = 
+J_Zlist = I_XX_Zlist + I_YY_Zlist
 
 
 LC1list = 1
@@ -35,7 +38,6 @@ Plots = True
 #Compare Applied with Critical
 
 #Ixx, Iyy, J
-I_XX_Zlist, I_YY_Zlist, J_Zlist = #Need From Martijn and Björn
 if __name__ == '__main__':
     if Plots == True:
         plt.subplot(1,3,1)
@@ -63,11 +65,11 @@ if __name__ == '__main__':
 
 
 #LC1
-margin_LC1 = marginofsafety(,tau_max_force)
+margin_LC1 = marginofsafety(LC1list,tau_max_force)
 #LC2
-margin_LC2 = marginofsafety(,normalStress)
+margin_LC2 = marginofsafety(LC2list,normalStress)
 #LC3
-margin_LC3 = marginofsafety(,normalStress)
+margin_LC3 = marginofsafety(LC3list,normalStress)
 #LC4
 margin_LC4 = marginofsafety(LC4list,normalStress)
 
