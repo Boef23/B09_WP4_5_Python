@@ -24,36 +24,38 @@ n_str_Bs = 0
 n_str_Top_ztip = 2
 n_str_Bottom_ztip = 2
 
-#Increment Stringers Per Bay Top Plate
-n_str_Top_1incr = 1
-n_str_Top_2incr = 1
-n_str_Top_3incr = 1
-n_str_Top_4incr = 1
-n_str_Top_5incr = 1
-n_str_Top_6incr = 1
-n_str_Top_7incr = 1
-n_str_Top_8incr = 1
-n_str_Top_9incr = 1
-n_str_Top_10incr = 1
-n_str_Top_11incr = 1
-n_str_Top_12incr = 1
-n_str_Top_13incr = 1
+#Increment Stringers Per Bay Top Plate 
+# #Should be even amount
+n_str_Top_1incr = 2
+n_str_Top_2incr = 2
+n_str_Top_3incr = 2
+n_str_Top_4incr = 2
+n_str_Top_5incr = 2
+n_str_Top_6incr = 2
+n_str_Top_7incr = 2
+n_str_Top_8incr = 2
+n_str_Top_9incr = 2
+n_str_Top_10incr = 2
+n_str_Top_11incr = 2
+n_str_Top_12incr = 2
+n_str_Top_13incr = 2
 n_str_Top_14incr = 0
 
 #Increment Stringers Per Bay Top Plate
-n_str_Bottom_1incr = 1
-n_str_Bottom_2incr = 1
-n_str_Bottom_3incr = 1
-n_str_Bottom_4incr = 1
-n_str_Bottom_5incr = 1
-n_str_Bottom_6incr = 1
-n_str_Bottom_7incr = 1
-n_str_Bottom_8incr = 1
-n_str_Bottom_9incr = 1
-n_str_Bottom_10incr = 1
-n_str_Bottom_11incr = 1
-n_str_Bottom_12incr = 1
-n_str_Bottom_13incr = 1
+#Should be even amount
+n_str_Bottom_1incr = 2
+n_str_Bottom_2incr = 2
+n_str_Bottom_3incr = 2
+n_str_Bottom_4incr = 2
+n_str_Bottom_5incr = 2
+n_str_Bottom_6incr = 2
+n_str_Bottom_7incr = 2
+n_str_Bottom_8incr = 2
+n_str_Bottom_9incr = 2
+n_str_Bottom_10incr = 2
+n_str_Bottom_11incr = 2
+n_str_Bottom_12incr = 2
+n_str_Bottom_13incr = 2
 n_str_Bottom_14incr = 0
 
 #Spacings
