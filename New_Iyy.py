@@ -1,10 +1,15 @@
 from Parameters import *
 from LiftDistribution import chord
 from ShearDiagram import zAxis
+from ColumnBuckling import distanceArray
+import numpy as np
 
 #Chord
 h_Fs, h_Bs, l_Top, l_Bottom = geometry(zAxis)
 
+#
+original_values = np.array([0.00, 0.60, 1.23, 1.88, 2.56, 3.28, 4.04, 
+                            4.84, 5.71, 6.65, 7.68, 8.86, 10.24, 12.02, 15.30])
 
 
 #Stringer local calculations
@@ -20,5 +25,12 @@ I_yy_Bottom_Plate = t_Bottom * (l_Bottom)**3 / 12   #Array
 #Parallel Axis Theorem
 I_yy_Fs = h_Fs * t_Fs * (l_Top / 2)**2      #Array
 I_yy_Bs = h_Bs * t_Bs * (l_Bottom / 2)**2   #Array
+
+#stringers shit
+bayLength = []
+for item in original_values:
+    bayLength.append(chord(item))
+print(len(bayLength))
+
 
 

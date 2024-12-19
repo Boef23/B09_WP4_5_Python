@@ -40,13 +40,14 @@ def distanceArray():
     return result
 
 # Plot the graph
-plt.figure(figsize=(12, 6))
-plt.plot(distanceArray(), label="Generated Array (Proportional Steps)", color="blue")
-plt.xlabel("Half Spanwise position (in centimeters)", fontsize=12)
-plt.ylabel("Lengths between consecutive ribs (in meters)", fontsize=12)
-plt.grid(True, linestyle="--", alpha=0.7)
-plt.legend(fontsize=12)
-plt.show()
+if __name__ == '__main__':
+    plt.figure(figsize=(12, 6))
+    plt.plot(distanceArray(), label="Generated Array (Proportional Steps)", color="blue")
+    plt.xlabel("Half Spanwise position (in centimeters)", fontsize=12)
+    plt.ylabel("Lengths between consecutive ribs (in meters)", fontsize=12)
+    plt.grid(True, linestyle="--", alpha=0.7)
+    plt.legend(fontsize=12)
+    plt.show()
 
 stringerArea = 10 #placeholder bvalue
 
@@ -54,12 +55,13 @@ def columnBuckling(K , elasticModulus, Ixx, stringerArea  ):
     sigmaCritical = K * np.pi**2 * elasticModulus * Ixx / (distanceArray()**2 * stringerArea)
     return sigmaCritical
 
-print(f'The critical stress is {columnBuckling(K , elasticModulus, Ixx, stringerArea)} Pa' )
+if __name__ == '__main__':
+    print(f'The critical stress is {columnBuckling(K , elasticModulus, Ixx, stringerArea)} Pa' )
 
-#Prints the plots for the critical stress
+    #Prints the plots for the critical stress
 
-plt.plot(zAxis, columnBuckling(K , elasticModulus, Ixx, stringerArea)/(10**6))
-plt.xlabel("Half Spanwise position (in meters)", fontsize=12)
-plt.ylabel("Critical Stress[MPa]", fontsize=12)
-plt.show()
+    plt.plot(zAxis, columnBuckling(K , elasticModulus, Ixx, stringerArea)/(10**6))
+    plt.xlabel("Half Spanwise position (in meters)", fontsize=12)
+    plt.ylabel("Critical Stress[MPa]", fontsize=12)
+    plt.show()
 
