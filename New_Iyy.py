@@ -21,4 +21,7 @@ I_yy_Stringer = t_str_b * b_Str**3 / 12 + a_Str * t_str_a * x_Bar_Str**2 + b_Str
 I_yy_Top_Plate = t_Top * (0.5 * chords)**3 / 12
 I_yy_Bottom_Plate = t_Bottom * (0.5 * chords)**3 / 12
 
+#Steiner Theorem
+I_yy_Fs = 
+
 
