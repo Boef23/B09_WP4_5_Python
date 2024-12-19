@@ -3,9 +3,7 @@ from Parameters import *
 import numpy as np
 increment_z_Step = 0.01 #[m]
 z_list = np.arange(0, 15.325, 0.01) 
-Ixx_list = 
-
-def
+Ixx_list = []
 
 def calculate_Centroid_Stringer(a_Str = a_Str, t_Str_a = t_Str_a, b_Str = b_Str, t_Str_b = t_Str_b):
      x_Centroid_Stringer = (0.5 * t_Str_b * b_Str ** 2)/(a_Str * t_Str_a + b_Str * t_Str_b)
@@ -21,7 +19,6 @@ def calculate_Inertia_Local_Stringer(a_Str = a_Str, t_Str_a = t_Str_a, b_Str = b
 def calculate_Centroid_wingbox(z, b=b, t_Fs = t_Fs, t_Bs = t_Bs, t_Bottom = t_Bottom, t_Top = t_Top, m = n_Str_Bottom_ztip, n = n_Str_Top_ztip, t_str_a = t_Str_a, t_str_b = t_Str_b, a_str = a_Str, b_str = b_Str):
      #Calculate Coord along Z
      chord = c_Root - c_Root*(1-taper_Ratio) * (z/(0.5 * b))
-     c = chord
 
      #Calculate H_BS, L_top 
      h_Bs = 0.0732 * chord #height of back spar
@@ -48,46 +45,32 @@ def calculate_Centroid_wingbox(z, b=b, t_Fs = t_Fs, t_Bs = t_Bs, t_Bottom = t_Bo
 
      return x_Centroid, y_Centroid 
 
-def Ixx_Fs():
+
+def Ixx_Wingbox(z, n_Str_Top, n_Str_Bottom, b = b):
+     chord = c_Root - c_Root*(1-taper_Ratio) * (z/(0.5 * b))
+     h_Bs = 0.0732 * chord #height of back spar
+     l_Top = 0.5 * chord #length op top flange 
+     l_Bottom = l_Top
+
+     y_Centroid = calculate_Centroid_wingbox[1]
+     Ixx_Local_Stringer = calculate_Inertia_Local_Stringer[0]
+     y_Centroid_Stringer = calculate_Centroid_Stringer[1]
+
      Ixx_Fs = (t_Fs * h_Bs ** 3)/12 + t_Fs * h_Bs * (0.5 * h_Bs - y_Centroid) ** 2
-     #From geometry function, h_Bs is used instead of h_Fs due to assumption
-     return Ixx_Fs
+     Ixx_Top = (l_Top * t_Top ** 3)/12 + l_Top * t_Top * y_Centroid ** 2
+     Ixx_Bs = (t_Bs * h_Bs ** 3)/12 + t_Bs * h_Bs * (0.5 * h_Bs - y_Centroid) ** 2
+     Ixx_Bottom = (l_Bottom * t_Bottom ** 3)/12 + l_Bottom * t_Bottom * (h_Bs - y_Centroid) ** 2
+     Ixx_Stringers = (n_Str_Top + n_Str_Bottom) * Ixx_Local_Stringer + n_Str_Top * ((a_Str * t_Str_a + b_Str * t_Str_b) * (y_Centroid - y_Centroid_Stringer) ** 2) + n_Str_Bottom * ((a_Str * t_Str_a + b_Str * t_Str_b) * (h_Bs - y_Centroid_Stringer - y_Centroid) ** 2)
+     
+     Ixx = Ixx_Fs + Ixx_Top + Ixx_Bs + Ixx_Bottom + Ixx_Stringers 
 
-def Ixx_Top():
-    Ixx_Top = (l_Top * t_Top ** 3)/12 + l_Top * t_Top * y_Centroid ** 2
-    #From geometry function
-    return Ixx_Top
-
-def Ixx_Bs():
-    Ixx_Bs = (t_Bs * h_Bs ** 3)/12 + t_Bs * h_Bs * (0.5 * h_Bs - y_Centroid) ** 2
-    #From geometry function
-    return Ixx_Bs
-
-def Ixx_Bottom():
-    Ixx_Bottom = (l_Bottom * t_Bottom ** 3)/12 + l_Bottom * t_Bottom * (h_Bs - y_Centroid) ** 2
-    #From geometry function
-    return Ixx_Bottom
-
-def Ixx_Stringers():
-    Ixx_Stringers = (n_Str_Top(i) + n_Str_Bottom(i)) * Ixx_Local_Stringer + n_Str_Top(i) * ((a_Str * t_Str_a + b_Str * t_Str_b) * (y_Centroid - y_Centroid_Stringer) ** 2) + n_Str_Bottom(i) * ((a_Str * t_Str_a + b_Str * t_Str_b) * (h_Bs - y_Centroid_Stringer - y_Centroid) ** 2)
-    #From list of number of stringers per side and i is increment value to later put this in a loop per bay.
-    #Ixx_Local_Stringer is from local inertia function
-    return Ixx_Stringers
-
-def Ixx_Wingbox_final():
-       Ixx = Ixx_Fs() + Ixx_Top() + Ixx_Bs() + Ixx_Bottom() + Ixx_Stringers()       
-       return Ixx
-
-
-def calculate_paramters_per_Bay(nbay, n_Str_Top_Bay, n_Str_Bottom_Bay):
-    #Calculate Centroid per increment
-    calculate_Centroid_wingbox(n = n_Str_Top_Bay, m = n_Str_Bottom_Bay)
-
+     return Ixx
 
 
     #Calculate increment 
 
-def checkBay(z):    
+def checkBay(z):  
+     z = b/2 - z   
      if z < 0.60:
           #So now it is in bay 14
           n_str_top = sum(n_Str_Top_incr[0:14])
@@ -158,5 +141,8 @@ for z in z_list:
      centroid_wingbox = calculate_Centroid_wingbox(z, n = n_str_top, m = n_str_bottom)
      x_centroid_wingbox = centroid_wingbox[0]
      y_centroid_wingbox = centroid_wingbox[1]
+     
+     Ixx_wingbox_z = Ixx_Wingbox(z, n_str_top, n_str_bottom)
 
+     Ixx_list.append(Ixx_Wingbox)
 
