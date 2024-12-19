@@ -146,4 +146,3 @@ for z in z_list:
 
      Ixx_list.append(Ixx_wingbox_z)
 
-print(Ixx_list)
