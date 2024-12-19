@@ -1,8 +1,8 @@
 """I_xx, I_yy calculation"""
 from Parameters import * 
-
+import numpy as np
 increment_z_Step = 0.01 #[m]
-
+z_list = np.arange(0, 15.325, 0.01) 
 
 
 def calculate_Centroid_Stringer(a_Str = a_Str, t_Str_a = t_Str_a, b_Str = b_Str, t_Str_b = t_Str_b):
@@ -83,7 +83,38 @@ def calculate_paramters_per_Bay(nbay, n_Str_Top_Bay, n_Str_Bottom_Bay):
     #Calculate increment 
      
      
+
+
 #Defined, as bay = 0 is the tip
-for nbay in range(14):
-    n_Str_Top_Bayi = sum(n_Str_Top_incr[0:(nbay+1)])
-    calculate_paramters_per_Bay(nbay, )
+for z in z_list:
+    if z < 0.60:
+        #So now it is in bay 14
+        
+     
+    elif 0.60 <= z < 1.23:
+        #So now it is in bay 13, etc 
+  
+    elif 1.23 <= z < 1.88:
+    
+    elif 1.88 <= z < 2.56:
+       
+    elif 2.56 <= z < 3.28:
+
+    elif 3.28 <= z < 4.04:
+
+    elif 4.04 <= z < 4.85:
+
+    elif 4.85 <= z < 5.71:
+
+    elif 5.71 <= z < 6.65:
+
+    elif 6.65 <= z < 7.69:
+ 
+    elif 7.69 <= z < 8.86:
+
+    elif 8.86 <= z < 10.24:
+
+    elif 10.24 <= z < 12.02:
+
+    else:
+
