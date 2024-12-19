@@ -55,4 +55,6 @@ def calculate_Centroid_wingbox(z, b=b, t_Fs = t_Fs, t_Bs = t_Bs, t_Bottom = t_Bo
 
      return x_centroid, y_centroid 
 
-calculate_Centroid_wingbox(0)
+def calculate_paramters_per_Bay():
+     #Get the bay values
+     
