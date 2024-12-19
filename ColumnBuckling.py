@@ -7,6 +7,7 @@ import scipy as sp
 import matplotlib.pyplot as plt
 from ShearDiagram import zAxis
 from Moment_of_inertia_3 import *
+from New_Iyy import Str_Area
 
 
 elasticModulus = 72.4 * 10**9 # Pa
@@ -53,7 +54,7 @@ if __name__ == '__main__':
     plt.legend(fontsize=12)
     plt.show()
 
-stringerArea = 10 #placeholder bvalue
+stringerArea = Str_Area #placeholder bvalue
 
 def columnBuckling(K , elasticModulus, Ixx, stringerArea  ):
     sigmaCritical = K * np.pi**2 * elasticModulus * Ixx / (distanceArray()**2 * stringerArea)
