@@ -21,4 +21,5 @@ def integral_1(z): #calculates the integral, as there is a discontinuity at the 
     int_2, error2 = scipy.integrate.quad(integrand, mlg_Pos, z)
     return int_1 + int_2
 
-print(f'Total Deflection at tip is: {integral_1(b/2) * 180 / np.pi} [deg]')
+maxtwisttip = integral_1(b/2) * 180 / np.pi
+print(f'Total Deflection at tip is: {maxtwisttip} [deg]')

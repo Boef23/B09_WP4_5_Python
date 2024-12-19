@@ -30,7 +30,7 @@ tau_max = tau_max_force + tau_torque
 
 #Normal stress
 Ixx = geometryproperties(zAxis)[0]
-#y_max_top = Ymaxfinder(zAxis, calculate_Centroid(zAxis)[1])[1]
-#normalStress = totalMomentDist * y_max_top / Ixx
+y_max_top = Ymaxfinder(zAxis, calculate_Centroid_wingbox(zAxis)[1])[1]
+normalStress = totalMomentDist * y_max_top / Ixx
 
 print(tau_max)
