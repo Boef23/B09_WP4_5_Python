@@ -1,4 +1,5 @@
 import numpy as np
+import matplotlib.pyplot as plt
 
 #Wing
 lambda_LE = 0.4363 #Leading edge sweep angle (rad) placeholder value
@@ -28,11 +29,11 @@ n_Str_Bottom_ztip = 2
 
 #Increment Stringers Per Bay Top Plate 
 # #Should be even amount
-n_Str_Top_incr = [0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
+n_Str_Top_incr = [n_Str_Top_ztip, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
 
 #Increment Stringers Per Bay Top Plate
 #Should be even amount
-n_Str_Bottom_incr = [0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
+n_Str_Bottom_incr = [n_Str_Bottom_ztip, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
 
 #Spacings
 delta_Top = (0.5*c_Tip)/(n_Str_Top_ztip + 1)
@@ -83,6 +84,34 @@ zAxis = np.arange(0, 15.325, 0.01)
 #PLots?
 Plots = False
 #Compare Applied with Critical
+
+#Ixx, Iyy, J
+I_XX_Zlist, I_YY_Zlist, J_Zlist = geometryprop
+
+if Plots == True:
+    plt.subplot(1,3,1)
+    plt.plot(zAxis,I_XX_Zlist)
+    plt.title('I_XX [m^4]')
+    plt.xlabel('Z postion [m]')
+    plt.ylabel('I_XX [m^4]')
+    plt.grid(True)
+
+    plt.subplot(1,3,2)
+    plt.plot(zlist,I_YY_Zlist)
+    plt.title('I_YY [m^4]')
+    plt.xlabel('Z postion [m]')
+    plt.ylabel('I_YY [m^4]')
+    plt.grid(True)
+
+    plt.subplot(1,3,3)
+    plt.plot(zlist,J_Zlist)
+    plt.title('J [m^4]')
+    plt.xlabel('Z postion [m]')
+    plt.ylabel('J [m^4]')
+    plt.grid(True)
+
+    plt.show()
+
 
 #LC1
 
