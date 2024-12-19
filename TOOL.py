@@ -3,11 +3,27 @@ import matplotlib.pyplot as plt
 from appliedStress import *
 from DeflectionFinal import *
 from TwistFinal import *
+from ColumnBuckling import *
 
 def marginofsafety(failuresigma, appliedsigma):
     marginofsafety = (failuresigma)/(appliedsigma)
     return marginofsafety
 
+t_Str_a = 0.002 #Thickness long side (m) placeholder value
+t_Str_b = 0.002 #Thickness short side
+a_Str = 0.20 #Stringer width in plane of the skin it is attached to (m) placeholder value
+b_Str = 0.15 #
+
+def areastringer(t_Str_a = t_Str_a, a_Str = a_Str, t_Str_b = t_Str_b, b_Str = b_Str):
+    areastringer = t_Str_a * a_Str + t_Str_b + b_Str
+    return areastringer
+
+I_XX_Zlist, I_YY_Zlist, J_Zlist = #Need From Martijn and Björn
+
+
+LC1list = 1
+LC2list = 2
+LC3list = columnBuckling(K , elasticModulus, Ixx = I_XX_Zlist, stringerArea = areastringer()  )
 LC4list = np.ones_like(zAxis)*450*10**6
 #################################################################################################################################
 #Tool
@@ -19,7 +35,7 @@ Plots = True
 #Compare Applied with Critical
 
 #Ixx, Iyy, J
-I_XX_Zlist, I_YY_Zlist, J_Zlist = #Need From Martijn
+I_XX_Zlist, I_YY_Zlist, J_Zlist = #Need From Martijn and Björn
 if __name__ == '__main__':
     if Plots == True:
         plt.subplot(1,3,1)
