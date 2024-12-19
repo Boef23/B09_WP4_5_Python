@@ -20,7 +20,7 @@ def areastringer(t_Str_a = t_Str_a, a_Str = a_Str, t_Str_b = t_Str_b, b_Str = b_
     return areastringer
 
 I_XX_Zlist = Ixx_list
-I_YY_Zlist = 
+I_YY_Zlist = #Odin Daan
 J_Zlist = I_XX_Zlist + I_YY_Zlist
 
 
