@@ -5,13 +5,12 @@
 import numpy as np
 import scipy as sp
 import matplotlib.pyplot as plt
-from Parameters import l_Stringer, t_Stringer, b
-from Moment_of_inertia_comp import  zlist
+from ShearDiagram import zAxis
 
 
 elasticModulus = 72.4 * 10**9 # Pa
 K = 4 #due to ribs, two sides are clamped
-Ixx = 5/24 * t_Stringer * (l_Stringer/2)**3
+Ixx = 10 #placehoder value
 
 def distanceArray():
     # Original array influencing step lengths
@@ -49,7 +48,7 @@ plt.grid(True, linestyle="--", alpha=0.7)
 plt.legend(fontsize=12)
 plt.show()
 
-stringerArea = t_Stringer * l_Stringer
+stringerArea = 10 #placeholder bvalue
 
 def columnBuckling(K , elasticModulus, Ixx, stringerArea  ):
     sigmaCritical = K * np.pi**2 * elasticModulus * Ixx / (distanceArray()**2 * stringerArea)
@@ -59,7 +58,7 @@ print(f'The critical stress is {columnBuckling(K , elasticModulus, Ixx, stringer
 
 #Prints the plots for the critical stress
 
-plt.plot(zlist, columnBuckling(K , elasticModulus, Ixx, stringerArea)/(10**6))
+plt.plot(zAxis, columnBuckling(K , elasticModulus, Ixx, stringerArea)/(10**6))
 plt.xlabel("Half Spanwise position (in meters)", fontsize=12)
 plt.ylabel("Critical Stress[MPa]", fontsize=12)
 plt.show()
