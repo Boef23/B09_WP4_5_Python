@@ -14,18 +14,18 @@ from Parameters import *
 
 
 
-def calculate_Centroid_Stringer(a_Str = a_str, t_Str_a = t_str_a, b_Str = b_str, t_Str_b = t_str_b):
+def calculate_Centroid_Stringer(a_Str = a_Str, t_Str_a = t_Str_a, b_Str = b_Str, t_Str_b = t_Str_b):
      x_Centroid_Stringer = (0.5 * t_Str_b * b_Str ** 2)/(a_Str * t_Str_a + b_Str * t_Str_b)
      y_Centroid_Stringer = (0.5 * t_Str_a * a_Str ** 2)/(a_Str * t_Str_a + b_Str * t_Str_b)
      return x_Centroid_Stringer, y_Centroid_Stringer
 
-def calculate_Inertia_Local_Stringer(a_Str = a_str, t_Str_a = t_str_a, b_Str = b_str, t_Str_b = t_str_b, x_Centroid_Stringer = calculate_Centroid_Stringer()[0], y_Centroid_Stringer = calculate_Centroid_Stringer()[1]):
+def calculate_Inertia_Local_Stringer(a_Str = a_Str, t_Str_a = t_Str_a, b_Str = b_Str, t_Str_b = t_Str_b, x_Centroid_Stringer = calculate_Centroid_Stringer()[0], y_Centroid_Stringer = calculate_Centroid_Stringer()[1]):
      Ixx_Local_Stringer = (b_Str * t_Str_b ** 3)/12 + b_Str * t_Str_b * y_Centroid_Stringer ** 2 + (t_Str_a * a_Str ** 3)/12 + a_Str * t_Str_a * (0.5 * a_Str - y_Centroid_Stringer) ** 2
      Iyy_Local_Stringer = (t_Str_b * b_Str ** 3)/12 + b_Str * t_Str_b * (0.5 * b_Str - x_Centroid_Stringer) ** 2 + (a_Str * t_Str_a ** 3)/12 + a_Str * t_Str_a * x_Centroid_Stringer ** 2
      return Ixx_Local_Stringer, Iyy_Local_Stringer
 
 #Centroid determination 
-def calculate_Centroid_wingbox(z, b=b, t_Fs = t_Fs, t_Bs = t_Bs, t_Bottom = t_Bottom, t_Top = t_Top, m = n_str_Bottom_ztip, n = n_str_Top_ztip, t_str_a = t_str_a, t_str_b = t_str_b, a_str = a_str, b_str = b_str):
+def calculate_Centroid_wingbox(z, b=b, t_Fs = t_Fs, t_Bs = t_Bs, t_Bottom = t_Bottom, t_Top = t_Top, m = n_Str_Bottom_ztip, n = n_Str_Top_ztip, t_str_a = t_Str_a, t_str_b = t_Str_b, a_str = a_Str, b_str = b_Str):
      #Calculate Coord along Z
      chord = c_Root - c_Root*(1-taper_Ratio) * (z/(0.5 * b))
      c = chord
@@ -47,7 +47,6 @@ def calculate_Centroid_wingbox(z, b=b, t_Fs = t_Fs, t_Bs = t_Bs, t_Bottom = t_Bo
      #Assumption --> x_centroid is always in the middle
      x_centroid  = 0 
 
-     print(x_centroid, y_centroid)
 
      #Redefine the reference point to top left 
      y_centroid = h_Bs/2 - y_centroid 
