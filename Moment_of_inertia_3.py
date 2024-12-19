@@ -1,5 +1,6 @@
 """I_xx, I_yy calculation"""
 from Parameters import * 
+from 
 
 #Temporary parameters 
 # a = w_Stringer  #[m] width of the stringers 
@@ -13,21 +14,23 @@ from Parameters import *
 # k = 10
 
 #Centroid determination 
-def calculate_Centroid(z, b=b, t_Fs = t_Fs, t_Bs = t_Bs, t_Bottom = t_Bottom, t_Top = t_Top, a = w_Stringer, m = n_str_Top, n = n_str_Bottom):
+def calculate_Centroid(z, b=b, t_Fs = t_Fs, t_Bs = t_Bs, t_Bottom = t_Bottom, t_Top = t_Top, a = w_Stringer, b  m = n_str_Top, n = n_str_Bottom):
      #Calculate Coord along Z
      chord = c_Root - c_Root*(1-taper_Ratio) * (z/(0.5 * b))
      c = chord
 
      #Calculate H_BS, L_top 
-     #Call function
+     h_Bs = 0.0732 * chord #height of back spar
+     l_top = 0.5 * chord #length op top flange 
+     
+     #Calculate area of the wing box and area of the stringers
+     A_wb = (t_Top + t_Bottom) * l_top + (t_Fs + t_Bs) * h_Bs
+     A_str = (m + n) * (a)
 
-     #Define some variables
-     L_wb = 0.5*c #Length rectangularsised wing box
-     H_wb = 0.0732*c #HeightRectangularsied wing box 
-     #Determine area of the wing box
-     A_wb = (t_Top + t_Bottom) * 
-
+     #Calculate centroid with respect to the middle of the wing bock
      y_centroid = 
+
+     #Redefine the reference point to top left 
      
      return x_centroid, y_centroid 
 
