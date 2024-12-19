@@ -25,7 +25,7 @@ def calculate_Inertia_Local_Stringer(a_Str = a_str, t_Str_a = t_str_a, b_Str = b
      return Ixx_Local_Stringer, Iyy_Local_Stringer
 
 #Centroid determination 
-def calculate_Centroid_wingbox(z, b=b, t_Fs = t_Fs, t_Bs = t_Bs, t_Bottom = t_Bottom, t_Top = t_Top, m = n_str_Top_ztip, n = n_str_Bottom_ztip, t_str_a = t_str_a, t_str_b = t_str_b, a_str = a_str, b_str = b_str):
+def calculate_Centroid_wingbox(z, b=b, t_Fs = t_Fs, t_Bs = t_Bs, t_Bottom = t_Bottom, t_Top = t_Top, m = n_str_Bottom_ztip, n = n_str_Top_ztip, t_str_a = t_str_a, t_str_b = t_str_b, a_str = a_str, b_str = b_str):
      #Calculate Coord along Z
      chord = c_Root - c_Root*(1-taper_Ratio) * (z/(0.5 * b))
      c = chord
