@@ -3,6 +3,7 @@ from Parameters import *
 import numpy as np
 increment_z_Step = 0.01 #[m]
 z_list = np.arange(0, 15.325, 0.01) 
+Ixx_list = 
 
 
 def calculate_Centroid_Stringer(a_Str = a_Str, t_Str_a = t_Str_a, b_Str = b_Str, t_Str_b = t_Str_b):
@@ -147,6 +148,8 @@ def checkBay(z):
 
 #Defined, as bay = 0 is the tip
 for z in z_list:
-    
+     n_str = checkBay(z)
+     n_str_top = n_str[0]
+     n_str_bottom = n_str[1]
      calculate_Centroid_wingbox(z, n = n_str_top, m = n_str_bottom)
 
