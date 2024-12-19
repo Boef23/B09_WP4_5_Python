@@ -63,6 +63,9 @@ delta_Bottom = (c_Tip)/(n_str_Bottom_ztip + 1)
 #Spars
 t_Fs = 0.006 #thickness front spar (m) placeholder value
 t_Bs = 0.006 #thickness back spar (m) placeholder value
+h_Fs = 0.3 #fornt spar heighr(m) placeholder value
+h_Bs = 0.2 #back spar height (m) placeholder value
+
 
 #Plates
 t_Top = 0.0015 #thickness top plate (m) placeholder value
