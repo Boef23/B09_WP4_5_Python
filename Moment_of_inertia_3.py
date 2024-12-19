@@ -3,9 +3,7 @@ from Parameters import *
 import numpy as np
 increment_z_Step = 0.01 #[m]
 z_list = np.arange(0, 15.325, 0.01) 
-Ixx_list = 
-
-def
+Ixx_list = []
 
 def calculate_Centroid_Stringer(a_Str = a_Str, t_Str_a = t_Str_a, b_Str = b_Str, t_Str_b = t_Str_b):
      x_Centroid_Stringer = (0.5 * t_Str_b * b_Str ** 2)/(a_Str * t_Str_a + b_Str * t_Str_b)
@@ -48,7 +46,7 @@ def calculate_Centroid_wingbox(z, b=b, t_Fs = t_Fs, t_Bs = t_Bs, t_Bottom = t_Bo
      return x_Centroid, y_Centroid 
 
 
-def Ixx_Wingbox(z, n_Str_Top, n_Str_Bottom) b = b):
+def Ixx_Wingbox(z, n_Str_Top, n_Str_Bottom, b = b):
      chord = c_Root - c_Root*(1-taper_Ratio) * (z/(0.5 * b))
      h_Bs = 0.0732 * chord #height of back spar
      l_Top = 0.5 * chord #length op top flange 
@@ -69,15 +67,10 @@ def Ixx_Wingbox(z, n_Str_Top, n_Str_Bottom) b = b):
      return Ixx
 
 
-def calculate_paramters_per_Bay(nbay, n_Str_Top_Bay, n_Str_Bottom_Bay):
-    #Calculate Centroid per increment
-    calculate_Centroid_wingbox(n = n_Str_Top_Bay, m = n_Str_Bottom_Bay)
-
-
-
     #Calculate increment 
 
-def checkBay(z):    
+def checkBay(z):  
+     z = b/2 - z   
      if z < 0.60:
           #So now it is in bay 14
           n_str_top = sum(n_Str_Top_incr[0:14])
@@ -148,8 +141,8 @@ for z in z_list:
      centroid_wingbox = calculate_Centroid_wingbox(z, n = n_str_top, m = n_str_bottom)
      x_centroid_wingbox = centroid_wingbox[0]
      y_centroid_wingbox = centroid_wingbox[1]
-
      
-     
+     Ixx_wingbox_z = Ixx_Wingbox(z, n_str_top, n_str_bottom)
 
+     Ixx_list.append(Ixx_Wingbox)
 
