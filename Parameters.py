@@ -29,10 +29,12 @@ n_Str_Bottom_ztip = 2
 
 #Increment Stringers Per Bay Top Plate 
 # #Should be even amount
+#First value is basic amount of stringers
 n_Str_Top_incr = [n_Str_Top_ztip, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
 
 #Increment Stringers Per Bay Top Plate
 #Should be even amount
+#First value is basic amount of stringers
 n_Str_Bottom_incr = [n_Str_Bottom_ztip, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
 
 #Spacings
