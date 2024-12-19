@@ -5,12 +5,12 @@ import scipy.integrate
 import scipy.interpolate
 from scipy.integrate import quad,  dblquad
 from LiftDistribution import LiftCurve
-from Parameters import b, engine_Mass, mlg_Pos
+from Parameters import *
 from ShearDiagram import  reactionShear, zAxis, dz, totalMomentDist
 from Moment_of_Inertia2 import *
 from Moment_of_inertia_comp import zlist, geometryproperties
 
-elasticModulus = 72.4 * 10**9 # Pa
+elasticModulus = E # Pa
 massLandingGear = 302.67 #kg
 
 momentOfInertia_X, momentOfInertia_Y, momentOfInertia_J = geometryproperties(zlist) #takes the geometric properties.
