@@ -42,44 +42,44 @@ def calculate_Centroid_wingbox(z, b=b, t_Fs = t_Fs, t_Bs = t_Bs, t_Bottom = t_Bo
      y_centroid_str = calculate_Centroid_Stringer()[1]
 
      #Calculate centroid with respect to the middle of the wing bock
-     y_centroid = ((t_Bottom - t_Top) * (h_Bs*l_top/2) + (m-n)*(h_Bs/2 - y_centroid_str)*A_str)/((n+m)*A_str+A_wb)
+     y_Centroid = ((t_Bottom - t_Top) * (h_Bs*l_top/2) + (m-n)*(h_Bs/2 - y_centroid_str)*A_str)/((n+m)*A_str+A_wb)
 
      #Assumption 
-     x_centroid =  ((t_Fs - t_Bs)*(h_Bs*l_top/2))/(A_wb + (m+n)*A_str)
+     x_Centroid =  ((t_Fs - t_Bs)*(h_Bs*l_top/2))/(A_wb + (m+n)*A_str)
 
 
      #Redefine the reference point to top left 
-     y_centroid = h_Bs/2 - y_centroid 
-     x_centroid = l_top/2 + x_centroid
+     y_Centroid = h_Bs/2 - y_Centroid 
+     x_Centroid = l_top/2 + x_Centroid
 
 
-     return x_centroid, y_centroid 
+     return x_Centroid, y_Centroid 
 
 def calculate_paramters_per_Bay():
      #Get the bay values
      
 def Ixx_Fs():
-    Ixx_Fs = (t_Fs * h_Bs ** 3)/12 + t_Fs * h_Bs * (0.5 * h_Bs - y_centroid) ** 2
+    Ixx_Fs = (t_Fs * h_Bs ** 3)/12 + t_Fs * h_Bs * (0.5 * h_Bs - y_Centroid) ** 2
     #From geometry function, h_Bs is used instead of h_Fs due to assumption
     return Ixx_Fs
 
 def Ixx_Top():
-    Ixx_Top = (l_Top * t_Top ** 3)/12 + l_Top * t_Top * y_centroid ** 2
+    Ixx_Top = (l_Top * t_Top ** 3)/12 + l_Top * t_Top * y_Centroid ** 2
     #From geometry function
     return Ixx_Top
 
 def Ixx_Bs():
-    Ixx_Bs = (t_Bs * h_Bs ** 3)/12 + t_Bs * h_Bs * (0.5 * h_Bs - y_centroid) ** 2
+    Ixx_Bs = (t_Bs * h_Bs ** 3)/12 + t_Bs * h_Bs * (0.5 * h_Bs - y_Centroid) ** 2
     #From geometry function
     return Ixx_Bs
 
 def Ixx_Bottom():
-    Ixx_Bottom = (l_Bottom * t_Bottom ** 3)/12 + l_Bottom * t_Bottom * (h_Bs - y_centroid) ** 2
+    Ixx_Bottom = (l_Bottom * t_Bottom ** 3)/12 + l_Bottom * t_Bottom * (h_Bs - y_Centroid) ** 2
     #From geometry function
     return Ixx_Bottom
 
 def Ixx_Stringers():
-    Ixx_Stringers = (n_Str_Top(i) + n_Str_Bottom(i)) * Ixx_Local_Stringer + n_Str_Top(i) * ((a_Str * t_Str_a + b_Str * t_Str_b) * (y_centroid - y_Centroid_Stringer) ** 2) + n_Str_Bottom(i) * ((a_Str * t_Str_a + b_Str * t_Str_b) * (h_Bs - y_Centroid_Stringer - y_centroid) ** 2))
+    Ixx_Stringers = (n_Str_Top(i) + n_Str_Bottom(i)) * Ixx_Local_Stringer + n_Str_Top(i) * ((a_Str * t_Str_a + b_Str * t_Str_b) * (y_Centroid - y_Centroid_Stringer) ** 2) + n_Str_Bottom(i) * ((a_Str * t_Str_a + b_Str * t_Str_b) * (h_Bs - y_Centroid_Stringer - y_Centroid) ** 2))
     #From list of number of stringers per side and i is increment value to later put this in a loop per bay.
     #Ixx_Local_Stringer is from local inertia function
     return Ixx_Stringers
