@@ -32,6 +32,18 @@ rib_Chords = np.array([])
 for item in rib_Placement_TtR:
     rib_Chords = np.append(rib_Chords, [chord(item)])
 
-n_Str_Top = n_Str_Top_ztip
-for item in rib_Chords:
-    if 
+rib_Chords = rib_Chords[1::1]
+
+n_Str_Top = n_Str_Top_incr[0]
+if n_Str_Top % 2 == 1:
+    dist_Top = delta_Top
+else:
+    dist_Top = delta_Top / 2
+
+I_yy_Top_Str = np.array([])
+
+for i in range(np.size(rib_Chords)):
+    add_Iyy_Str_Top = n_Str_Top * I_yy_Stringer
+
+    for j in range(n_Str_Top)
+        
