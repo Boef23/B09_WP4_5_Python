@@ -22,7 +22,7 @@ n_str_Bs = 0
 
 #Number of stringers plates
 n_str_Top_ztip = 2
-n_str_Bottom_ztip = 15
+n_str_Bottom_ztip = 20
 
 #Increment Stringers Per Bay Top Plate 
 # #Should be even amount
