@@ -151,5 +151,8 @@ for z in z_list:
      n_str = checkBay(z)
      n_str_top = n_str[0]
      n_str_bottom = n_str[1]
-     calculate_Centroid_wingbox(z, n = n_str_top, m = n_str_bottom)
+     centroid_wingbox = calculate_Centroid_wingbox(z, n = n_str_top, m = n_str_bottom)
+     x_centroid_wingbox = centroid_wingbox[0]
+     y_centroid_wingbox = centroid_wingbox[1]
 
+     
