@@ -27,10 +27,7 @@ I_yy_Fs = h_Fs * t_Fs * (l_Top / 2)**2      #Array
 I_yy_Bs = h_Bs * t_Bs * (l_Bottom / 2)**2   #Array
 
 #stringers shit
-bayLength = []
+bayLength = np.array([])
 for item in original_values:
-    bayLength.append(chord(item))
-print(len(bayLength))
-
-
-
+    np.append(bayLength, [chord(item)])
+print(bayLength)
