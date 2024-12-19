@@ -1,3 +1,5 @@
+import numpy as np
+
 #Wing
 lambda_LE = 0.4363 #Leading edge sweep angle (rad) placeholder value
 taper_Ratio = 0.316 #Taper ratio (-)
@@ -33,8 +35,8 @@ n_Str_Top_incr = [0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
 n_Str_Bottom_incr = [0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
 
 #Spacings
-delta_Top = (c_Tip)/(n_Str_Top_ztip + 1)
-delta_Bottom = (c_Tip)/(n_Str_Bottom_ztip + 1)
+delta_Top = (0.5*c_Tip)/(n_Str_Top_ztip + 1)
+delta_Bottom = (0.5*c_Tip)/(n_Str_Bottom_ztip + 1)
 
 #Spars
 t_Fs = 0.006 #thickness front spar (m) placeholder value
@@ -72,3 +74,24 @@ engine_Mass = 1111.3    #Mass of engine (kg)
 
 E = 7.24*10**9 # Modulus of elasticity [Pa]
 poisson_ratio = 1/3 # Unitless
+
+#################################################################################################################################
+#Tool
+#zAxis
+zAxis = np.arange(0, 15.325, 0.01)
+
+#PLots?
+Plots = False
+#Compare Applied with Critical
+
+#LC1
+
+#LC2
+
+#LC3
+
+#LC4
+
+#Deflection
+
+#Twist
