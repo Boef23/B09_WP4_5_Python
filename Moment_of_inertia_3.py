@@ -47,9 +47,13 @@ def calculate_Centroid_wingbox(z, b=b, t_Fs = t_Fs, t_Bs = t_Bs, t_Bottom = t_Bo
      #Assumption --> x_centroid is always in the middle
      x_centroid  = 0 
 
+     print(x_centroid, y_centroid)
+
      #Redefine the reference point to top left 
      y_centroid = h_Bs/2 - y_centroid 
      x_centroid = l_top/2 + x_centroid
+
+
      return x_centroid, y_centroid 
 
 calculate_Centroid_wingbox(0)
