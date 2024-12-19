@@ -86,7 +86,7 @@ Plots = False
 #Compare Applied with Critical
 
 #Ixx, Iyy, J
-I_XX_Zlist, I_YY_Zlist, J_Zlist = geometryprop
+#I_XX_Zlist, I_YY_Zlist, J_Zlist =
 
 if Plots == True:
     plt.subplot(1,3,1)

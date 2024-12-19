@@ -8,8 +8,9 @@ import numpy as np
 h_Fs, h_Bs, l_Top, l_Bottom = geometry(zAxis)
 
 #
-original_values = np.array([0.00, 0.60, 1.23, 1.88, 2.56, 3.28, 4.04, 
-                            4.84, 5.71, 6.65, 7.68, 8.86, 10.24, 12.02, 15.30])
+rib_Placement_RtT = np.array([0.00, 0.60, 1.23, 1.88, 2.56, 3.28, 4.04, 
+                            4.84, 5.71, 6.65, 7.68, 8.86, 10.24, 12.02, 15.30]) #Root to tip
+rib_Placement_TtR = rib_Placement_RtT[::-1]  #Tip to root
 
 
 #Stringer local calculations
@@ -27,7 +28,10 @@ I_yy_Fs = h_Fs * t_Fs * (l_Top / 2)**2      #Array
 I_yy_Bs = h_Bs * t_Bs * (l_Bottom / 2)**2   #Array
 
 #stringers shit
-bayLength = np.array([])
-for item in original_values:
-    np.append(bayLength, [chord(item)])
-print(bayLength)
+rib_Chords = np.array([])
+for item in rib_Placement_TtR:
+    rib_Chords = np.append(rib_Chords, [chord(item)])
+
+n_Str_Top = n_Str_Top_ztip
+for item in rib_Chords:
+    if 
