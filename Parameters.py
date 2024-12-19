@@ -26,7 +26,7 @@ n_str_Bottom_ztip = 2
 
 #Increment Stringers Per Bay Top Plate 
 # #Should be even amount
-n_str_Top_1incr = 2
+n_str_Top_1incr = 0
 n_str_Top_2incr = 2
 n_str_Top_3incr = 2
 n_str_Top_4incr = 2
@@ -39,11 +39,11 @@ n_str_Top_10incr = 2
 n_str_Top_11incr = 2
 n_str_Top_12incr = 2
 n_str_Top_13incr = 2
-n_str_Top_14incr = 0
+n_str_Top_14incr = 2
 
 #Increment Stringers Per Bay Top Plate
 #Should be even amount
-n_str_Bottom_1incr = 2
+n_str_Bottom_1incr = 0
 n_str_Bottom_2incr = 2
 n_str_Bottom_3incr = 2
 n_str_Bottom_4incr = 2
@@ -56,7 +56,7 @@ n_str_Bottom_10incr = 2
 n_str_Bottom_11incr = 2
 n_str_Bottom_12incr = 2
 n_str_Bottom_13incr = 2
-n_str_Bottom_14incr = 0
+n_str_Bottom_14incr = 2
 
 #Spacings
 delta_Top = (c_Tip)/(n_str_Top_ztip + 1)
