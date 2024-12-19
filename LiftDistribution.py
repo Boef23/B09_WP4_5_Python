@@ -40,3 +40,4 @@ def LiftCurve(z):
 if __name__ == '__main__':
     print(f'CL: {4 * sp.integrate.quad(LiftCurve, 0, span/2)[0] / (S * rhoCruise * velocityCruise**2)}')
     print(f'Lift - Weight: {2 * sp.integrate.quad(LiftCurve, 0, span/2)[0] - 23731*9.81}')
+
