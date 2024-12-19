@@ -47,6 +47,7 @@ def calculate_Centroid_wingbox(z, b=b, t_Fs = t_Fs, t_Bs = t_Bs, t_Bottom = t_Bo
      #Assumption 
      x_centroid =  ((t_Fs - t_Bs)*(h_Bs*l_top/2))/(A_wb + (m+n)*A_str)
 
+
      #Redefine the reference point to top left 
      y_centroid = h_Bs/2 - y_centroid 
      x_centroid = l_top/2 + x_centroid
