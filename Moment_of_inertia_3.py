@@ -53,8 +53,8 @@ def Ixx_Wingbox(z, n_Str_Top, n_Str_Bottom, y_centroid_wingbox, b = b):
      l_Bottom = l_Top
 
      y_Centroid = y_centroid_wingbox
-     Ixx_Local_Stringer = calculate_Inertia_Local_Stringer[0]
-     y_Centroid_Stringer = calculate_Centroid_Stringer[1]
+     Ixx_Local_Stringer = calculate_Inertia_Local_Stringer()[0]
+     y_Centroid_Stringer = calculate_Centroid_Stringer()[1]
 
      Ixx_Fs = (t_Fs * h_Bs ** 3)/12 + t_Fs * h_Bs * (0.5 * h_Bs - y_Centroid) ** 2
      Ixx_Top = (l_Top * t_Top ** 3)/12 + l_Top * t_Top * y_Centroid ** 2
@@ -144,6 +144,6 @@ for z in z_list:
      
      Ixx_wingbox_z = Ixx_Wingbox(z, n_str_top, n_str_bottom, y_centroid_wingbox)
 
-     Ixx_list.append(Ixx_Wingbox)
+     Ixx_list.append(Ixx_wingbox_z)
 
 print(Ixx_list)
