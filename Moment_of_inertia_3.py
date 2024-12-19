@@ -48,12 +48,15 @@ def calculate_Centroid_wingbox(z, b=b, t_Fs = t_Fs, t_Bs = t_Bs, t_Bottom = t_Bo
      return x_Centroid, y_Centroid 
 
 
-def Ixx_Wingbox(z, b = b):
+def Ixx_Wingbox(z, n_Str_Top, n_Str_Bottom) b = b):
      chord = c_Root - c_Root*(1-taper_Ratio) * (z/(0.5 * b))
      h_Bs = 0.0732 * chord #height of back spar
-     l_top = 0.5 * chord #length op top flange 
+     l_Top = 0.5 * chord #length op top flange 
+     l_Bottom = l_Top
 
-     y_centroid = calculate_Centroid_wingbox[1]
+     y_Centroid = calculate_Centroid_wingbox[1]
+     Ixx_Local_Stringer = calculate_Inertia_Local_Stringer[0]
+     y_Centroid_Stringer = calculate_Centroid_Stringer[1]
 
      Ixx_Fs = (t_Fs * h_Bs ** 3)/12 + t_Fs * h_Bs * (0.5 * h_Bs - y_Centroid) ** 2
      Ixx_Top = (l_Top * t_Top ** 3)/12 + l_Top * t_Top * y_Centroid ** 2
@@ -145,5 +148,8 @@ for z in z_list:
      centroid_wingbox = calculate_Centroid_wingbox(z, n = n_str_top, m = n_str_bottom)
      x_centroid_wingbox = centroid_wingbox[0]
      y_centroid_wingbox = centroid_wingbox[1]
+
+     
+     
 
 
