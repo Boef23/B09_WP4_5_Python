@@ -5,6 +5,7 @@ increment_z_Step = 0.01 #[m]
 z_list = np.arange(0, 15.325, 0.01) 
 Ixx_list = 
 
+def
 
 def calculate_Centroid_Stringer(a_Str = a_Str, t_Str_a = t_Str_a, b_Str = b_Str, t_Str_b = t_Str_b):
      x_Centroid_Stringer = (0.5 * t_Str_b * b_Str ** 2)/(a_Str * t_Str_a + b_Str * t_Str_b)
@@ -68,11 +69,14 @@ def Ixx_Bottom():
     return Ixx_Bottom
 
 def Ixx_Stringers():
-    Ixx_Stringers = (n_Str_Top(i) + n_Str_Bottom(i)) * Ixx_Local_Stringer + n_Str_Top(i) * ((a_Str * t_Str_a + b_Str * t_Str_b) * (y_Centroid - y_Centroid_Stringer) ** 2) + n_Str_Bottom(i) * ((a_Str * t_Str_a + b_Str * t_Str_b) * (h_Bs - y_Centroid_Stringer - y_Centroid) ** 2))
+    Ixx_Stringers = (n_Str_Top(i) + n_Str_Bottom(i)) * Ixx_Local_Stringer + n_Str_Top(i) * ((a_Str * t_Str_a + b_Str * t_Str_b) * (y_Centroid - y_Centroid_Stringer) ** 2) + n_Str_Bottom(i) * ((a_Str * t_Str_a + b_Str * t_Str_b) * (h_Bs - y_Centroid_Stringer - y_Centroid) ** 2)
     #From list of number of stringers per side and i is increment value to later put this in a loop per bay.
     #Ixx_Local_Stringer is from local inertia function
     return Ixx_Stringers
 
+def Ixx_Wingbox_final():
+       Ixx = Ixx_Fs() + Ixx_Top() + Ixx_Bs() + Ixx_Bottom() + Ixx_Stringers()       
+       return Ixx
 
 
 def calculate_paramters_per_Bay(nbay, n_Str_Top_Bay, n_Str_Bottom_Bay):
@@ -155,4 +159,4 @@ for z in z_list:
      x_centroid_wingbox = centroid_wingbox[0]
      y_centroid_wingbox = centroid_wingbox[1]
 
-     
+
