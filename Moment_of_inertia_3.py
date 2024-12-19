@@ -81,40 +81,72 @@ def calculate_paramters_per_Bay(nbay, n_Str_Top_Bay, n_Str_Bottom_Bay):
 
 
     #Calculate increment 
+
+def checkBay(z):    
+     if z < 0.60:
+          #So now it is in bay 14
+          n_str_top = sum(n_Str_Top_incr[0:14])
+          n_str_bottom = sum(n_Str_Top_incr[0:14])
+          
+     elif 0.60 <= z < 1.23:
+          #So now it is in bay 13, etc 
+          n_str_top = sum(n_Str_Top_incr[0:13])
+          n_str_bottom = sum(n_Str_Top_incr[0:13])
      
+     elif 1.23 <= z < 1.88:
+               n_str_top = sum(n_Str_Top_incr[0:12])
+               n_str_bottom = sum(n_Str_Top_incr[0:12])
      
+     elif 1.88 <= z < 2.56:
+               n_str_top = sum(n_Str_Top_incr[0:11])
+               n_str_bottom = sum(n_Str_Top_incr[0:11])
+          
+     elif 2.56 <= z < 3.28:
+               n_str_top = sum(n_Str_Top_incr[0:10])
+               n_str_bottom = sum(n_Str_Top_incr[0:10])
+
+     elif 3.28 <= z < 4.04:
+               n_str_top = sum(n_Str_Top_incr[0:9])
+               n_str_bottom = sum(n_Str_Top_incr[0:9])
+
+     elif 4.04 <= z < 4.85:
+               n_str_top = sum(n_Str_Top_incr[0:8])
+               n_str_bottom = sum(n_Str_Top_incr[0:8])
+
+     elif 4.85 <= z < 5.71:
+               n_str_top = sum(n_Str_Top_incr[0:7])
+               n_str_bottom = sum(n_Str_Top_incr[0:7])
+
+     elif 5.71 <= z < 6.65:
+               n_str_top = sum(n_Str_Top_incr[0:6])
+               n_str_bottom = sum(n_Str_Top_incr[0:6])
+
+     elif 6.65 <= z < 7.69:
+               n_str_top = sum(n_Str_Top_incr[0:5])
+               n_str_bottom = sum(n_Str_Top_incr[0:5])
+     
+     elif 7.69 <= z < 8.86:
+               n_str_top = sum(n_Str_Top_incr[0:4])
+               n_str_bottom = sum(n_Str_Top_incr[0:4])
+
+     elif 8.86 <= z < 10.24:
+               n_str_top = sum(n_Str_Top_incr[0:3])
+               n_str_bottom = sum(n_Str_Top_incr[0:3])
+
+     elif 10.24 <= z < 12.02:
+               n_str_top = sum(n_Str_Top_incr[0:2])
+               n_str_bottom = sum(n_Str_Top_incr[0:2])
+
+     else:
+               n_str_top = sum(n_Str_Top_incr[0:1])
+               n_str_bottom = sum(n_Str_Top_incr[0:1])  
+     
+     return n_str_top, n_str_bottom    
+
 
 
 #Defined, as bay = 0 is the tip
 for z in z_list:
-    if z < 0.60:
-        #So now it is in bay 14
-        
-     
-    elif 0.60 <= z < 1.23:
-        #So now it is in bay 13, etc 
-  
-    elif 1.23 <= z < 1.88:
     
-    elif 1.88 <= z < 2.56:
-       
-    elif 2.56 <= z < 3.28:
-
-    elif 3.28 <= z < 4.04:
-
-    elif 4.04 <= z < 4.85:
-
-    elif 4.85 <= z < 5.71:
-
-    elif 5.71 <= z < 6.65:
-
-    elif 6.65 <= z < 7.69:
- 
-    elif 7.69 <= z < 8.86:
-
-    elif 8.86 <= z < 10.24:
-
-    elif 10.24 <= z < 12.02:
-
-    else:
+     calculate_Centroid_wingbox(z, n = n_str_top, m = n_str_bottom)
 
