@@ -1,7 +1,6 @@
 from Parameters import *
 from LiftDistribution import chord
 from ShearDiagram import zAxis
-from ColumnBuckling import distanceArray
 import numpy as np
 
 #Chord
@@ -32,7 +31,7 @@ rib_Chords = np.array([])
 for item in rib_Placement_TtR:
     rib_Chords = np.append(rib_Chords, [0.5 * chord(item)])
 
-rib_Chords = rib_Chords[1:-1:1]
+rib_Chords = rib_Chords[1::1]
 
 n_Str_Top = n_Str_Top_incr[0]
 if n_Str_Top % 2 == 1:
@@ -45,17 +44,19 @@ I_yy_Top_Str = np.array([])
 for i in range(np.size(rib_Chords)):
     add_Iyy_Str_Top = n_Str_Top * I_yy_Stringer
 
-    for j in range(n_Str_Top):
-        if n_Str_Top % 2 == 1:
-            steiner = 0
-            distance_STr = dist_Top + delta_Top * j
-            steinerStringer = Str_Area * distance_STr ** 2
-        else:
-            steiner = Str_Area* dist_Top**2 
-            distance_STr = dist_Top + delta_Top * 2 * j
-            steinerStringer = Str_Area * distance_STr ** 2
-    total_Steiner = steiner + steiner # this is per cross-section
-    I_yy_Top_Str = np.append(I_yy_Top_Str, [total_Steiner + add_Iyy_Str_Top])
+    if n_Str_Top % 2 == 1:
+        for j in range(int((n_Str_Top - 1)/2)):
+            x = delta_Top * (j + 1)
+            add_Iyy_Str_Top += 2 * Str_Area * x**2
+
+    else:
+        for j in range(int(n_Str_Top/2)):
+            x = dist_Top + delta_Top * j
+            add_Iyy_Str_Top += 2 * Str_Area * x**2
+
+    I_yy_Top_Str = np.append(I_yy_Top_Str, [add_Iyy_Str_Top])
+
+    if i < np.size(rib_Chords) - 1:
+        n_Str_Top += n_Str_Top_incr[i+1]
 
 
-        
