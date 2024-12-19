@@ -29,7 +29,9 @@ def int_1(z):#Calculates the first integral
 def int_2(z): #calculates the first intregral
     return scipy.integrate.quad(int_1,0, z)[0]
 
-print(f'Total Deflection at tip is: {int_2(b/2)} [m]' ) #prints the deflection, takes a lot of time to compute
+maxdeflectiontip = int_2(b/2)
+
+print(f'Total Deflection at tip is: {maxdeflectiontip} [m]' ) #prints the deflection, takes a lot of time to compute
 '''
 def int_2converter(z):
     deflection = int_2
