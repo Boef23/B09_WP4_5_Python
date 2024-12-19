@@ -6,11 +6,15 @@ import numpy as np
 import scipy as sp
 import matplotlib.pyplot as plt
 from ShearDiagram import zAxis
+from Moment_of_inertia_3 import *
 
 
 elasticModulus = 72.4 * 10**9 # Pa
 K = 4 #due to ribs, two sides are clamped
-Ixx = 10 #placehoder value
+
+Ixx, Iyy = calculate_Inertia_Local_Stringer(a_Str = a_Str, t_Str_a = t_Str_a, b_Str = b_Str, t_Str_b = t_Str_b, x_Centroid_Stringer = calculate_Centroid_Stringer()[0], y_Centroid_Stringer = calculate_Centroid_Stringer()[1])
+
+
 
 def distanceArray():
     # Original array influencing step lengths
