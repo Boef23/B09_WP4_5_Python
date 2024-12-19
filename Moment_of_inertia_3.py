@@ -36,7 +36,7 @@ def calculate_Centroid_wingbox(z, b=b, t_Fs = t_Fs, t_Bs = t_Bs, t_Bottom = t_Bo
      
      #Calculate area of the wing box and area of the stringers
      A_wb = (t_Top + t_Bottom) * l_top + (t_Fs + t_Bs) * h_Bs
-     A_str = (m + n) * (a_str*t_str_a + b_str*t_str_b)
+     A_str = (a_str*t_str_a + b_str*t_str_b)
 
      #Calculate centroid of stringer
      y_centroid_str = calculate_Centroid_Stringer()[1]
