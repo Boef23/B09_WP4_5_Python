@@ -49,9 +49,9 @@ margin_LC1 = marginofsafety(,tau_max_force)
 #LC2
 margin_LC2 = marginofsafety(,normalStress)
 #LC3
-margin_LC3 = marginofsafety(,)
+margin_LC3 = marginofsafety(,normalStress)
 #LC4
-margin_LC3
+margin_LC4 = marginofsafety(,normalStress)
 
 #Deflection
 if maxdeflectiontip <= 4.5:
