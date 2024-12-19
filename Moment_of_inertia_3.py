@@ -1,16 +1,7 @@
 """I_xx, I_yy calculation"""
 from Parameters import * 
 
-#Temporary parameters 
-# a = w_Stringer  #[m] width of the stringers 
-# t_s = t_Stringer  #[m] thickness of the stringers
-# c = 4.9 #This must be changed to a function 
-# L_wb = 0.5*c #Length rectangularsised wing box
-# H_wb = 0.0732*c #HeightRectangularsied wing box 
-# m = 16
-# n = 16
-# j = 11
-# k = 10
+increment_z_Step = 0.01 #[m]
 
 
 
@@ -55,13 +46,10 @@ def calculate_Centroid_wingbox(z, b=b, t_Fs = t_Fs, t_Bs = t_Bs, t_Bottom = t_Bo
 
      return x_Centroid, y_Centroid 
 
-def calculate_paramters_per_Bay():
-     #Get the bay values
-     
 def Ixx_Fs():
-    Ixx_Fs = (t_Fs * h_Bs ** 3)/12 + t_Fs * h_Bs * (0.5 * h_Bs - y_Centroid) ** 2
-    #From geometry function, h_Bs is used instead of h_Fs due to assumption
-    return Ixx_Fs
+     Ixx_Fs = (t_Fs * h_Bs ** 3)/12 + t_Fs * h_Bs * (0.5 * h_Bs - y_Centroid) ** 2
+     #From geometry function, h_Bs is used instead of h_Fs due to assumption
+     return Ixx_Fs
 
 def Ixx_Top():
     Ixx_Top = (l_Top * t_Top ** 3)/12 + l_Top * t_Top * y_Centroid ** 2
@@ -83,3 +71,19 @@ def Ixx_Stringers():
     #From list of number of stringers per side and i is increment value to later put this in a loop per bay.
     #Ixx_Local_Stringer is from local inertia function
     return Ixx_Stringers
+
+
+
+def calculate_paramters_per_Bay(nbay, n_Str_Top_Bay, n_Str_Bottom_Bay):
+    #Calculate Centroid per increment
+    calculate_Centroid_wingbox(n = n_Str_Top_Bay, m = n_Str_Bottom_Bay)
+
+
+
+    #Calculate increment 
+     
+     
+#Defined, as bay = 0 is the tip
+for nbay in range(14):
+    n_Str_Top_Bayi = sum(n_Str_Top_incr[0:(nbay+1)])
+    calculate_paramters_per_Bay(nbay, )
