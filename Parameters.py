@@ -21,7 +21,7 @@ n_str_Fs = 0
 n_str_Bs = 0
 
 #Number of stringers plates
-n_str_Top_ztip = 1
+n_str_Top_ztip = 100
 n_str_Bottom_ztip = 2
 
 #Increment Stringers Per Bay Top Plate 
