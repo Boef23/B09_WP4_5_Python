@@ -33,8 +33,8 @@ n_Str_Top_incr = [0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
 n_Str_Bottom_incr = [0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
 
 #Spacings
-delta_Top = (c_Tip)/(n_str_Top_ztip + 1)
-delta_Bottom = (c_Tip)/(n_str_Bottom_ztip + 1)
+delta_Top = (c_Tip)/(n_Str_Top_ztip + 1)
+delta_Bottom = (c_Tip)/(n_Str_Bottom_ztip + 1)
 
 #Spars
 t_Fs = 0.006 #thickness front spar (m) placeholder value
