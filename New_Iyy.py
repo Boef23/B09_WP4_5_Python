@@ -121,5 +121,17 @@ for i in range(np.size(rib_Chords)):
 
 
 #Total stringer contribution per bay
-I_yy_Total_Str = I_yy_Top_Str + I_yy_Bot_Str
-print(I_yy_Total_Str)
+I_yy_Total_Str = np.ones_like(zAxis)
+
+z_TtR = zAxis[::-1] #Z array from tip to root, [m]
+
+k = 0
+for z in range(zAxis.size):
+    if z_TtR[z] < rib_Placement_TtR[k+1]:
+        k += 1
+
+    I_yy_Total_Str[z] = (I_yy_Top_Str + I_yy_Bot_Str)[k]
+
+
+#Total Iyy array
+I_yy_Total = I_yy_Total_Str + I_yy_Top_Plate + I_yy_Bottom_Plate + I_yy_Bs + I_yy_Fs
