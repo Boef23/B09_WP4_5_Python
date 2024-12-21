@@ -41,10 +41,20 @@ if n_Str_Top % 2 == 1:
 else:
     dist_Top = delta_Top / 2
 
+n_Str_Bot = n_Str_Bottom_incr[0]
+if n_Str_Bot % 2 == 1:
+    dist_Bot = delta_Bottom
+else:
+    dist_Bot = delta_Bottom / 2
+
 #Make an array for stringer contribrution in each bay
 I_yy_Top_Str = np.array([])
 n_Str_Top = 0
 
+I_yy_Bot_Str = np.array([])
+n_Str_Bot = 0
+
+#Top stringers
 for i in range(np.size(rib_Chords)): 
     n_Str_Top += n_Str_Top_incr[i]
 
@@ -58,7 +68,7 @@ for i in range(np.size(rib_Chords)):
 
             #Check for stringer fitting
             if 2 * x + delta_Top > rib_Chords[i]:
-                print(f'There are too many stringers in bay {i+1} from the tip')
+                print(f'There are too many top stringers in bay {i+1} from the tip')
                 break
 
             add_Iyy_Str_Top += 2 * Str_Area * x**2
@@ -69,7 +79,7 @@ for i in range(np.size(rib_Chords)):
 
             #Check for stringer fitting
             if 2 * x + delta_Top > rib_Chords[i]:
-                print(f'There are too many stringers in bay {i+1} from the tip')
+                print(f'There are too many top stringers in bay {i+1} from the tip')
                 break
 
             add_Iyy_Str_Top += 2 * Str_Area * x**2
@@ -77,4 +87,39 @@ for i in range(np.size(rib_Chords)):
     I_yy_Top_Str = np.append(I_yy_Top_Str, [add_Iyy_Str_Top])
 
 
+#Bottom stringers
+for i in range(np.size(rib_Chords)): 
+    n_Str_Bot += n_Str_Bottom_incr[i]
+
+    #Add local stringer contribution
+    add_Iyy_Str_Bot = n_Str_Bot * I_yy_Stringer
+
+    #Add parallel axis contribution
+    if n_Str_Bot % 2 == 1:
+        for j in range(int((n_Str_Bot - 1)/2)):
+            x = delta_Bottom * (j + 1)
+
+            #Check for stringer fitting
+            if 2 * x + delta_Bottom > rib_Chords[i]:
+                print(f'There are too many bottom stringers in bay {i+1} from the tip')
+                break
+
+            add_Iyy_Str_Bot += 2 * Str_Area * x**2
+
+    else:
+        for j in range(int(n_Str_Bot/2)):
+            x = dist_Bot + delta_Bottom * j
+
+            #Check for stringer fitting
+            if 2 * x + delta_Bottom > rib_Chords[i]:
+                print(f'There are too many bottom stringers in bay {i+1} from the tip')
+                break
+
+            add_Iyy_Str_Bot += 2 * Str_Area * x**2
+
+    I_yy_Bot_Str = np.append(I_yy_Bot_Str, [add_Iyy_Str_Bot])
+
+
+#Total stringer contribution per bay
+I_yy_Total_Str = I_yy_Top_Str + I_yy_Bot_Str
 
