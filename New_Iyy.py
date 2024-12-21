@@ -122,4 +122,4 @@ for i in range(np.size(rib_Chords)):
 
 #Total stringer contribution per bay
 I_yy_Total_Str = I_yy_Top_Str + I_yy_Bot_Str
-
+print(I_yy_Total_Str)
