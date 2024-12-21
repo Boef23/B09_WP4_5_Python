@@ -6,7 +6,7 @@ import numpy as np
 #Chord
 h_Fs, h_Bs, l_Top, l_Bottom = geometry(zAxis)
 
-#
+#Rib placement semi span wise position, [m]
 rib_Placement_RtT = np.array([0.00, 0.60, 1.23, 1.88, 2.56, 3.28, 4.04, 
                             4.84, 5.71, 6.65, 7.68, 8.86, 10.24, 12.02, 15.30]) #Root to tip
 rib_Placement_TtR = rib_Placement_RtT[::-1]  #Tip to root
@@ -26,37 +26,55 @@ I_yy_Bottom_Plate = t_Bottom * (l_Bottom)**3 / 12   #Array
 I_yy_Fs = h_Fs * t_Fs * (l_Top / 2)**2      #Array
 I_yy_Bs = h_Bs * t_Bs * (l_Bottom / 2)**2   #Array
 
-#stringers shit
+#stringers contribution
+#Obtain chord at rib positions
 rib_Chords = np.array([])
 for item in rib_Placement_TtR:
     rib_Chords = np.append(rib_Chords, [0.5 * chord(item)])
 
-rib_Chords = rib_Chords[1::1]
+rib_Chords = rib_Chords[0:-1:1]
 
+#Determine whether amount of stringers is even or odd and set a starting distance from the centroid
 n_Str_Top = n_Str_Top_incr[0]
 if n_Str_Top % 2 == 1:
     dist_Top = delta_Top
 else:
     dist_Top = delta_Top / 2
 
+#Make an array for stringer contribrution in each bay
 I_yy_Top_Str = np.array([])
+n_Str_Top = 0
 
-for i in range(np.size(rib_Chords)):
+for i in range(np.size(rib_Chords)): 
+    n_Str_Top += n_Str_Top_incr[i]
+
+    #Add local stringer contribution
     add_Iyy_Str_Top = n_Str_Top * I_yy_Stringer
 
+    #Add parallel axis contribution
     if n_Str_Top % 2 == 1:
         for j in range(int((n_Str_Top - 1)/2)):
             x = delta_Top * (j + 1)
+
+            #Check for stringer fitting
+            if 2 * x + delta_Top > rib_Chords[i]:
+                print(f'There are too many stringers in bay {i+1} from the tip')
+                break
+
             add_Iyy_Str_Top += 2 * Str_Area * x**2
 
     else:
         for j in range(int(n_Str_Top/2)):
             x = dist_Top + delta_Top * j
+
+            #Check for stringer fitting
+            if 2 * x + delta_Top > rib_Chords[i]:
+                print(f'There are too many stringers in bay {i+1} from the tip')
+                break
+
             add_Iyy_Str_Top += 2 * Str_Area * x**2
 
     I_yy_Top_Str = np.append(I_yy_Top_Str, [add_Iyy_Str_Top])
 
-    if i < np.size(rib_Chords) - 1:
-        n_Str_Top += n_Str_Top_incr[i+1]
 
 
