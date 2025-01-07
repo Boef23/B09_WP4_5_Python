@@ -79,12 +79,14 @@ margin_LC3 = marginofsafety(LC3list,normalStress)
 margin_LC4 = marginofsafety(LC4list,normalStress)
 
 #Deflection
+print(f'Total Deflection at tip is: {maxdeflectiontip} [m]' )
 if maxdeflectiontip <= 4.5:
     print('Deflection correct')
 else:
     print('Deflection incorrect')
 
 #Twist
+print(f'Total Twist at tip is: {maxtwisttip} [deg]')
 if maxtwisttip <= 10:
     print('Twist correct')
 else:
