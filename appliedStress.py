@@ -40,7 +40,8 @@ h_Fs, h_Bs, l_Top, l_Bottom = geometry(zAxis)
 area = areas_segments(h_Fs, h_Bs, l_Top, l_Bottom)
 sparArea = area[0] + area[1]
 
-print(sparArea)
+#print(sparArea)
+
 #Shear force stresses
 tau_avg = totalShearDist / sparArea
 tau_max_force = kv * tau_avg
@@ -59,4 +60,4 @@ Ixx = momentOfInertia_X
 y_max_top = Ymaxfinder(zAxis, calculate_Centroid_wingbox(zAxis)[1])[1]
 normalStress = totalMomentDist * y_max_top / Ixx
 
-print(tau_max)
+#print(tau_max)
