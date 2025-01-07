@@ -57,7 +57,7 @@ if __name__ == '__main__':
 stringerArea = Str_Area #placeholder bvalue
 
 def columnBuckling(K , elasticModulus, IxxSTR, stringerArea  ):
-    sigmaCritical = (K * np.pi**2 * 5 * elasticModulus * IxxSTR) / (distanceArray()**2 * stringerArea)
+    sigmaCritical = (K * np.pi**2 * 34 * elasticModulus * IxxSTR) / (distanceArray()**2 * stringerArea)
     return sigmaCritical
 
 if __name__ == '__main__':
