@@ -36,8 +36,8 @@ momentOfInertia_J = momentOfInertia_X * momentOfInertia_y
 kv = 1.5
 
 #Spar geometry
-geo = geometry(zAxis)
-area = areas_segments(geo)
+h_Fs, h_Bs, l_Top, l_Bottom = geometry(zAxis)
+area = areas_segments(h_Fs, h_Bs, l_Top, l_Bottom)
 sparArea = area[0] + area[1]
 
 print(sparArea)
