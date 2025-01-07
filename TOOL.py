@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from appliedStress import *
-from DeflectionFinal import *
+#from DeflectionFinal import *
 from TwistFinal import *
 from ColumnBuckling import *
 from Moment_of_inertia_3 import *
@@ -70,7 +70,7 @@ margin_LC2 = marginofsafety(LC2list,normalStress)
 margin_LC3 = marginofsafety(LC3list,normalStress)
 #LC4
 margin_LC4 = marginofsafety(LC4list,normalStress)
-
+'''
 #Deflection
 if maxdeflectiontip <= 4.5:
     print('Deflection correct')
@@ -82,7 +82,7 @@ if maxtwisttip <= 10:
     print('Twist correct')
 else:
     print('Twist incorrect')
-
+'''
 #PLOTS
 
 if __name__ == '__main__':
