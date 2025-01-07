@@ -23,10 +23,10 @@ I_YY_Zlist = I_yy_Total
 J_Zlist = I_XX_Zlist + I_YY_Zlist
 
 
-LC1_Upperlist = skinStressCriticalCompUPPER
-LC1_Lowerlist = skinStressCriticalCompLOWER
-LC2_Frontlist = shearStressCriticalFront
-LC2_Backlist = shearStressCriticalBack
+LC1_Frontlist = shearStressCriticalFront
+LC1_Backlist = shearStressCriticalBack
+LC2_Upperlist = skinStressCriticalCompUPPER
+LC2_Lowerlist = skinStressCriticalCompLOWER
 LC3list = columnBuckling(K , E, IxxSTR ,stringerArea = areastringer())
 LC4list = np.ones_like(zAxis)*450*10**6 #Yield stress
 #################################################################################################################################
@@ -65,14 +65,14 @@ if __name__ == '__main__':
         plt.show()
 
 
-#LC1_Upper
-margin_LC1_Upper = marginofsafety(LC1_Upperlist,tau_max_force)
-#LC2_Lower
-margin_LC1_Lower = marginofsafety(LC1_Lowerlist,normalStress)
-#LC2_Front
-margin_LC2_Front = marginofsafety(LC2_Frontlist,tau_max_force)
+#LC1_Front
+margin_LC1_Front = marginofsafety(LC1_Frontlist,tau_max_force)
 #LC2_Back
-margin_LC2_Back = marginofsafety(LC2_Backlist,normalStress)
+margin_LC1_Back = marginofsafety(LC1_Backlist,normalStress)
+#LC2_Front
+margin_LC2_Upper = marginofsafety(LC2_Upperlist,tau_max_force)
+#LC2_Back
+margin_LC2_Lower = marginofsafety(LC2_Lowerlist,normalStress)
 #LC3
 margin_LC3 = marginofsafety(LC3list,normalStress)
 #LC4
@@ -97,14 +97,14 @@ else:
 if __name__ == '__main__':
     if Plots == True:
         plt.subplot(2,3,1)
-        plt.plot(zAxis,margin_LC1_Upper)
+        plt.plot(zAxis,margin_LC1_Front)
         plt.title('Margin of Stress LC1_Upper')
         plt.xlabel('Z postion [m]')
         plt.ylabel('Margin of Stress [-]')
         plt.grid(True)
 
         plt.subplot(2,3,2)
-        plt.plot(zAxis,margin_LC1_Lower)
+        plt.plot(zAxis,margin_LC1_Back)
         plt.title('Margin of Stress LC1_Lower')
         plt.xlabel('Z postion [m]')
         plt.ylabel('Margin of Stress [-]')
@@ -112,14 +112,14 @@ if __name__ == '__main__':
 
 
         plt.subplot(2,3,3)
-        plt.plot(zAxis,margin_LC2_Front)
+        plt.plot(zAxis,margin_LC2_Upper)
         plt.title('Margin of Stress LC2_Front')
         plt.xlabel('Z postion [m]')
         plt.ylabel('Margin of Stress [-]')
         plt.grid(True)
 
         plt.subplot(2,3,4)
-        plt.plot(zAxis,margin_LC2_Back)
+        plt.plot(zAxis,margin_LC2_Lower)
         plt.title('Margin of Stress LC2_Back')
         plt.xlabel('Z postion [m]')
         plt.ylabel('Margin of Stress [-]')
