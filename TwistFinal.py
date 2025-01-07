@@ -5,13 +5,18 @@ import scipy.integrate
 import scipy.interpolate
 from Parameters import b, mlg_Pos
 from ShearDiagram import totalTorqueDist
-from Moment_of_inertia_comp import geometryproperties, J_Zlist, zlist
+from Moment_of_inertia_3 import *
+from New_Iyy import *
+
+momentOfInertia_X = Ixx_list
+momentOfInertia_y = I_yy_Total
+J_Zlist = momentOfInertia_X * momentOfInertia_y 
 
 shearModulus = shearModulus = 28 * 10**9 #Pa
 
 def division(z): #calculates the division term and makes a new function of z for it
     divider = totalTorqueDist / (shearModulus * J_Zlist)
-    distributionFunction = scipy.interpolate.interp1d(zlist, divider, kind = "cubic", fill_value= "extrapolate")
+    distributionFunction = scipy.interpolate.interp1d(zAxis, divider, kind = "cubic", fill_value= "extrapolate")
     return distributionFunction(z)
 
 def integral_1(z): #calculates the integral, as there is a discontinuity at the landing gear position, two integrals are calculated

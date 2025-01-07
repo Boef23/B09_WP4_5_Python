@@ -15,7 +15,7 @@ massLandingGear = 302.67 #kg
 
 momentOfInertia_X = Ixx_list
 momentOfInertia_y = I_yy_Total
-momentOfInertia_J = momentOfInertia_X * momentOfInertia_y #takes the geometric properties.
+momentOfInertia_J = momentOfInertia_X * momentOfInertia_y 
 
 
 def divider(z): #calculates the division term and turns it into a function of z, so it can be integrated
