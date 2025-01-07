@@ -6,7 +6,7 @@ from Parameters import *
 
 
 v = poisson_ratio
-t_skin = 0.0015
+
 t_front_spar = t_Fs
 t_back_spar = t_Bs
 WbFrac = 0.5

@@ -11,6 +11,9 @@ lambda_Dihedral = 0.0349 #dihedral angle (rad) placeholder value
 c_Root = 4.9 #Root chord (m)
 c_Tip = c_Root - c_Root*(1-taper_Ratio)
 
+#Airfoil skin thickness
+t_skin = 0.003 #(m)
+
 #Stringers
 t_Str_a = 0.002 #Thickness long side (m) placeholder value
 t_Str_b = 0.002 #Thickness short side
@@ -41,13 +44,13 @@ delta_Top = (0.5*c_Tip)/(n_Str_Top_ztip + 1)
 delta_Bottom = (0.5*c_Tip)/(n_Str_Bottom_ztip + 1)
 
 #Spars
-t_Fs = 0.005 #thickness front spar (m) placeholder value
-t_Bs = 0.005 #thickness back spar (m) placeholder value
+t_Fs = 0.010 #thickness front spar (m) placeholder value
+t_Bs = 0.010 #thickness back spar (m) placeholder value
 
 
 #Plates
-t_Top = 0.006 #thickness top plate (m) placeholder value
-t_Bottom = 0.002 #thickness bottom plate (m) placeholder value
+t_Top = 0.010 #thickness top plate (m) placeholder value
+t_Bottom = 0.005 #thickness bottom plate (m) placeholder value
 
 #General Geometry
 def geometry(z):
