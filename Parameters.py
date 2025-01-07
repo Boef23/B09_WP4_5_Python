@@ -44,8 +44,8 @@ delta_Top = (0.5*c_Tip)/(n_Str_Top_ztip + 1)
 delta_Bottom = (0.5*c_Tip)/(n_Str_Bottom_ztip + 1)
 
 #Spars
-t_Fs = 0.010 #thickness front spar (m) placeholder value
-t_Bs = 0.010 #thickness back spar (m) placeholder value
+t_Fs = 0.100 #thickness front spar (m) placeholder value
+t_Bs = 0.100 #thickness back spar (m) placeholder value
 
 
 #Plates
