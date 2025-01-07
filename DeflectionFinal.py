@@ -7,13 +7,15 @@ from scipy.integrate import quad,  dblquad
 from LiftDistribution import LiftCurve
 from Parameters import *
 from ShearDiagram import  reactionShear, zAxis, dz, totalMomentDist
-from Moment_of_Inertia2 import *
-from Moment_of_inertia_comp import zlist, geometryproperties
+from Moment_of_inertia_3 import *
+from New_Iyy import *
 
 elasticModulus = E # Pa
 massLandingGear = 302.67 #kg
 
-momentOfInertia_X, momentOfInertia_Y, momentOfInertia_J = geometryproperties(zlist) #takes the geometric properties.
+momentOfInertia_X = Ixx_list
+momentOfInertia_y = I_yy_Total
+momentOfInertia_J = momentOfInertia_X * momentOfInertia_y #takes the geometric properties.
 
 
 def divider(z): #calculates the division term and turns it into a function of z, so it can be integrated
