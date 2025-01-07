@@ -23,8 +23,8 @@ n_Str_Fs = 0
 n_Str_Bs = 0
 
 #Number of stringers plates
-n_Str_Top_ztip = 10
-n_Str_Bottom_ztip = 8
+n_Str_Top_ztip = 3
+n_Str_Bottom_ztip = 2
 
 #Increment Stringers Per Bay Top Plate 
 # #Should be even amount
@@ -41,13 +41,13 @@ delta_Top = (0.5*c_Tip)/(n_Str_Top_ztip + 1)
 delta_Bottom = (0.5*c_Tip)/(n_Str_Bottom_ztip + 1)
 
 #Spars
-t_Fs = 0.006 #thickness front spar (m) placeholder value
-t_Bs = 0.006 #thickness back spar (m) placeholder value
+t_Fs = 0.005 #thickness front spar (m) placeholder value
+t_Bs = 0.005 #thickness back spar (m) placeholder value
 
 
 #Plates
-t_Top = 0.005 #thickness top plate (m) placeholder value
-t_Bottom = 0.005 #thickness bottom plate (m) placeholder value
+t_Top = 0.006 #thickness top plate (m) placeholder value
+t_Bottom = 0.002 #thickness bottom plate (m) placeholder value
 
 #General Geometry
 def geometry(z):
