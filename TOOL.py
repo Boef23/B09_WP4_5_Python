@@ -22,8 +22,8 @@ I_YY_Zlist = I_yy_Total
 J_Zlist = I_XX_Zlist + I_YY_Zlist
 
 
-LC1list = 1
-LC2list = 2
+LC1list = zAxis
+LC2list = zAxis
 LC3list = columnBuckling(K , elasticModulus, Ixx = Ixx_list, stringerArea = areastringer()  )
 LC4list = np.ones_like(zAxis)*450*10**6
 #################################################################################################################################

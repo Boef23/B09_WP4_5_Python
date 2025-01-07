@@ -17,17 +17,30 @@ def geometry(z):
     h_Bs = 0.0732 * chord #height of back spar
     l_Top = 0.5 * chord #length op top flange
     l_Bottom = 0.5 * chord #length of bottom flange
-    beta = np.arctan((h_Fs-h_Bs)/l_Top) #angle of bottom flange
-    return h_Fs, h_Bs, l_Top, l_Bottom, beta
+    return h_Fs, h_Bs, l_Top, l_Bottom
 
+
+def areas_segments(h_Fs, h_Bs, l_Top, l_Bottom):
+    area_Fs = h_Fs * t_Fs #Area front spar
+    area_Bs = h_Bs * t_Bs #Area back spar
+    area_Top = l_Top * t_Top #Area top plate
+    area_Bottom = l_Bottom * t_Bottom #Area bottom plate
+    area_Total = area_Fs + area_Bs + area_Top + area_Bottom #Total area
+    return area_Fs, area_Bs, area_Top, area_Bottom, area_Total
+
+
+momentOfInertia_X = Ixx_list
+momentOfInertia_y = I_yy_Total
+momentOfInertia_J = momentOfInertia_X * momentOfInertia_y 
 #Coefficients
 kv = 1.5
 
 #Spar geometry
 geo = geometry(zAxis)
-area = areas_segments(geo[0], geo[1], geo[2], geo[3])
+area = areas_segments(geo)
 sparArea = area[0] + area[1]
 
+print(sparArea)
 #Shear force stresses
 tau_avg = totalShearDist / sparArea
 tau_max_force = kv * tau_avg
@@ -42,7 +55,7 @@ tau_max = tau_max_force + tau_torque
 
 
 #Normal stress
-Ixx = geometryproperties(zAxis)[0]
+Ixx = momentOfInertia_X
 y_max_top = Ymaxfinder(zAxis, calculate_Centroid_wingbox(zAxis)[1])[1]
 normalStress = totalMomentDist * y_max_top / Ixx
 
