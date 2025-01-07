@@ -8,7 +8,7 @@ from Moment_of_inertia_3 import *
 from LC1andLC2 import *
 
 def marginofsafety(failuresigma, appliedsigma):
-    marginofsafety = (failuresigma)/(appliedsigma)
+    marginofsafety = np.abs((failuresigma)/(appliedsigma))
     return marginofsafety
 
 
