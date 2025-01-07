@@ -33,7 +33,7 @@ momentOfInertia_X = Ixx_list
 momentOfInertia_y = I_yy_Total
 momentOfInertia_J = momentOfInertia_X * momentOfInertia_y 
 #Coefficients
-kv = 1.5
+kv = 1.8
 
 #Spar geometry
 h_Fs, h_Bs, l_Top, l_Bottom = geometry(zAxis)
