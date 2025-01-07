@@ -15,7 +15,7 @@ c_Tip = c_Root - c_Root*(1-taper_Ratio)
 t_skin = 0.01 #(m)
 
 #Stringers
-t_Str_a = 0.002 #Thickness long side (m) placeholder value
+t_Str_a = 0.005 #Thickness long side (m) placeholder value
 t_Str_b = 0.002 #Thickness short side
 a_Str = 0.10 #Stringer width in plane of the skin it is attached to (m) placeholder value
 b_Str = 0.08 #Stringer height out of plane of the skin it is attached to (m) placeholder value
