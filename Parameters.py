@@ -17,7 +17,7 @@ t_skin = 0.01 #(m)
 #Stringers
 t_Str_a = 0.010 #Thickness long side (m) placeholder value
 t_Str_b = 0.010 #Thickness short side
-a_Str = 0.10 #Stringer width in plane of the skin it is attached to (m) placeholder value
+a_Str = 0.05 #Stringer width in plane of the skin it is attached to (m) placeholder value
 b_Str = 0.20 #Stringer height out of plane of the skin it is attached to (m) placeholder value
 
 #Number of stringer spars
@@ -26,18 +26,18 @@ n_Str_Fs = 0
 n_Str_Bs = 0
 
 #Number of stringers plates
-n_Str_Top_ztip = 7
-n_Str_Bottom_ztip = 7
+n_Str_Top_ztip = 14
+n_Str_Bottom_ztip = 14
 
 #Increment Stringers Per Bay Top Plate 
 # #Should be even amount
 #First value is basic amount of stringers
-n_Str_Top_incr = [n_Str_Top_ztip, 0, 0, 0, 0, 0, 0, 12, 0, 0, 0, 0, 0, 0]
+n_Str_Top_incr = [n_Str_Top_ztip, 0, 0, 0, 0, 0, 0, 24, 0, 0, 0, 0, 0, 0]
 
 #Increment Stringers Per Bay Top Plate
 #Should be even amount
 #First value is basic amount of stringers
-n_Str_Bottom_incr = [n_Str_Bottom_ztip, 0, 0, 0, 0, 0, 0, 12, 0, 0, 0, 0, 0, 0]
+n_Str_Bottom_incr = [n_Str_Bottom_ztip, 0, 0, 0, 0, 0, 0, 24, 0, 0, 0, 0, 0, 0]
 
 #Spacings
 delta_Top = (0.5*c_Tip)/(n_Str_Top_ztip + 1)
