@@ -50,7 +50,7 @@ t_Bs = 0.010 #thickness back spar (m) placeholder value
 
 #Plates
 t_Top = 0.010 #thickness top plate (m) placeholder value
-t_Bottom = 0.005 #thickness bottom plate (m) placeholder value
+t_Bottom = 0.010 #thickness bottom plate (m) placeholder value
 
 #General Geometry
 def geometry(z):
