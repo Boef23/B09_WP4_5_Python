@@ -24,7 +24,7 @@ J_Zlist = I_XX_Zlist + I_YY_Zlist
 
 LC1list = zAxis
 LC2list = zAxis
-LC3list = columnBuckling(K , E, Ixx ,stringerArea = areastringer())
+LC3list = columnBuckling(K , E, IxxSTR ,stringerArea = areastringer())
 LC4list = np.ones_like(zAxis)*450*10**6 #Yield stress
 #################################################################################################################################
 #Tool
