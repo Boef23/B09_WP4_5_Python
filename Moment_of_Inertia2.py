@@ -1,5 +1,5 @@
 #Moment of inertia and torsional stiffness diagrams
-from Parameters import c_Root, taper_Ratio, t_Fs, t_Bs, t_Top, t_Bottom, b, t_Stringer, l_Stringer, n_str_Fs, n_str_Bs, n_str_Top, n_str_Bottom, w_Stringer, h_Stringer
+from Parameters import *
 import numpy as np
 
 #Chord length as function of spanwise position
