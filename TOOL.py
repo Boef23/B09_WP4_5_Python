@@ -15,6 +15,8 @@ def areastringer(t_Str_a = t_Str_a, a_Str = a_Str, t_Str_b = t_Str_b, b_Str = b_
     areastringer = t_Str_a * a_Str + t_Str_b + b_Str
     return areastringer
 
+zAxis = np.arange(0, 15.325, 0.01)
+
 I_XX_Zlist = Ixx_list
 I_YY_Zlist = I_yy_Total
 J_Zlist = I_XX_Zlist + I_YY_Zlist
@@ -22,12 +24,12 @@ J_Zlist = I_XX_Zlist + I_YY_Zlist
 
 LC1list = 1
 LC2list = 2
-LC3list = columnBuckling(K , elasticModulus, Ixx = I_XX_Zlist, stringerArea = areastringer()  )
+LC3list = columnBuckling(K , elasticModulus, Ixx = Ixx_list, stringerArea = areastringer()  )
 LC4list = np.ones_like(zAxis)*450*10**6
 #################################################################################################################################
 #Tool
 #zAxis
-zAxis = np.arange(0, 15.325, 0.01)
+
 
 #PLots?
 Plots = True
