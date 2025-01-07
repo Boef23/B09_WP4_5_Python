@@ -2,10 +2,23 @@ from Moment_of_Inertia2 import geometry, areas_segments
 from ShearDiagram import zAxis, totalMomentDist, totalShearDist, totalTorqueDist
 from LiftDistribution import chord
 import numpy as np
-from Moment_of_inertia_comp import geometryproperties
 from Skin_Buckling import enclosedarea, Ymaxfinder
 from Parameters import t_Fs
 from Moment_of_inertia_3 import *
+from New_Iyy import *
+
+momentOfInertia_X = Ixx_list
+momentOfInertia_y = I_yy_Total
+momentOfInertia_J = momentOfInertia_X * momentOfInertia_y 
+
+def geometry(z):
+    chord = c_Root - c_Root*(1-taper_Ratio) * (z/(0.5 * b))
+    h_Fs = 0.1092 * chord #height of front spar
+    h_Bs = 0.0732 * chord #height of back spar
+    l_Top = 0.5 * chord #length op top flange
+    l_Bottom = 0.5 * chord #length of bottom flange
+    beta = np.arctan((h_Fs-h_Bs)/l_Top) #angle of bottom flange
+    return h_Fs, h_Bs, l_Top, l_Bottom, beta
 
 #Coefficients
 kv = 1.5

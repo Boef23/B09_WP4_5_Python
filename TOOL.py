@@ -10,10 +10,6 @@ def marginofsafety(failuresigma, appliedsigma):
     marginofsafety = (failuresigma)/(appliedsigma)
     return marginofsafety
 
-t_Str_a = 0.002 #Thickness long side (m) placeholder value
-t_Str_b = 0.002 #Thickness short side
-a_Str = 0.20 #Stringer width in plane of the skin it is attached to (m) placeholder value
-b_Str = 0.15 #
 
 def areastringer(t_Str_a = t_Str_a, a_Str = a_Str, t_Str_b = t_Str_b, b_Str = b_Str):
     areastringer = t_Str_a * a_Str + t_Str_b + b_Str
