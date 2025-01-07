@@ -32,12 +32,12 @@ n_Str_Bottom_ztip = 14
 #Increment Stringers Per Bay Top Plate 
 # #Should be even amount
 #First value is basic amount of stringers
-n_Str_Top_incr = [n_Str_Top_ztip, 0, 0, 0, 0, 0, 0, 24, 0, 0, 0, 0, 0, 0]
+n_Str_Top_incr = [n_Str_Top_ztip, 0, 0, 0, 0, 0, 0, 20, 0, 0, 0, 0, 0, 0]
 
 #Increment Stringers Per Bay Top Plate
 #Should be even amount
 #First value is basic amount of stringers
-n_Str_Bottom_incr = [n_Str_Bottom_ztip, 0, 0, 0, 0, 0, 0, 24, 0, 0, 0, 0, 0, 0]
+n_Str_Bottom_incr = [n_Str_Bottom_ztip, 0, 0, 0, 0, 0, 0, 20, 0, 0, 0, 0, 0, 0]
 
 #Spacings
 delta_Top = (0.5*c_Tip)/(n_Str_Top_ztip + 1)
