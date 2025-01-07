@@ -98,14 +98,14 @@ if __name__ == '__main__':
     if Plots == True:
         plt.subplot(2,3,1)
         plt.plot(zAxis,margin_LC1_Front)
-        plt.title('Margin of Stress LC1_Upper')
+        plt.title('Margin of Stress LC1_Front')
         plt.xlabel('Z postion [m]')
         plt.ylabel('Margin of Stress [-]')
         plt.grid(True)
 
         plt.subplot(2,3,2)
         plt.plot(zAxis,margin_LC1_Back)
-        plt.title('Margin of Stress LC1_Lower')
+        plt.title('Margin of Stress LC1_Back')
         plt.xlabel('Z postion [m]')
         plt.ylabel('Margin of Stress [-]')
         plt.grid(True)
@@ -113,14 +113,14 @@ if __name__ == '__main__':
 
         plt.subplot(2,3,3)
         plt.plot(zAxis,margin_LC2_Upper)
-        plt.title('Margin of Stress LC2_Front')
+        plt.title('Margin of Stress LC2_Upper')
         plt.xlabel('Z postion [m]')
         plt.ylabel('Margin of Stress [-]')
         plt.grid(True)
 
         plt.subplot(2,3,4)
         plt.plot(zAxis,margin_LC2_Lower)
-        plt.title('Margin of Stress LC2_Back')
+        plt.title('Margin of Stress LC2_Lower')
         plt.xlabel('Z postion [m]')
         plt.ylabel('Margin of Stress [-]')
         plt.grid(True)
