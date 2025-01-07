@@ -1,22 +1,19 @@
 import numpy as np
 import math
-
+from Parameters import *
 
 # variables
 
-delta_Top = 1 #ADJUST THESE AND PULL THEM FROM GITHUB
-delta_Bottom = 1
 
-v = 0.333
+v = poisson_ratio
 t_skin = 0.0015
-t_front_spar = 0.006
-t_back_spar = 0.006
-E = 72.4*(10**9)
+t_front_spar = t_Fs
+t_back_spar = t_Bs
 WbFrac = 0.5
 numStringUpper = 10
 numStringLower = 8
-Cr = 4.9
-taper = 0.316
+Cr = c_Root
+taper = taper_Ratio
 span = 30.65
 
 rib_distances = [0.60, 0.63, 0.65, 0.68, 0.72, 0.76, 0.81, 0.86, 0.94, 1.04, 1.17, 1.38, 1.78, 3.28]
