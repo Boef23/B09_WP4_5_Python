@@ -6,6 +6,7 @@ from TwistFinal import *
 from ColumnBuckling import *
 from Moment_of_inertia_3 import *
 from LC1andLC2 import *
+from Parameters import *
 
 def marginofsafety(failuresigma, appliedsigma):
     marginofsafety = np.abs((failuresigma)/(appliedsigma))
