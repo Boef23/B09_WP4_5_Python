@@ -283,12 +283,12 @@ for i, z in enumerate(z_values):
 
 
     z += 0.01
-if __name__ == '__main__':
+'''
     print(skinStressCriticalCompUPPER)
     print(skinStressCriticalCompLOWER)
     print(shearStressCriticalFront)
     print(shearStressCriticalBack)
-if __name__ == '__main__':
+
     import matplotlib.pyplot as plt
 
     # Define the z-axis (spanwise location)
@@ -332,3 +332,5 @@ if __name__ == '__main__':
     # Adjust layout for better readability
     plt.tight_layout()
     plt.show()
+
+'''
