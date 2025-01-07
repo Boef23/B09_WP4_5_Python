@@ -26,18 +26,18 @@ n_Str_Fs = 0
 n_Str_Bs = 0
 
 #Number of stringers plates
-n_Str_Top_ztip = 3
-n_Str_Bottom_ztip = 2
+n_Str_Top_ztip = 7
+n_Str_Bottom_ztip = 7
 
 #Increment Stringers Per Bay Top Plate 
 # #Should be even amount
 #First value is basic amount of stringers
-n_Str_Top_incr = [n_Str_Top_ztip, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0]
+n_Str_Top_incr = [n_Str_Top_ztip, 0, 0, 0, 0, 0, 0, 12, 0, 0, 0, 0, 0, 0]
 
 #Increment Stringers Per Bay Top Plate
 #Should be even amount
 #First value is basic amount of stringers
-n_Str_Bottom_incr = [n_Str_Bottom_ztip, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0]
+n_Str_Bottom_incr = [n_Str_Bottom_ztip, 0, 0, 0, 0, 0, 0, 12, 0, 0, 0, 0, 0, 0]
 
 #Spacings
 delta_Top = (0.5*c_Tip)/(n_Str_Top_ztip + 1)
