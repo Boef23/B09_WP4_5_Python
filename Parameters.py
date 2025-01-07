@@ -12,7 +12,7 @@ c_Root = 4.9 #Root chord (m)
 c_Tip = c_Root - c_Root*(1-taper_Ratio)
 
 #Airfoil skin thickness
-t_skin = 0.01 #(m)
+t_skin = 0.050 #(m)
 
 #Stringers
 t_Str_a = 0.010 #Thickness long side (m) placeholder value
