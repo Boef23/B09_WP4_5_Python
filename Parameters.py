@@ -17,8 +17,8 @@ t_skin = 0.01 #(m)
 #Stringers
 t_Str_a = 0.002 #Thickness long side (m) placeholder value
 t_Str_b = 0.002 #Thickness short side
-a_Str = 0.20 #Stringer width in plane of the skin it is attached to (m) placeholder value
-b_Str = 0.15 #Stringer height out of plane of the skin it is attached to (m) placeholder value
+a_Str = 0.10 #Stringer width in plane of the skin it is attached to (m) placeholder value
+b_Str = 0.08 #Stringer height out of plane of the skin it is attached to (m) placeholder value
 
 #Number of stringer spars
 wb_Frac = 0.5
