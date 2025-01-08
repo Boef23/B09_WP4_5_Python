@@ -30,7 +30,7 @@ t_Bs = 0.100 #thickness back spar (m) placeholder value
 t_Top = 0.010 #thickness top plate (m) placeholder value
 t_Bottom = 0.010 #thickness bottom plate (m) placeholder value
 
-# -----------------------------------------------------------------------------------------------
+#############################################################################################################
 
 #Wing
 lambda_LE = 0.4363 #Leading edge sweep angle (rad) placeholder value
