@@ -3,10 +3,10 @@
 t_skin = 0.005 #(m)
 
 #Stringers
-t_Str_a = 0.010 #Thickness long side (m) placeholder value
+t_Str_a = 0.010 #Thickness long side (m)
 t_Str_b = 0.010 #Thickness short side
-a_Str = 0.05 #Stringer width in plane of the skin it is attached to (m) placeholder value
-b_Str = 0.20 #Stringer height out of plane of the skin it is attached to (m) placeholder 
+a_Str = 0.05 #Stringer width in plane of the skin it is attached to (m)
+b_Str = 0.20 #Stringer height out of plane of the skin it is attached to (m)
 
 #Number of stringers plates
 n_Str_Top_ztip = 14
@@ -23,12 +23,12 @@ n_Str_Top_incr = [n_Str_Top_ztip, 0, 0, 0, 0, 0, 0, 20, 0, 0, 0, 0, 0, 0]
 n_Str_Bottom_incr = [n_Str_Bottom_ztip, 0, 0, 0, 0, 0, 0, 20, 0, 0, 0, 0, 0, 0]
 
 #Spars
-t_Fs = 0.100 #thickness front spar (m) placeholder value
-t_Bs = 0.100 #thickness back spar (m) placeholder value
+t_Fs = 0.100 #thickness front spar (m)
+t_Bs = 0.100 #thickness back spar (m)
 
 #Plates
-t_Top = 0.010 #thickness top plate (m) placeholder value
-t_Bottom = 0.010 #thickness bottom plate (m) placeholder value
+t_Top = 0.010 #thickness top plate (m)
+t_Bottom = 0.010 #thickness bottom plate (m)
 
 #############################################################################################################
 
