@@ -79,5 +79,3 @@ engine_Mass = 1111.3    #Mass of engine (kg)
 
 E = 7.24*10**9 # Modulus of elasticity [Pa]
 poisson_ratio = 1/3 # Unitless
-
-
