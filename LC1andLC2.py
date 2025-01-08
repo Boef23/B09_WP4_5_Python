@@ -283,7 +283,7 @@ for i, z in enumerate(z_values):
 
 
     z += 0.01
-'''
+
     print(skinStressCriticalCompUPPER)
     print(skinStressCriticalCompLOWER)
     print(shearStressCriticalFront)
@@ -332,5 +332,3 @@ for i, z in enumerate(z_values):
     # Adjust layout for better readability
     plt.tight_layout()
     plt.show()
-
-'''
