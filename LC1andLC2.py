@@ -282,53 +282,53 @@ for i, z in enumerate(z_values):
     skinStressCriticalCompLOWER[i] = (((math.pi)**2) * k_c * E * (t_skin**2)) / (12 * (1 - (v**2)) * (b_lower**2))
 
 
-    z += 0.01
+    # z += 0.01
 
-    print(skinStressCriticalCompUPPER)
-    print(skinStressCriticalCompLOWER)
-    print(shearStressCriticalFront)
-    print(shearStressCriticalBack)
+    # print(skinStressCriticalCompUPPER)
+    # print(skinStressCriticalCompLOWER)
+    # print(shearStressCriticalFront)
+    # print(shearStressCriticalBack)
 
-    import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 
-    # Define the z-axis (spanwise location)
-    z_axis = np.arange(0.00, 15.33, 0.01)
+# Define the z-axis (spanwise location)
+z_axis = np.arange(0.00, 15.33, 0.01)
 
-    # Create subplots for better visualization
-    fig, axes = plt.subplots(2, 2, figsize=(14, 10))
+# Create subplots for better visualization
+fig, axes = plt.subplots(2, 2, figsize=(14, 10))
 
-    # Plot Shear Stress Critical (Front)
-    axes[0, 0].plot(z_axis, shearStressCriticalFront, label="Shear Stress Critical Front", color='blue')
-    axes[0, 0].set_title("Shear Stress Critical (Front)")
-    axes[0, 0].set_xlabel("Spanwise Location (z) [m]")
-    axes[0, 0].set_ylabel("Critical Shear Stress [Pa]")
-    axes[0, 0].grid(True)
-    axes[0, 0].legend()
+# Plot Shear Stress Critical (Front)
+axes[0, 0].plot(z_axis, shearStressCriticalFront, label="Shear Stress Critical Front", color='blue')
+axes[0, 0].set_title("Shear Stress Critical (Front)")
+axes[0, 0].set_xlabel("Spanwise Location (z) [m]")
+axes[0, 0].set_ylabel("Critical Shear Stress [Pa]")
+axes[0, 0].grid(True)
+axes[0, 0].legend()
 
-    # Plot Shear Stress Critical (Back)
-    axes[0, 1].plot(z_axis, shearStressCriticalBack, label="Shear Stress Critical Back", color='red')
-    axes[0, 1].set_title("Shear Stress Critical (Back)")
-    axes[0, 1].set_xlabel("Spanwise Location (z) [m]")
-    axes[0, 1].set_ylabel("Critical Shear Stress [Pa]")
-    axes[0, 1].grid(True)
-    axes[0, 1].legend()
+# Plot Shear Stress Critical (Back)
+axes[0, 1].plot(z_axis, shearStressCriticalBack, label="Shear Stress Critical Back", color='red')
+axes[0, 1].set_title("Shear Stress Critical (Back)")
+axes[0, 1].set_xlabel("Spanwise Location (z) [m]")
+axes[0, 1].set_ylabel("Critical Shear Stress [Pa]")
+axes[0, 1].grid(True)
+axes[0, 1].legend()
 
-    # Plot Skin Stress Critical Compression (Upper)
-    axes[1, 0].plot(z_axis, skinStressCriticalCompUPPER, label="Skin Stress Critical Upper", color='green')
-    axes[1, 0].set_title("Skin Stress Critical Compression (Upper)")
-    axes[1, 0].set_xlabel("Spanwise Location (z) [m]")
-    axes[1, 0].set_ylabel("Critical Skin Stress [Pa]")
-    axes[1, 0].grid(True)
-    axes[1, 0].legend()
+# Plot Skin Stress Critical Compression (Upper)
+axes[1, 0].plot(z_axis, skinStressCriticalCompUPPER, label="Skin Stress Critical Upper", color='green')
+axes[1, 0].set_title("Skin Stress Critical Compression (Upper)")
+axes[1, 0].set_xlabel("Spanwise Location (z) [m]")
+axes[1, 0].set_ylabel("Critical Skin Stress [Pa]")
+axes[1, 0].grid(True)
+axes[1, 0].legend()
 
-    # Plot Skin Stress Critical Compression (Lower)
-    axes[1, 1].plot(z_axis, skinStressCriticalCompLOWER, label="Skin Stress Critical Lower", color='purple')
-    axes[1, 1].set_title("Skin Stress Critical Compression (Lower)")
-    axes[1, 1].set_xlabel("Spanwise Location (z) [m]")
-    axes[1, 1].set_ylabel("Critical Skin Stress [Pa]")
-    axes[1, 1].grid(True)
-    axes[1, 1].legend()
+# Plot Skin Stress Critical Compression (Lower)
+axes[1, 1].plot(z_axis, skinStressCriticalCompLOWER, label="Skin Stress Critical Lower", color='purple')
+axes[1, 1].set_title("Skin Stress Critical Compression (Lower)")
+axes[1, 1].set_xlabel("Spanwise Location (z) [m]")
+axes[1, 1].set_ylabel("Critical Skin Stress [Pa]")
+axes[1, 1].grid(True)
+axes[1, 1].legend()
 
-    # Adjust layout for better readability
-    plt.tight_layout()
-    plt.show()
+# Adjust layout for better readability
+plt.tight_layout()
+plt.show()
