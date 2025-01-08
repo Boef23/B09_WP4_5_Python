@@ -1,16 +1,4 @@
-
-
-#Wing
-lambda_LE = 0.4363 #Leading edge sweep angle (rad) placeholder value
-taper_Ratio = 0.316 #Taper ratio (-)
-b = 30.65 #wing span (m)
-S = 98.75   #Wing area (m^2)
-lambda_Dihedral = 0.0349 #dihedral angle (rad) placeholder value
-
-#Airfoil
-c_Root = 4.9 #Root chord (m)
-c_Tip = c_Root - c_Root*(1-taper_Ratio)
-
+#Parameters to tweak for wing box designs
 #Airfoil skin thickness
 t_skin = 0.050 #(m)
 
@@ -18,12 +6,7 @@ t_skin = 0.050 #(m)
 t_Str_a = 0.010 #Thickness long side (m) placeholder value
 t_Str_b = 0.010 #Thickness short side
 a_Str = 0.05 #Stringer width in plane of the skin it is attached to (m) placeholder value
-b_Str = 0.20 #Stringer height out of plane of the skin it is attached to (m) placeholder value
-
-#Number of stringer spars
-wb_Frac = 0.5
-n_Str_Fs = 0
-n_Str_Bs = 0
+b_Str = 0.20 #Stringer height out of plane of the skin it is attached to (m) placeholder 
 
 #Number of stringers plates
 n_Str_Top_ztip = 14
@@ -39,18 +22,35 @@ n_Str_Top_incr = [n_Str_Top_ztip, 0, 0, 0, 0, 0, 0, 20, 0, 0, 0, 0, 0, 0]
 #First value is basic amount of stringers
 n_Str_Bottom_incr = [n_Str_Bottom_ztip, 0, 0, 0, 0, 0, 0, 20, 0, 0, 0, 0, 0, 0]
 
-#Spacings
-delta_Top = (0.5*c_Tip)/(n_Str_Top_ztip + 1)
-delta_Bottom = (0.5*c_Tip)/(n_Str_Bottom_ztip + 1)
-
 #Spars
 t_Fs = 0.100 #thickness front spar (m) placeholder value
 t_Bs = 0.100 #thickness back spar (m) placeholder value
 
-
 #Plates
 t_Top = 0.010 #thickness top plate (m) placeholder value
 t_Bottom = 0.010 #thickness bottom plate (m) placeholder value
+
+# -----------------------------------------------------------------------------------------------
+
+#Wing
+lambda_LE = 0.4363 #Leading edge sweep angle (rad) placeholder value
+taper_Ratio = 0.316 #Taper ratio (-)
+b = 30.65 #wing span (m)
+S = 98.75   #Wing area (m^2)
+lambda_Dihedral = 0.0349 #dihedral angle (rad) placeholder value
+
+#Airfoil
+c_Root = 4.9 #Root chord (m)
+c_Tip = c_Root - c_Root*(1-taper_Ratio)
+
+#Number of stringer spars
+wb_Frac = 0.5
+n_Str_Fs = 0
+n_Str_Bs = 0
+
+#Spacings
+delta_Top = (0.5*c_Tip)/(n_Str_Top_ztip + 1)
+delta_Bottom = (0.5*c_Tip)/(n_Str_Bottom_ztip + 1)
 
 #General Geometry
 def geometry(z):
