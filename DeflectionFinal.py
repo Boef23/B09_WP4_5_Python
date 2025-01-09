@@ -15,7 +15,7 @@ massLandingGear = 302.67 #kg
 
 
 n_str_top, n_str_Bottom = checkBay(z)
-momentOfInertia_X = Ixx_Wingbox(15.52, n_Str_Top, n_str_Bottom, y_centroid_wingbox, b = b)
+momentOfInertia_X = Ixx_Wingbox(z_list, n_Str_Top, n_str_Bottom, y_centroid_wingbox, b = b)
 print(momentOfInertia_X)
 
 
