@@ -23,8 +23,8 @@ n_Str_Top_incr = [n_Str_Top_ztip, 0, 2, 0, 2, 0, 2, 0, 2, 0, 2, 0, 2, 0]
 n_Str_Bottom_incr = [n_Str_Bottom_ztip, 0, 2, 0, 2, 0, 2, 0, 2, 0, 2, 0, 2, 0]
 
 #Spars
-t_Fs = 0.03 #thickness front spar (m)
-t_Bs = 0.03 #thickness back spar (m)
+t_Fs = 0.02 #thickness front spar (m)
+t_Bs = 0.02 #thickness back spar (m)
 
 #Plates
 t_Top = 0.009 #thickness top plate (m)
