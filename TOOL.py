@@ -28,7 +28,7 @@ LC1_Frontlist = shearStressCriticalFront
 LC1_Backlist = shearStressCriticalBack
 LC2_Upperlist = skinStressCriticalCompUPPER
 LC2_Lowerlist = skinStressCriticalCompLOWER
-LC3list = columnBuckling(K , E, IxxSTR ,stringerArea = areastringer())
+LC3list = columnBuckling(K , E, Iyy ,stringerArea = areastringer())
 LC4list = np.ones_like(zAxis)*450*10**6 #Yield stress
 #################################################################################################################################
 #Tool
