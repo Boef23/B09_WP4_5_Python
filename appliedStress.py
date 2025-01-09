@@ -9,7 +9,7 @@ from New_Iyy import *
 
 momentOfInertia_X = Ixx_list
 momentOfInertia_y = I_yy_Total
-momentOfInertia_J = momentOfInertia_X * momentOfInertia_y 
+momentOfInertia_J = momentOfInertia_X + momentOfInertia_y 
 
 def geometry(z):
     chord = c_Root - c_Root*(1-taper_Ratio) * (z/(0.5 * b))
