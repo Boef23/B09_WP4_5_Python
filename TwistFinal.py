@@ -10,7 +10,7 @@ from New_Iyy import *
 
 momentOfInertia_X = Ixx_list
 momentOfInertia_y = I_yy_Total
-J_Zlist = momentOfInertia_X * momentOfInertia_y 
+J_Zlist = momentOfInertia_X + momentOfInertia_y 
 
 shearModulus = shearModulus = 28 * 10**9 #Pa
 
