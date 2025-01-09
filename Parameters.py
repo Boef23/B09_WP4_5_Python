@@ -15,20 +15,20 @@ n_Str_Bottom_ztip = 20
 #Increment Stringers Per Bay Top Plate 
 # #Should be even amount
 #First value is basic amount of stringers
-n_Str_Top_incr = [n_Str_Top_ztip, 0, 0, 0, 0, 0, 0, 8, 0, 0, 0, 0, 0, 0]
+n_Str_Top_incr = [n_Str_Top_ztip, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0]
 
 #Increment Stringers Per Bay Top Plate
 #Should be even amount
 #First value is basic amount of stringers
-n_Str_Bottom_incr = [n_Str_Bottom_ztip, 0, 0, 0, 0, 0, 0, 8, 0, 0, 0, 0, 0, 0]
+n_Str_Bottom_incr = [n_Str_Bottom_ztip, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0]
 
 #Spars
 t_Fs = 0.03 #thickness front spar (m)
 t_Bs = 0.03 #thickness back spar (m)
 
 #Plates
-t_Top = 0.010 #thickness top plate (m)
-t_Bottom = 0.010 #thickness bottom plate (m)
+t_Top = 0.009 #thickness top plate (m)
+t_Bottom = 0.009 #thickness bottom plate (m)
 
 #############################################################################################################
 
