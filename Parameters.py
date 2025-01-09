@@ -9,8 +9,8 @@ a_Str = 0.05 #Stringer width in plane of the skin it is attached to (m)
 b_Str = 0.20 #Stringer height out of plane of the skin it is attached to (m)
 
 #Number of stringers plates
-n_Str_Top_ztip = 5
-n_Str_Bottom_ztip = 4
+n_Str_Top_ztip = 4
+n_Str_Bottom_ztip = 3
 
 #Increment Stringers Per Bay Top Plate 
 # #Should be even amount
@@ -27,8 +27,8 @@ t_Fs = 0.100 #thickness front spar (m)
 t_Bs = 0.100 #thickness back spar (m)
 
 #Plates
-t_Top = 0.010 #thickness top plate (m)
-t_Bottom = 0.010 #thickness bottom plate (m)
+t_Top = 0.015 #thickness top plate (m)
+t_Bottom = 0.015 #thickness bottom plate (m)
 
 #############################################################################################################
 
