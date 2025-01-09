@@ -1,12 +1,12 @@
 #Parameters to tweak for wing box designs
 #Airfoil skin thickness
-t_skin = 0.002 #(m)
+t_skin = 0.001 #(m)
 
 #Stringers
 t_Str_a = 0.013 #Thickness long side (m)
 t_Str_b = 0.013 #Thickness short side
 a_Str = 0.04 #Stringer width in plane of the skin it is attached to (m)
-b_Str = 0.085 #Stringer height out of plane of the skin it is attached to (m)
+b_Str = 0.09 #Stringer height out of plane of the skin it is attached to (m)
 
 #Number of stringers plates
 n_Str_Top_ztip = 21
