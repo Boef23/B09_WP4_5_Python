@@ -64,7 +64,7 @@ def columnBuckling(K , elasticModulus, Iyy, stringerArea  ):
     return sigmaCritical
 
 if __name__ == '__main__':
-    print(f'The critical stress is {columnBuckling(K , elasticModulus, IxxSTR, stringerArea)} Pa' )
+    print(f'The critical stress is {columnBuckling(K , elasticModulus, Iyy, stringerArea)} Pa' )
 
     #Prints the plots for the critical stress
 
