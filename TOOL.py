@@ -7,6 +7,7 @@ from ColumnBuckling import *
 from Moment_of_inertia_3 import *
 from LC1andLC2 import *
 from Parameters import *
+from weight import *
 
 def marginofsafety(failuresigma, appliedsigma):
     marginofsafety = np.abs((failuresigma)/(appliedsigma))
@@ -93,6 +94,10 @@ if maxtwisttip <= 10:
     print('Twist correct')
 else:
     print('Twist incorrect')
+
+#Weight
+
+print(f'This is the weight of the WB {Mass_WB} kg of half span')
 
 #PLOTS
 
