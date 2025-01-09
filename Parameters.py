@@ -9,8 +9,8 @@ a_Str = 0.05 #Stringer width in plane of the skin it is attached to (m)
 b_Str = 0.09 #Stringer height out of plane of the skin it is attached to (m)
 
 #Number of stringers plates
-n_Str_Top_ztip = 10
-n_Str_Bottom_ztip = 10
+n_Str_Top_ztip = 11
+n_Str_Bottom_ztip = 11
 
 #Increment Stringers Per Bay Top Plate 
 # #Should be even amount
@@ -49,8 +49,10 @@ n_Str_Fs = 0
 n_Str_Bs = 0
 
 #Spacings
-delta_Top = (0.5*c_Tip)/(n_Str_Top_ztip + 1)
-delta_Bottom = (0.5*c_Tip)/(n_Str_Bottom_ztip + 1)
+delta_Top = 0.1
+delta_Bottom = 0.1
+#delta_Top = (0.5*c_Tip)/(n_Str_Top_ztip + 1)
+#delta_Bottom = (0.5*c_Tip)/(n_Str_Bottom_ztip + 1)
 
 #General Geometry
 def geometry(z):
