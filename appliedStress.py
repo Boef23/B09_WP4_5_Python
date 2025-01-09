@@ -6,6 +6,7 @@ from Skin_Buckling import enclosedarea, Ymaxfinder
 from Parameters import t_Fs
 from Moment_of_inertia_3 import *
 from New_Iyy import *
+import matplotlib.pyplot as plt
 
 momentOfInertia_X = Ixx_list
 momentOfInertia_y = I_yy_Total
@@ -56,5 +57,16 @@ tau_max = tau_max_force + tau_torque
 Ixx = momentOfInertia_X
 y_max_top = Ymaxfinder(zAxis, calculate_Centroid_wingbox(zAxis)[1])[0]
 normalStress = totalMomentDist * y_max_top / Ixx
+
+#Tensile Stress
+y_max_bot = Ymaxfinder(zAxis, calculate_Centroid_wingbox(zAxis)[1])[1]
+tensileStress = totalMomentDist * y_max_bot / Ixx * 10**-6  #MPa
+
+maxTensile = np.ones_like(zAxis) * 450
+tensileMoS = maxTensile / tensileStress
+
+if __name__ == '__main__':
+    plt.plot(zAxis, tensileMoS)
+    plt.show()
 
 #print(tau_max)
