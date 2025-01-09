@@ -3,8 +3,8 @@
 t_skin = 0.002 #(m)
 
 #Stringers
-t_Str_a = 0.005 #Thickness long side (m)
-t_Str_b = 0.005 #Thickness short side
+t_Str_a = 0.006 #Thickness long side (m)
+t_Str_b = 0.006 #Thickness short side
 a_Str = 0.05 #Stringer width in plane of the skin it is attached to (m)
 b_Str = 0.05 #Stringer height out of plane of the skin it is attached to (m)
 
