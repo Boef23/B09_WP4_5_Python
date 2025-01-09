@@ -1,6 +1,6 @@
 #Parameters to tweak for wing box designs
 #Airfoil skin thickness
-t_skin = 0.003 #(m)
+t_skin = 0.002 #(m)
 
 #Stringers
 t_Str_a = 0.013 #Thickness long side (m)
@@ -27,7 +27,7 @@ t_Fs = 0.03 #thickness front spar (m)
 t_Bs = 0.03 #thickness back spar (m)
 
 #Plates
-t_Top = 0.009 #thickness top plate (m)
+t_Top = 0.015 #thickness top plate (m)
 t_Bottom = 0.015 #thickness bottom plate (m)
 
 #############################################################################################################
