@@ -14,6 +14,8 @@ K = 4 #due to ribs, two sides are clamped
 
 IxxSTR, Iyy = calculate_Inertia_Local_Stringer(a_Str = a_Str, t_Str_a = t_Str_a, b_Str = b_Str, t_Str_b = t_Str_b, x_Centroid_Stringer = calculate_Centroid_Stringer()[0], y_Centroid_Stringer = calculate_Centroid_Stringer()[1])
 
+print (IxxSTR)
+print (Iyy)
 Str_Area = a_Str * t_Str_a + b_Str * t_Str_b
 stringerArea = Str_Area
 
@@ -57,8 +59,8 @@ if __name__ == '__main__':
 
 stringerArea = Str_Area #placeholder bvalue
 
-def columnBuckling(K , elasticModulus, IxxSTR, stringerArea  ):
-    sigmaCritical = (K * np.pi**2  * elasticModulus * IxxSTR) / (distanceArray()**2 * stringerArea)
+def columnBuckling(K , elasticModulus, Iyy, stringerArea  ):
+    sigmaCritical = (K * np.pi**2  * elasticModulus * Iyy) / (distanceArray()**2 * stringerArea)
     return sigmaCritical
 
 if __name__ == '__main__':
