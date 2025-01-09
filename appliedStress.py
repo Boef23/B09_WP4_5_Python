@@ -54,7 +54,7 @@ tau_max = tau_max_force + tau_torque
 
 #Normal stress
 Ixx = momentOfInertia_X
-y_max_top = Ymaxfinder(zAxis, calculate_Centroid_wingbox(zAxis)[1])[1]
+y_max_top = Ymaxfinder(zAxis, calculate_Centroid_wingbox(zAxis)[1])[0]
 normalStress = totalMomentDist * y_max_top / Ixx
 
 #print(tau_max)
