@@ -27,8 +27,8 @@ t_Fs = 0.04 #thickness front spar (m)
 t_Bs = 0.04 #thickness back spar (m)
 
 #Plates
-t_Top = 0.009 #thickness top plate (m)
-t_Bottom = 0.009 #thickness bottom plate (m)
+t_Top = 0.010 #thickness top plate (m)
+t_Bottom = 0.010 #thickness bottom plate (m)
 
 #############################################################################################################
 
