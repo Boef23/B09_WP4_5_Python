@@ -67,6 +67,9 @@ tensileMoS = maxTensile / tensileStress
 
 if __name__ == '__main__':
     plt.plot(zAxis, tensileMoS)
+    plt.title('Tensile Strength Safety')
+    plt.xlabel('z [m]')
+    plt.ylabel('Margin of Safety [-]')
     plt.show()
 
 #print(tau_max)
