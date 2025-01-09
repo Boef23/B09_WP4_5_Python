@@ -1,16 +1,16 @@
 #Parameters to tweak for wing box designs
 #Airfoil skin thickness
-t_skin = 0.0015 #(m)
+t_skin = 0.007 #(m)
 
 #Stringers
-t_Str_a = 0.013 #Thickness long side (m)
-t_Str_b = 0.013 #Thickness short side
-a_Str = 0.035 #Stringer width in plane of the skin it is attached to (m)
-b_Str = 0.09 #Stringer height out of plane of the skin it is attached to (m)
+t_Str_a = 0.005 #Thickness long side (m)
+t_Str_b = 0.005 #Thickness short side
+a_Str = 0.05 #Stringer width in plane of the skin it is attached to (m)
+b_Str = 0.18 #Stringer height out of plane of the skin it is attached to (m)
 
 #Number of stringers plates
-n_Str_Top_ztip = 21
-n_Str_Bottom_ztip = 20
+n_Str_Top_ztip = 11
+n_Str_Bottom_ztip = 11
 
 #Increment Stringers Per Bay Top Plate 
 # #Should be even amount
@@ -23,12 +23,12 @@ n_Str_Top_incr = [n_Str_Top_ztip, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0]
 n_Str_Bottom_incr = [n_Str_Bottom_ztip, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0]
 
 #Spars
-t_Fs = 0.03 #thickness front spar (m)
-t_Bs = 0.03 #thickness back spar (m)
+t_Fs = 0.04 #thickness front spar (m)
+t_Bs = 0.04 #thickness back spar (m)
 
 #Plates
-t_Top = 0.009 #thickness top plate (m)
-t_Bottom = 0.009 #thickness bottom plate (m)
+t_Top = 0.022 #thickness top plate (m)
+t_Bottom = 0.022 #thickness bottom plate (m)
 
 #############################################################################################################
 
