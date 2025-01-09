@@ -1,6 +1,6 @@
 #Parameters to tweak for wing box designs
 #Airfoil skin thickness
-t_skin = 0.002 #(m)
+t_skin = 0.003 #(m)
 
 #Stringers
 t_Str_a = 0.013 #Thickness long side (m)
