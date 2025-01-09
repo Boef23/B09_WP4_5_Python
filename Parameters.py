@@ -49,8 +49,10 @@ n_Str_Fs = 0
 n_Str_Bs = 0
 
 #Spacings
-delta_Top = (0.5*c_Tip)/(n_Str_Top_ztip + 1)
-delta_Bottom = (0.5*c_Tip)/(n_Str_Bottom_ztip + 1)
+delta_Top = 0.1
+delta_Bottom = 0.1
+#delta_Top = (0.5*c_Tip)/(n_Str_Top_ztip + 1)
+#delta_Bottom = (0.5*c_Tip)/(n_Str_Bottom_ztip + 1)
 
 #General Geometry
 def geometry(z):
