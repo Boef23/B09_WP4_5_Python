@@ -9,8 +9,8 @@ a_Str = 0.05 #Stringer width in plane of the skin it is attached to (m)
 b_Str = 0.18 #Stringer height out of plane of the skin it is attached to (m)
 
 #Number of stringers plates
-n_Str_Top_ztip = 10
-n_Str_Bottom_ztip = 9
+n_Str_Top_ztip = 9
+n_Str_Bottom_ztip = 8
 
 #Increment Stringers Per Bay Top Plate 
 # #Should be even amount
