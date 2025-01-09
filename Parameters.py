@@ -6,7 +6,7 @@ t_skin = 0.008 #(m)
 t_Str_a = 0.013 #Thickness long side (m)
 t_Str_b = 0.020 #Thickness short side
 a_Str = 0.05 #Stringer width in plane of the skin it is attached to (m)
-b_Str = 0.19 #Stringer height out of plane of the skin it is attached to (m)
+b_Str = 0.18 #Stringer height out of plane of the skin it is attached to (m)
 
 #Number of stringers plates
 n_Str_Top_ztip = 4
