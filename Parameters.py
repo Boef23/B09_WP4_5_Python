@@ -6,7 +6,7 @@ t_skin = 0.0015 #(m)
 t_Str_a = 0.013 #Thickness long side (m)
 t_Str_b = 0.013 #Thickness short side
 a_Str = 0.035 #Stringer width in plane of the skin it is attached to (m)
-b_Str = 0.090 #Stringer height out of plane of the skin it is attached to (m)
+b_Str = 0.180 #Stringer height out of plane of the skin it is attached to (m)
 
 #Number of stringers plates
 n_Str_Top_ztip = 10
@@ -27,8 +27,8 @@ t_Fs = 0.04 #thickness front spar (m)
 t_Bs = 0.04 #thickness back spar (m)
 
 #Plates
-t_Top = 0.010 #thickness top plate (m)
-t_Bottom = 0.010 #thickness bottom plate (m)
+t_Top = 0.009 #thickness top plate (m)
+t_Bottom = 0.009 #thickness bottom plate (m)
 
 #############################################################################################################
 
