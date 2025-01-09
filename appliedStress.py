@@ -28,10 +28,7 @@ def areas_segments(h_Fs, h_Bs, l_Top, l_Bottom):
     area_Total = area_Fs + area_Bs + area_Top + area_Bottom #Total area
     return area_Fs, area_Bs, area_Top, area_Bottom, area_Total
 
-
-momentOfInertia_X = Ixx_list
-momentOfInertia_y = I_yy_Total
-momentOfInertia_J = momentOfInertia_X * momentOfInertia_y 
+ 
 #Coefficients
 kv = 1.8
 
