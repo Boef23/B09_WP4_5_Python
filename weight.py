@@ -29,11 +29,10 @@ def calculateWeightplates(zAxis, t_Fs = t_Fs, t_Bs = t_Bs, t_Top = t_Top, t_Bott
     l_Top = 0.5 * chord #length op top flange
     l_Bottom = 0.5 * chord #length of bottom flange
     areaplates = h_Fs*t_Fs + h_Bs*t_Bs + l_Top*t_Top + l_Bottom*t_Bottom
-    volumelist = zAxis*areaplates
+    volumelist = 0.01*areaplates
     masslist = volumelist*density_AL
     massplates = np.sum(masslist)
     return massplates
 
 Mass_WB = calculateWeightplates(zAxis) + calculateWeightstringers(n_Str_Top_incr) + calculateWeightstringers(n_Str_Bottom_incr)
-
-print(f'This is the weight of the WB {Mass_WB} kg')
+print(f'This is the weight of the WB {Mass_WB} kg of half span')
