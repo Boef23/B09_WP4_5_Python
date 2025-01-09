@@ -3,8 +3,8 @@
 t_skin = 0.007 #(m)
 
 #Stringers
-t_Str_a = 0.005 #Thickness long side (m)
-t_Str_b = 0.005 #Thickness short side
+t_Str_a = 0.002 #Thickness long side (m)
+t_Str_b = 0.002 #Thickness short side
 a_Str = 0.05 #Stringer width in plane of the skin it is attached to (m)
 b_Str = 0.18 #Stringer height out of plane of the skin it is attached to (m)
 
@@ -27,8 +27,8 @@ t_Fs = 0.03 #thickness front spar (m)
 t_Bs = 0.03 #thickness back spar (m)
 
 #Plates
-t_Top = 0.025 #thickness top plate (m)
-t_Bottom = 0.025 #thickness bottom plate (m)
+t_Top = 0.05 #thickness top plate (m)
+t_Bottom = 0.05 #thickness bottom plate (m)
 
 #############################################################################################################
 
